@@ -25,10 +25,10 @@ public class BorderPlugin extends JavaPlugin {
 
 	private void registerDictionaries() {
 		// Registering French dictionaries
-		registerDictionary("French", "Border.xml");
+		registerDictionary("French", "Border.xml", "Borders.xml");
 
 		// Registering English dictionaries
-		registerDictionary("English", "Border.xml");
+		registerDictionary("English", "Border.xml", "Borders.xml");
 	}
 
 	private void registerDictionary(String parent, String... dictionaryNames) {
