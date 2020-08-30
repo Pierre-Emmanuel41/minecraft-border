@@ -2,7 +2,7 @@ package fr.pederobien.minecraftborder.commands;
 
 import org.bukkit.command.CommandSender;
 
-import fr.pederobien.minecraftborder.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.commands.common.CommonSave;
 
 public class SaveBorder extends CommonSave<IBorderConfiguration> {

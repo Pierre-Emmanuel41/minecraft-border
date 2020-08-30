@@ -1,6 +1,6 @@
 package fr.pederobien.minecraftborder.commands;
 
-import fr.pederobien.minecraftborder.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.interfaces.editions.IMapPersistenceEdition;
 
 public class BorderEditionsFactory {

@@ -2,8 +2,8 @@ package fr.pederobien.minecraftborder.commands;
 
 import org.bukkit.command.CommandSender;
 
-import fr.pederobien.minecraftborder.BorderConfiguration;
-import fr.pederobien.minecraftborder.IBorderConfiguration;
+import fr.pederobien.minecraftborder.impl.BorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftgameplateform.commands.common.CommonNew;
 import fr.pederobien.minecraftgameplateform.commands.common.ECommonLabel;
 import fr.pederobien.minecraftgameplateform.interfaces.element.ILabel;

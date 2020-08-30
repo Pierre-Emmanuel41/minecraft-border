@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftborder;
+package fr.pederobien.minecraftborder.interfaces;
 
 import java.time.LocalTime;
 

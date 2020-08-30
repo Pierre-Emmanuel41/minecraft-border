@@ -3,8 +3,8 @@ package fr.pederobien.minecraftborder.persistence;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import fr.pederobien.minecraftborder.BorderConfiguration;
-import fr.pederobien.minecraftborder.IBorderConfiguration;
+import fr.pederobien.minecraftborder.impl.BorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftborder.persistence.loaders.BorderLoaderV10;
 import fr.pederobien.minecraftgameplateform.impl.element.persistence.AbstractMinecraftPersistence;
 import fr.pederobien.minecraftgameplateform.interfaces.element.persistence.IMinecraftPersistence;

@@ -3,7 +3,7 @@ package fr.pederobien.minecraftborder.persistence.loaders;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import fr.pederobien.minecraftborder.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftborder.persistence.BorderXmlTag;
 import fr.pederobien.persistence.interfaces.xml.IXmlPersistenceLoader;
 

@@ -2,7 +2,7 @@ package fr.pederobien.minecraftborder.commands;
 
 import org.bukkit.plugin.Plugin;
 
-import fr.pederobien.minecraftborder.IBorderConfiguration;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftborder.persistence.BorderPersistence;
 import fr.pederobien.minecraftgameplateform.impl.editions.AbstractParentPersistenceEdition;
 

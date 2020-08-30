@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftborder;
+package fr.pederobien.minecraftborder.impl;
 
 import java.time.LocalTime;
 import java.util.StringJoiner;
@@ -7,6 +7,7 @@ import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
 import fr.pederobien.minecraftgameplateform.exceptions.worldstructure.WorldNotFoundException;
 import fr.pederobien.minecraftgameplateform.impl.element.AbstractNominable;
