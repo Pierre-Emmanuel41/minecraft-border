@@ -1,0 +1,11 @@
+main: fr.pederobien.minecraftborder.BorderPlugin
+name: minecraft-border
+version: 1.0-SNAPSHOT
+api-version: 1.13
+depend: [minecraft-game-plateform]
+
+description:
+commands:
+  border:
+    description: This command is used to manipulate a border configurations.
+    permission: PlateformPlugin.permission
