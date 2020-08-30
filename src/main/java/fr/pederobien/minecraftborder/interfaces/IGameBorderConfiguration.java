@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.bukkit.World;
 
 import fr.pederobien.minecraftborder.exceptions.BorderConfigurationAlreadyRegisteredException;
-import fr.pederobien.minecraftgameplateform.exceptions.configurations.BorderConfigurationNotRegisteredException;
+import fr.pederobien.minecraftborder.exceptions.BorderConfigurationNotRegisteredException;
 import fr.pederobien.minecraftgameplateform.interfaces.element.IGameConfiguration;
 
 public interface IGameBorderConfiguration extends IGameConfiguration {
