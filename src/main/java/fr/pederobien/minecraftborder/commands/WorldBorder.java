@@ -36,8 +36,11 @@ public class WorldBorder extends AbstractLabelEdition<IBorderConfiguration> {
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		if (args.length == 1)
+		switch (args.length) {
+		case 1:
 			return filter(WorldManager.getWorldNormalisedNames().stream(), args[0]);
-		return super.onTabComplete(sender, command, alias, args);
+		default:
+			return emptyList();
+		}
 	}
 }
