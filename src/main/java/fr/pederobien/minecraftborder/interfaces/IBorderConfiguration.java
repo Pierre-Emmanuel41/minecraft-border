@@ -9,9 +9,9 @@ import org.bukkit.block.Block;
 import fr.pederobien.minecraftgameplateform.exceptions.worldstructure.WorldNotFoundException;
 import fr.pederobien.minecraftgameplateform.interfaces.element.INominable;
 import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObservableTimeLine;
-import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.ITimeLineObserver;
+import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
 
-public interface IBorderConfiguration extends Comparable<IBorderConfiguration>, INominable, ITimeLineObserver {
+public interface IBorderConfiguration extends Comparable<IBorderConfiguration>, INominable, IObsTimeLine {
 
 	/**
 	 * @return The world on which this configuration is applied.
