@@ -20,10 +20,11 @@ public class BorderConfiguration extends AbstractNominable implements IBorderCon
 	private static final Integer DEFAULT_FINAL_DIAMETER = 30;
 	private static final Double DEFAULT_BORDER_SPEED = 1.0;
 	private static final LocalTime DEFAULT_START_TIME = LocalTime.of(2, 0, 0);
+	private static final Integer DEFAULT_COUNTDOWN = 5;
 
 	private World world;
 	private Block center;
-	private Integer initialDiameter, finalDiameter;
+	private Integer initialDiameter, finalDiameter, countDown, currentCountDown;
 	private Double borderSpeed;
 	private LocalTime startTime;
 	private IObservableTimeLine timeLine;
@@ -31,11 +32,41 @@ public class BorderConfiguration extends AbstractNominable implements IBorderCon
 
 	public BorderConfiguration(String name) {
 		super(name);
+		currentCountDown = getCountDown();
 	}
 
 	@Override
 	public int compareTo(IBorderConfiguration o) {
 		return getStartTime().compareTo(o.getStartTime());
+	}
+
+	@Override
+	public int getCountDown() {
+		return countDown == null ? DEFAULT_COUNTDOWN : countDown;
+	}
+
+	@Override
+	public int getCurrentCountDown() {
+		return currentCountDown;
+	}
+
+	@Override
+	public void onTime(LocalTime time) {
+		moveBorder(getInitialBorderDiameter().longValue());
+		isMoving = true;
+	}
+
+	@Override
+	public void onCountDownTime(LocalTime currentTime) {
+		currentCountDown--;
+		if (currentCountDown == 0)
+			currentCountDown = getCountDown();
+		// TODO send a message to display the countdown
+	}
+
+	@Override
+	public LocalTime getNextNotifiedTime() {
+		return LocalTime.of(0, 0, 0);
 	}
 
 	@Override
@@ -107,12 +138,6 @@ public class BorderConfiguration extends AbstractNominable implements IBorderCon
 		getWorldBorder().reset();
 		if (timeLine != null)
 			timeLine.removeObserver(getStartTime(), this);
-	}
-
-	@Override
-	public void timeChanged(LocalTime time) {
-		moveBorder(getInitialBorderDiameter().longValue());
-		isMoving = true;
 	}
 
 	@Override
