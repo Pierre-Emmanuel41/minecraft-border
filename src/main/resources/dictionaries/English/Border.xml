@@ -219,5 +219,13 @@
 			<code>MOVE_TIME_BORDER__MOVE_TIME_DEFINED</code>
 			<value>The border %s will move to its final diameter in %s at speed %s block/s</value>
 		</message>
+		<message>
+			<code>MOVING_BORDER</code>
+			<value>Moving %s's border</value>
+		</message>
+		<message>
+			<code>MOVING_BORDER_COUNT_DOWN</code>
+			<value>Moving %s's border in %s</value>
+		</message>
 	</messages>
 </dictionary>

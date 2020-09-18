@@ -7,11 +7,12 @@ import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 
 import fr.pederobien.minecraftgameplateform.exceptions.worldstructure.WorldNotFoundException;
+import fr.pederobien.minecraftgameplateform.interfaces.editions.IPlateformCodeSender;
 import fr.pederobien.minecraftgameplateform.interfaces.element.INominable;
-import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObservableTimeLine;
 import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObsTimeLine;
+import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObservableTimeLine;
 
-public interface IBorderConfiguration extends Comparable<IBorderConfiguration>, INominable, IObsTimeLine {
+public interface IBorderConfiguration extends Comparable<IBorderConfiguration>, INominable, IObsTimeLine, IPlateformCodeSender {
 
 	/**
 	 * @return The world on which this configuration is applied.

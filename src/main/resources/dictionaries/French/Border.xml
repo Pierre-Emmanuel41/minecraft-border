@@ -216,5 +216,13 @@
 			<code>MOVE_TIME_BORDER__MOVE_TIME_DEFINED</code>
 			<value>La bordure %s se déplacera à son diamètre final en %s à la vitesse de %s bloc/s</value>
 		</message>
+		<message>
+			<code>MOVING_BORDER</code>
+			<value>Déplacement de la bordure du monde %s</value>
+		</message>
+		<message>
+			<code>MOVING_BORDER_COUNT_DOWN</code>
+			<value>Déplacement de la bordure du monde %s dans %s</value>
+		</message>
 	</messages>
 </dictionary>

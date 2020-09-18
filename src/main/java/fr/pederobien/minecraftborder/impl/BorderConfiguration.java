@@ -7,11 +7,13 @@ import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 
+import fr.pederobien.minecraftborder.commands.EBorderMessageCode;
 import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
 import fr.pederobien.minecraftdevelopmenttoolkit.utils.DisplayHelper;
 import fr.pederobien.minecraftgameplateform.exceptions.worldstructure.WorldNotFoundException;
 import fr.pederobien.minecraftgameplateform.impl.element.AbstractNominable;
 import fr.pederobien.minecraftgameplateform.interfaces.runtime.timeline.IObservableTimeLine;
+import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.minecraftmanagers.WorldManager;
 
 public class BorderConfiguration extends AbstractNominable implements IBorderConfiguration {
@@ -52,16 +54,16 @@ public class BorderConfiguration extends AbstractNominable implements IBorderCon
 
 	@Override
 	public void onTime(LocalTime time) {
+		sendNotSynchro(EBorderMessageCode.MOVING_BORDER, EColor.DARK_RED, WorldManager.getWorldNameNormalised(getWorld()));
 		moveBorder(getInitialBorderDiameter().longValue());
+		currentCountDown = getCountDown();
 		isMoving = true;
 	}
 
 	@Override
 	public void onCountDownTime(LocalTime currentTime) {
+		sendNotSynchro(EBorderMessageCode.MOVING_BORDER_COUNT_DOWN, EColor.GOLD, WorldManager.getWorldNameNormalised(getWorld()), currentCountDown);
 		currentCountDown--;
-		if (currentCountDown == 0)
-			currentCountDown = getCountDown();
-		// TODO send a message to display the countdown
 	}
 
 	@Override
