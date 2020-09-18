@@ -15,13 +15,13 @@ public class LoadBorder extends CommonLoad<IBorderConfiguration> {
 
 	@Override
 	protected void onStyleLoaded(CommandSender sender, String name) {
-		sendMessageToSender(sender, EBorderMessageCode.LOAD_BORDER__BORDER_LOADED, name);
+		sendSynchro(sender, EBorderMessageCode.LOAD_BORDER__BORDER_LOADED, name);
 		setAllAvailable();
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender) {
-		sendMessageToSender(sender, EBorderMessageCode.LOAD_BORDER__NAME_IS_MISSING);
+		sendSynchro(sender, EBorderMessageCode.LOAD_BORDER__NAME_IS_MISSING);
 	}
 
 	private void setAllAvailable() {

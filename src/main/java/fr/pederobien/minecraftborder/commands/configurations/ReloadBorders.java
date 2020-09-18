@@ -26,22 +26,22 @@ public class ReloadBorders<T extends IGameBorderConfiguration> extends AbstractG
 			for (IBorderConfiguration border : reload)
 				get().add(border);
 		} catch (BorderConfigurationNotRegisteredException e) {
-			sendMessageToSender(sender, EBordersMessageCode.RELOAD_BORDERS__BORDER_NOT_REGISTERED, e.getNotRegisteredBorderConfigurationName(), get().getName());
+			sendSynchro(sender, EBordersMessageCode.RELOAD_BORDERS__BORDER_NOT_REGISTERED, e.getNotRegisteredBorderConfigurationName(), get().getName());
 			return false;
 		} catch (ConfigurationNotFoundException e) {
-			sendMessageToSender(sender, EBordersMessageCode.RELOAD_BORDERS__BORDER_DOES_NOT_EXIST, e.getConfigurationName());
+			sendSynchro(sender, EBordersMessageCode.RELOAD_BORDERS__BORDER_DOES_NOT_EXIST, e.getConfigurationName());
 			return false;
 		}
 
 		switch (reload.size()) {
 		case 0:
-			sendMessageToSender(sender, EBordersMessageCode.RELOAD_BORDERS__ANY_BORDER_RELOADED);
+			sendSynchro(sender, EBordersMessageCode.RELOAD_BORDERS__ANY_BORDER_RELOADED);
 			break;
 		case 1:
-			sendMessageToSender(sender, EBordersMessageCode.RELOAD_BORDERS__ONE_BORDER_RELOADED, args[0]);
+			sendSynchro(sender, EBordersMessageCode.RELOAD_BORDERS__ONE_BORDER_RELOADED, args[0]);
 			break;
 		default:
-			sendMessageToSender(sender, EBordersMessageCode.RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED, concat(args));
+			sendSynchro(sender, EBordersMessageCode.RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED, concat(args));
 			break;
 		}
 		return true;

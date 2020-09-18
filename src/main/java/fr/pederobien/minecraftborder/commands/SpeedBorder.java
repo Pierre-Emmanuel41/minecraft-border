@@ -21,17 +21,17 @@ public class SpeedBorder extends AbstractLabelEdition<IBorderConfiguration> {
 		try {
 			double speed = Double.parseDouble(args[0]);
 			if (speed <= 0) {
-				sendMessageToSender(sender, EBorderMessageCode.SPEED_BORDER__SPEED_IS_NEGATIVE);
+				sendSynchro(sender, EBorderMessageCode.SPEED_BORDER__SPEED_IS_NEGATIVE);
 				return false;
 			}
 			get().setBorderSpeed(speed);
-			sendMessageToSender(sender, EBorderMessageCode.SPEED_BORDER__SPEED_DEFINED, get().getName(), get().getBorderSpeed(), toString(get().getMoveTime(), false));
+			sendSynchro(sender, EBorderMessageCode.SPEED_BORDER__SPEED_DEFINED, get().getName(), get().getBorderSpeed(), toString(get().getMoveTime(), false));
 			return true;
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, EBorderMessageCode.SPEED_BORDER__SPEED_IS_MISSING);
+			sendSynchro(sender, EBorderMessageCode.SPEED_BORDER__SPEED_IS_MISSING);
 			return false;
 		} catch (NumberFormatException e) {
-			sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_DOUBLE_FORMAT);
+			sendSynchro(sender, ECommonMessageCode.COMMON_BAD_DOUBLE_FORMAT);
 			return false;
 		}
 	}
@@ -40,7 +40,7 @@ public class SpeedBorder extends AbstractLabelEdition<IBorderConfiguration> {
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		switch (args.length) {
 		case 1:
-			return check(args[0], e -> isNotStrictDouble(e), Arrays.asList(getMessageFromDictionary(sender, EBorderMessageCode.SPEED_BORDER__ON_TAB_COMPLETE)));
+			return check(args[0], e -> isNotStrictDouble(e), Arrays.asList(getMessage(sender, EBorderMessageCode.SPEED_BORDER__ON_TAB_COMPLETE)));
 		default:
 			return emptyList();
 		}

@@ -23,18 +23,18 @@ public class StartTimeBorder extends AbstractLabelEdition<IBorderConfiguration> 
 		try {
 			get().setStartTime(LocalTime.parse(args[0]));
 			if (get().getStartTime().getHour() == 0 && get().getStartTime().getMinute() == 0 && get().getStartTime().getSecond() == 0) {
-				sendMessageToSender(sender, EBorderMessageCode.START_TIME_BORDER__BORDER_MOVES_AT_THE_BEGINNING, get().getName());
+				sendSynchro(sender, EBorderMessageCode.START_TIME_BORDER__BORDER_MOVES_AT_THE_BEGINNING, get().getName());
 				return true;
 			}
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, EBorderMessageCode.START_TIME_BORDER__TIME_IS_MISSING);
+			sendSynchro(sender, EBorderMessageCode.START_TIME_BORDER__TIME_IS_MISSING);
 			return false;
 		} catch (DateTimeParseException e) {
-			sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_TIME_FORMAT);
+			sendSynchro(sender, ECommonMessageCode.COMMON_BAD_TIME_FORMAT);
 			return false;
 		}
 
-		sendMessageToSender(sender, EBorderMessageCode.START_TIME_BORDER__START_TIME_DEFINED, get().getName(), toString(get().getStartTime(), false));
+		sendSynchro(sender, EBorderMessageCode.START_TIME_BORDER__START_TIME_DEFINED, get().getName(), toString(get().getStartTime(), false));
 		return true;
 	}
 
@@ -42,7 +42,7 @@ public class StartTimeBorder extends AbstractLabelEdition<IBorderConfiguration> 
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		switch (args.length) {
 		case 1:
-			return Arrays.asList(getMessageFromDictionary(sender, ECommonMessageCode.COMMON_TIME_TAB_COMPLETE));
+			return Arrays.asList(getMessage(sender, ECommonMessageCode.COMMON_TIME_TAB_COMPLETE));
 		default:
 			return emptyList();
 		}

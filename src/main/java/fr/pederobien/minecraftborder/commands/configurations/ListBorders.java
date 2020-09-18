@@ -24,17 +24,17 @@ public class ListBorders<T extends IGameBorderConfiguration> extends AbstractGam
 			joiner.add(concat(WorldManager.OVERWORLD));
 			joiner.add(concat(WorldManager.NETHER_WORLD));
 			joiner.add(concat(WorldManager.END_WORLD));
-			sendMessageToSender(sender, EBordersMessageCode.LIST_BORDERS__ALL_REGISTERED_BORDERS, joiner);
+			sendSynchro(sender, EBordersMessageCode.LIST_BORDERS__ALL_REGISTERED_BORDERS, joiner);
 			return true;
 		}
 
 		String name = args[0];
 		World world = WorldManager.getWorld(name);
 		if (world == null) {
-			sendMessageToSender(sender, ECommonMessageCode.COMMON_WORLD_DOES_NOT_EXIST, name);
+			sendSynchro(sender, ECommonMessageCode.COMMON_WORLD_DOES_NOT_EXIST, name);
 			return false;
 		}
-		sendMessageToSender(sender, EBordersMessageCode.LIST_BORDERS__REGISTERED_BORDER_FOR_WORLD, concat(world));
+		sendSynchro(sender, EBordersMessageCode.LIST_BORDERS__REGISTERED_BORDER_FOR_WORLD, concat(world));
 		return true;
 	}
 

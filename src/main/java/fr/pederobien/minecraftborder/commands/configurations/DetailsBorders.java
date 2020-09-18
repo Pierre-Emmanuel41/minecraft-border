@@ -24,7 +24,7 @@ public class DetailsBorders<T extends IGameBorderConfiguration> extends Abstract
 		if (args.length == 0) {
 			for (IBorderConfiguration configuration : get().getBorders())
 				joiner.add(configuration.toString());
-			sendMessageToSender(sender, EBordersMessageCode.DETAILS_BORDERS__DETAILS_ON_ALL_REGISTERED_BORDERS, get().getName(), joiner);
+			sendSynchro(sender, EBordersMessageCode.DETAILS_BORDERS__DETAILS_ON_ALL_REGISTERED_BORDERS, get().getName(), joiner);
 			return true;
 		}
 		List<IBorderConfiguration> configurations = null;
@@ -33,10 +33,10 @@ public class DetailsBorders<T extends IGameBorderConfiguration> extends Abstract
 			for (IBorderConfiguration configuration : configurations)
 				joiner.add(configuration.toString());
 		} catch (BorderConfigurationNotRegisteredException e) {
-			sendMessageToSender(sender, EBordersMessageCode.DETAILS_BORDERS__BORDER_NOT_REGISTERED, e.getNotRegisteredBorderConfigurationName(), get().getName());
+			sendSynchro(sender, EBordersMessageCode.DETAILS_BORDERS__BORDER_NOT_REGISTERED, e.getNotRegisteredBorderConfigurationName(), get().getName());
 		}
 
-		sendMessageToSender(sender, EBordersMessageCode.DETAILS_BORDERS__DETAILS_ON_SOME_BORDERS, concatNames(configurations), joiner);
+		sendSynchro(sender, EBordersMessageCode.DETAILS_BORDERS__DETAILS_ON_SOME_BORDERS, concatNames(configurations), joiner);
 		return true;
 	}
 

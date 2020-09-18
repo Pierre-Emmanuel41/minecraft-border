@@ -13,16 +13,16 @@ public class ListBorder extends CommonList<IBorderConfiguration> {
 
 	@Override
 	protected void onNoElement(CommandSender sender) {
-		sendMessageToSender(sender, EBorderMessageCode.LIST_BORDER__NO_ELEMENT);
+		sendSynchro(sender, EBorderMessageCode.LIST_BORDER__NO_ELEMENT);
 	}
 
 	@Override
 	protected void onOneElement(CommandSender sender, String name) {
-		sendMessageToSender(sender, EBorderMessageCode.LIST_BORDER__ONE_ELEMENT, name);
+		sendSynchro(sender, EBorderMessageCode.LIST_BORDER__ONE_ELEMENT, name);
 	}
 
 	@Override
 	protected void onSeveralElement(CommandSender sender, String names) {
-		sendMessageToSender(sender, EBorderMessageCode.LIST_BORDER__SEVERAL_ELEMENTS, names);
+		sendSynchro(sender, EBorderMessageCode.LIST_BORDER__SEVERAL_ELEMENTS, names);
 	}
 }

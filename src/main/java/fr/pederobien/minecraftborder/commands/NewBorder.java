@@ -16,12 +16,12 @@ public class NewBorder extends CommonNew<IBorderConfiguration> {
 
 	@Override
 	protected void onNameAlreadyTaken(CommandSender sender, String name) {
-		sendMessageToSender(sender, EBorderMessageCode.NEW_BORDER__NAME_ALREADY_TAKEN, name);
+		sendSynchro(sender, EBorderMessageCode.NEW_BORDER__NAME_ALREADY_TAKEN, name);
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender) {
-		sendMessageToSender(sender, EBorderMessageCode.NEW_BORDER__NAME_IS_MISSING);
+		sendSynchro(sender, EBorderMessageCode.NEW_BORDER__NAME_IS_MISSING);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class NewBorder extends CommonNew<IBorderConfiguration> {
 
 	@Override
 	protected void onCreated(CommandSender sender, String name) {
-		sendMessageToSender(sender, EBorderMessageCode.NEW_BORDER__BORDER_CREATED, name);
+		sendSynchro(sender, EBorderMessageCode.NEW_BORDER__BORDER_CREATED, name);
 		setAllAvailable();
 	}
 

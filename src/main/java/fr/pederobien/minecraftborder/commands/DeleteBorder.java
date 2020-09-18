@@ -13,16 +13,16 @@ public class DeleteBorder extends CommonDelete<IBorderConfiguration> {
 
 	@Override
 	protected void onDidNotDelete(CommandSender sender, String name) {
-		sendMessageToSender(sender, EBorderMessageCode.DELETE_BORDER__DID_NOT_DELETED, name);
+		sendSynchro(sender, EBorderMessageCode.DELETE_BORDER__DID_NOT_DELETED, name);
 	}
 
 	@Override
 	protected void onDeleted(CommandSender sender, String name) {
-		sendMessageToSender(sender, EBorderMessageCode.DELETE_BORDER__BORDER_DELETED, name);
+		sendSynchro(sender, EBorderMessageCode.DELETE_BORDER__BORDER_DELETED, name);
 	}
 
 	@Override
 	protected void onNameIsMissing(CommandSender sender) {
-		sendMessageToSender(sender, EBorderMessageCode.DELETE_BORDER__NAME_IS_MISSING);
+		sendSynchro(sender, EBorderMessageCode.DELETE_BORDER__NAME_IS_MISSING);
 	}
 }

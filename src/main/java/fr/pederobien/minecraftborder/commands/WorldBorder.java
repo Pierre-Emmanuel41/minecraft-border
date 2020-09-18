@@ -23,13 +23,13 @@ public class WorldBorder extends AbstractLabelEdition<IBorderConfiguration> {
 		try {
 			name = args[0];
 			get().setWorld(name);
-			sendMessageToSender(sender, EBorderMessageCode.WORLD_BORDER__WORLD_DEFINED, get().getName(), WorldManager.getWorldNameNormalised(get().getWorld()));
+			sendSynchro(sender, EBorderMessageCode.WORLD_BORDER__WORLD_DEFINED, get().getName(), WorldManager.getWorldNameNormalised(get().getWorld()));
 			return true;
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, EBorderMessageCode.WORLD_BORDER__WORLD_NAME_IS_MISSING);
+			sendSynchro(sender, EBorderMessageCode.WORLD_BORDER__WORLD_NAME_IS_MISSING);
 			return false;
 		} catch (WorldNotFoundException e) {
-			sendMessageToSender(sender, ECommonMessageCode.COMMON_WORLD_DOES_NOT_EXIST, name);
+			sendSynchro(sender, ECommonMessageCode.COMMON_WORLD_DOES_NOT_EXIST, name);
 			return false;
 		}
 	}

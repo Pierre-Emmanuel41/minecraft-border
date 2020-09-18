@@ -22,19 +22,19 @@ public class RemoveBorders<T extends IGameBorderConfiguration> extends AbstractG
 			configurations = getConfigurationsFromGameConfiguration(args);
 			get().remove(configurations);
 		} catch (BorderConfigurationNotRegisteredException e) {
-			sendMessageToSender(sender, EBordersMessageCode.REMOVE_BORDERS__BORDER_NOT_REGISTERED, e.getNotRegisteredBorderConfigurationName(), get().getName());
+			sendSynchro(sender, EBordersMessageCode.REMOVE_BORDERS__BORDER_NOT_REGISTERED, e.getNotRegisteredBorderConfigurationName(), get().getName());
 			return false;
 		}
 
 		switch (configurations.size()) {
 		case 0:
-			sendMessageToSender(sender, EBordersMessageCode.REMOVE_BORDERS__NO_BORDER_REMOVED, get().getName());
+			sendSynchro(sender, EBordersMessageCode.REMOVE_BORDERS__NO_BORDER_REMOVED, get().getName());
 			break;
 		case 1:
-			sendMessageToSender(sender, EBordersMessageCode.REMOVE_BORDERS__ONE_BORDER_REMOVED, concatNames(configurations), get().getName());
+			sendSynchro(sender, EBordersMessageCode.REMOVE_BORDERS__ONE_BORDER_REMOVED, concatNames(configurations), get().getName());
 			break;
 		default:
-			sendMessageToSender(sender, EBordersMessageCode.REMOVE_BORDERS__SEVERAL_BORDERS_REMOVED, concatNames(configurations), get().getName());
+			sendSynchro(sender, EBordersMessageCode.REMOVE_BORDERS__SEVERAL_BORDERS_REMOVED, concatNames(configurations), get().getName());
 			break;
 		}
 		return true;

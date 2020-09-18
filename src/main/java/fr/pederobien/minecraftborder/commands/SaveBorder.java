@@ -13,6 +13,6 @@ public class SaveBorder extends CommonSave<IBorderConfiguration> {
 
 	@Override
 	protected void onSave(CommandSender sender, String name) {
-		sendMessageToSender(sender, EBorderMessageCode.SAVE_BORDER__BORDER_SAVED, name);
+		sendSynchro(sender, EBorderMessageCode.SAVE_BORDER__BORDER_SAVED, name);
 	}
 }

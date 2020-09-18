@@ -20,13 +20,13 @@ public class CenterBorder extends AbstractLabelEdition<IBorderConfiguration> {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		try {
 			get().setBorderCenter(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
-			sendMessageToSender(sender, EBorderMessageCode.CENTER_BORDER__CENTER_DEFINED, get().getBorderCenter().getX(), get().getBorderCenter().getZ());
+			sendSynchro(sender, EBorderMessageCode.CENTER_BORDER__CENTER_DEFINED, get().getBorderCenter().getX(), get().getBorderCenter().getZ());
 			return true;
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, ECommonMessageCode.COMMON_MISSING_COORDINATES);
+			sendSynchro(sender, ECommonMessageCode.COMMON_MISSING_COORDINATES);
 			return false;
 		} catch (NumberFormatException e) {
-			sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_INTEGER_FORMAT);
+			sendSynchro(sender, ECommonMessageCode.COMMON_BAD_INTEGER_FORMAT);
 			return false;
 		}
 	}

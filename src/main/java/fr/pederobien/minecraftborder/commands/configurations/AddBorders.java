@@ -25,22 +25,22 @@ public class AddBorders<T extends IGameBorderConfiguration> extends AbstractGame
 			for (IBorderConfiguration configuration : configurations)
 				get().add(configuration);
 		} catch (ConfigurationNotFoundException e) {
-			sendMessageToSender(sender, EBordersMessageCode.ADD_BORDERS__BORDER_DOES_NOT_EXIST, e.getConfigurationName());
+			sendSynchro(sender, EBordersMessageCode.ADD_BORDERS__BORDER_DOES_NOT_EXIST, e.getConfigurationName());
 			return false;
 		} catch (BorderConfigurationAlreadyRegisteredException e) {
-			sendMessageToSender(sender, EBordersMessageCode.ADD_BORDERS__BORDER_ALREADY_REGISTERED, e.getBorderConfiguration().getName());
+			sendSynchro(sender, EBordersMessageCode.ADD_BORDERS__BORDER_ALREADY_REGISTERED, e.getBorderConfiguration().getName());
 			return false;
 		}
 
 		switch (configurations.size()) {
 		case 0:
-			sendMessageToSender(sender, EBordersMessageCode.ADD_BORDERS__NO_BORDER_ADDED, get().getName());
+			sendSynchro(sender, EBordersMessageCode.ADD_BORDERS__NO_BORDER_ADDED, get().getName());
 			break;
 		case 1:
-			sendMessageToSender(sender, EBordersMessageCode.ADD_BORDERS__ONE_BORDER_ADDED, concatNames(configurations), get().getName());
+			sendSynchro(sender, EBordersMessageCode.ADD_BORDERS__ONE_BORDER_ADDED, concatNames(configurations), get().getName());
 			break;
 		default:
-			sendMessageToSender(sender, EBordersMessageCode.ADD_BORDERS__SEVERAL_BORDERS_ADDED, concatNames(configurations), get().getName());
+			sendSynchro(sender, EBordersMessageCode.ADD_BORDERS__SEVERAL_BORDERS_ADDED, concatNames(configurations), get().getName());
 			break;
 		}
 		return true;

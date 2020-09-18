@@ -21,18 +21,18 @@ public class InitialBorderDiameter extends AbstractLabelEdition<IBorderConfigura
 		try {
 			int diameter = Integer.parseInt(args[0]);
 			if (diameter <= 0) {
-				sendMessageToSender(sender, EBorderMessageCode.INITIAL_BORDER_DIAMETER__NEGATIVE_DIAMETER, get().getName());
+				sendSynchro(sender, EBorderMessageCode.INITIAL_BORDER_DIAMETER__NEGATIVE_DIAMETER, get().getName());
 				return false;
 			}
 
 			get().setInitialBorderDiameter(diameter);
-			sendMessageToSender(sender, EBorderMessageCode.INITIAL_BORDER_DIAMETER__DIAMETER_DEFINED, get().getName(), get().getInitialBorderDiameter());
+			sendSynchro(sender, EBorderMessageCode.INITIAL_BORDER_DIAMETER__DIAMETER_DEFINED, get().getName(), get().getInitialBorderDiameter());
 			return true;
 		} catch (IndexOutOfBoundsException e) {
-			sendMessageToSender(sender, EBorderMessageCode.INITIAL_BORDER_DIAMETER__DIAMETER_IS_MISSING, get().getName());
+			sendSynchro(sender, EBorderMessageCode.INITIAL_BORDER_DIAMETER__DIAMETER_IS_MISSING, get().getName());
 			return false;
 		} catch (NumberFormatException e) {
-			sendMessageToSender(sender, ECommonMessageCode.COMMON_BAD_INTEGER_FORMAT);
+			sendSynchro(sender, ECommonMessageCode.COMMON_BAD_INTEGER_FORMAT);
 			return false;
 		}
 	}
@@ -41,7 +41,7 @@ public class InitialBorderDiameter extends AbstractLabelEdition<IBorderConfigura
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		switch (args.length) {
 		case 1:
-			return check(args[0], e -> isNotStrictInt(e), Arrays.asList(getMessageFromDictionary(sender, EBorderMessageCode.INITIAL_BORDER_DIAMETER__ON_TAB_COMPLETE)));
+			return check(args[0], e -> isNotStrictInt(e), Arrays.asList(getMessage(sender, EBorderMessageCode.INITIAL_BORDER_DIAMETER__ON_TAB_COMPLETE)));
 		default:
 			return emptyList();
 		}
