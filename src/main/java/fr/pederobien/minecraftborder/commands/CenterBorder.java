@@ -1,6 +1,5 @@
 package fr.pederobien.minecraftborder.commands;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -35,9 +34,9 @@ public class CenterBorder extends AbstractLabelEdition<IBorderConfiguration> {
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		switch (args.length) {
 		case 1:
-			return check(args[0], e -> isNotStrictInt(e), Arrays.asList("<X> <Z>"));
+			return check(args[0], e -> isNotStrictInt(e), asList("<X> <Z>"));
 		case 2:
-			return check(args[1], e -> isNotStrictInt(e), check(args[0], e -> isStrictInt(e), Arrays.asList("<Z>")));
+			return check(args[1], e -> isNotStrictInt(e), check(args[0], e -> isStrictInt(e), asList("<Z>")));
 		default:
 			return emptyList();
 		}

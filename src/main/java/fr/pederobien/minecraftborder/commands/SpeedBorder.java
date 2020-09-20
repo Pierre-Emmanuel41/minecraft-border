@@ -1,6 +1,5 @@
 package fr.pederobien.minecraftborder.commands;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -40,7 +39,7 @@ public class SpeedBorder extends AbstractLabelEdition<IBorderConfiguration> {
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		switch (args.length) {
 		case 1:
-			return check(args[0], e -> isNotStrictDouble(e), Arrays.asList(getMessage(sender, EBorderMessageCode.SPEED_BORDER__ON_TAB_COMPLETE)));
+			return check(args[0], e -> isNotStrictDouble(e), asList(getMessage(sender, EBorderMessageCode.SPEED_BORDER__ON_TAB_COMPLETE)));
 		default:
 			return emptyList();
 		}

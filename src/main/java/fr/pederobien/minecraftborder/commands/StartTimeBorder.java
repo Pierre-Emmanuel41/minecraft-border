@@ -2,7 +2,6 @@ package fr.pederobien.minecraftborder.commands;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
-import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -42,7 +41,7 @@ public class StartTimeBorder extends AbstractLabelEdition<IBorderConfiguration> 
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		switch (args.length) {
 		case 1:
-			return Arrays.asList(getMessage(sender, ECommonMessageCode.COMMON_TIME_TAB_COMPLETE));
+			return asList(getMessage(sender, ECommonMessageCode.COMMON_TIME_TAB_COMPLETE));
 		default:
 			return emptyList();
 		}
