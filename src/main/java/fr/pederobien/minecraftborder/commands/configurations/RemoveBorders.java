@@ -1,5 +1,6 @@
 package fr.pederobien.minecraftborder.commands.configurations;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -42,6 +43,7 @@ public class RemoveBorders<T extends IGameBorderConfiguration> extends AbstractG
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		return filter(get().getBorders().stream().map(conf -> conf.getName()), args);
+		List<String> alreadyMentionnedConfiguration = Arrays.asList(args);
+		return filter(get().getBorders().stream().map(conf -> conf.getName()).filter(name -> !alreadyMentionnedConfiguration.contains(name)), args);
 	}
 }
