@@ -3,18 +3,38 @@ package fr.pederobien.minecraftborder;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
+import fr.pederobien.minecraftborder.interfaces.IBorderConfiguration;
+import fr.pederobien.minecraftgameplateform.interfaces.commands.IParentCommand;
 import fr.pederobien.minecraftgameplateform.utils.Plateform;
 
 public class BorderPlugin extends JavaPlugin {
-	public static final String NAME = "minecraft-border";
+	private static Plugin plugin;
+	private static IParentCommand<IBorderConfiguration> borderCommand;
+
+	/**
+	 * @return The plugin associated to this area plugin.
+	 */
+	public static Plugin get() {
+		return plugin;
+	}
+
+	/**
+	 * @return The current hunger game configuration for this plugin.
+	 */
+	public static IBorderConfiguration getCurrentBorder() {
+		return borderCommand.getParent().get();
+	}
 
 	@Override
 	public void onEnable() {
 		Plateform.getPluginHelper().register(this);
-		new BorderCommand(this);
+		plugin = this;
+
+		borderCommand = new BorderCommand(this);
 		registerDictionaries();
 	}
 
@@ -32,7 +52,7 @@ public class BorderPlugin extends JavaPlugin {
 	}
 
 	private void registerDictionary(String parent, String... dictionaryNames) {
-		Path jarPath = Plateform.ROOT.getParent().resolve(NAME.concat(".jar"));
+		Path jarPath = Plateform.ROOT.getParent().resolve(getName().concat(".jar"));
 		String dictionariesFolder = "resources/dictionaries/".concat(parent).concat("/");
 		for (String name : dictionaryNames)
 			registerDictionary(Plateform.getDefaultDictionaryParser(dictionariesFolder.concat(name)), jarPath);
