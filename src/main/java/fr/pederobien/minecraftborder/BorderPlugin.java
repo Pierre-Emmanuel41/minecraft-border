@@ -23,7 +23,7 @@ public class BorderPlugin extends JavaPlugin {
 	}
 
 	/**
-	 * @return The current hunger game configuration for this plugin.
+	 * @return The current border configuration for this plugin.
 	 */
 	public static IBorderConfiguration getCurrentBorder() {
 		return borderCommand.getParent().get();
