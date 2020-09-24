@@ -16,7 +16,7 @@ public class BorderPlugin extends JavaPlugin {
 	private static IParentCommand<IBorderConfiguration> borderCommand;
 
 	/**
-	 * @return The plugin associated to this area plugin.
+	 * @return The plugin associated to this border plugin.
 	 */
 	public static Plugin get() {
 		return plugin;
