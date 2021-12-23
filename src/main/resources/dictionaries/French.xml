@@ -224,5 +224,105 @@
 			<code>MOVING_BORDER_COUNT_DOWN</code>
 			<value>Déplacement de la bordure du monde %s dans %s</value>
 		</message>
+		<message>
+			<code>BORDERS__EXPLANATION</code>
+			<value>Pour gérer les bordures d'une configuration</value>
+		</message>
+		<message>
+			<code>ADD_BORDERS__EXPLANATION</code>
+			<value>Pour ajouter des configurations de bordures à cette configuration de partie</value>
+		</message>
+		<message>
+			<code>ADD_BORDERS__BORDER_DOES_NOT_EXIST</code>
+			<value>Impossible d'ajouter la bordure %s, cette bordure n'existe pas</value>
+		</message>
+		<message>
+			<code>ADD_BORDERS__BORDER_ALREADY_REGISTERED</code>
+			<value>Impossible d'ajouter la bordure %s, cette bordure est déjà enregistrée</value>
+		</message>
+		<message>
+			<code>ADD_BORDERS__NO_BORDER_ADDED</code>
+			<value>Aucune bordure n'a été enregistrée pour la configuration %s</value>
+		</message>
+		<message>
+			<code>ADD_BORDERS__ONE_BORDER_ADDED</code>
+			<value>La bordure %s a été enregistrée pour la configuration %s</value>
+		</message>
+		<message>
+			<code>ADD_BORDERS__SEVERAL_BORDERS_ADDED</code>
+			<value>Les bordures %s ont été enregistrées pour la configuration %s</value>
+		</message>
+		<message>
+			<code>REMOVE_BORDERS__EXPLANATION</code>
+			<value>Pour supprimer des configurations de bordures de cette configuration de partie</value>
+		</message>
+		<message>
+			<code>REMOVE_BORDERS__BORDER_NOT_REGISTERED</code>
+			<value>Impossible d'enlever la bordure %s, cette bordure n'est pas enregistrée pour la configuration %s</value>
+		</message>
+		<message>
+			<code>REMOVE_BORDERS__NO_BORDER_REMOVED</code>
+			<value>Aucune bordure n'a été enlevée de la configuration %s</value>
+		</message>
+		<message>
+			<code>REMOVE_BORDERS__ONE_BORDER_REMOVED</code>
+			<value>La bordure %s a été enlevée de la configuration %s</value>
+		</message>
+		<message>
+			<code>REMOVE_BORDERS__SEVERAL_BORDERS_REMOVED</code>
+			<value>Les bordures %s ont été enlevées de la configuration %s</value>
+		</message>
+		<message>
+			<code>LIST_BORDERS__EXPLANATION</code>
+			<value>Pour afficher le nom des bordures enregistrées pour cette configuration</value>
+		</message>
+		<message>
+			<code>LIST_BORDERS__ALL_REGISTERED_BORDERS</code>
+			<value>Liste des bordures enregistrées pour tous les mondes :%n%s</value>
+		</message>
+		<message>
+			<code>LIST_BORDERS__REGISTERED_BORDERS_FOR_WORLD</code>
+			<value>Bordure enregistrée pour le monde %s</value>
+		</message>
+		<message>
+			<code>DETAILS__EXPLANATION</code>
+			<value>Pour afficher les charactéristiques d'une ou plusieurs bordures enregistrées pour cette configuration</value>
+		</message>
+		<message>
+			<code>DETAILS_BORDERS__DETAILS_ON_ALL_REGISTERED_BORDERS</code>
+			<value>Characteristiques de toutes bordures enregistrée pour la configuration %s :%n%s</value>
+		</message>
+		<message>
+			<code>DETAILS_BORDERS__BORDER_NOT_REGISTERED</code>
+			<value>Impossible d'afficher les caractéristiques de la bordure %s, cette bordure n'est pas enregistrée pour la configuration %s</value>
+		</message>
+		<message>
+			<code>DETAILS_BORDERS__DETAILS_ON_SOME_BORDERS</code>
+			<value>Charactéristiques des bordures %s :%n%s</value>
+		</message>
+		<message>
+			<code>RELOAD_BORDERS__EXPLANATION</code>
+			<value>Pour recharger une bordure qui a été modifiée par la command "/border"</value>
+		</message>
+		<message>
+			<code>RELOAD_BORDERS__BORDER_NOT_REGISTERED</code>
+			<value>Impossible de recharger la bordure "%s", cette bordure n'est pas enregistrée pour la configuration %s</value>
+		</message>
+		<message>
+			<code>RELOAD_BORDERS__BORDER_DOES_NOT_EXIST</code>
+			<value>Impossible de recharger la bordure "%s", le fichier de cette bordure n'existe pas</value>
+		</message>
+		<message>
+			<code>RELOAD_BORDERS__ANY_BORDER_RELOADED</code>
+			<value>Aucune bordure n'a été rechargée</value>
+		</message>
+		<message>
+			<code>RELOAD_BORDERS__ONE_BORDER_RELOADED</code>
+			<value>La bordure %s a été rechargée</value>
+		</message>
+		<message>
+			<code>RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED</code>
+			<value>Les bordures %s ont été rechargées</value>
+		</message>
 	</messages>
 </dictionary>
