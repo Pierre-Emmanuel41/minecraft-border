@@ -272,128 +272,128 @@
 			<value>Border %s will move at %.2f bloc/s, time to move the border : %s</value>
 		</message>
 		<message>
-			<code>MOVE_TIME_BORDER__EXPLANATION</code>
+			<code>BORDER__MOVE_TIME_BORDER__EXPLANATION</code>
 			<value>To set the time it takes to move the border from its initial diameter to its final diameter</value>
 		</message>
 		<message>
-			<code>MOVE_TIME_BORDER__TIME_IS_MISSING</code>
+			<code>BORDER__MOVE_TIME_BORDER__TIME_IS_MISSING</code>
 			<value>Cannot set the time to move the border, the time is missing</value>
 		</message>
 		<message>
-			<code>MOVE_TIME_BORDER__INSTANTLY_MOVE</code>
+			<code>BORDER__MOVE_TIME_BORDER__INSTANTLY_MOVE</code>
 			<value>The border %s will instantly moves to its final diameter</value>
 		</message>
 		<message>
-			<code>MOVE_TIME_BORDER__MOVE_TIME_DEFINED</code>
+			<code>BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED</code>
 			<value>The border %s will move to its final diameter in %s at speed %s block/s</value>
 		</message>
 		<message>
-			<code>MOVING_BORDER</code>
+			<code>BORDER__MOVING_BORDER</code>
 			<value>Moving %s's border</value>
 		</message>
 		<message>
-			<code>MOVING_BORDER_COUNT_DOWN</code>
+			<code>BORDER__MOVING_BORDER_COUNT_DOWN</code>
 			<value>Moving %s's border in %s</value>
 		</message>
 		<message>
 			<code>BORDERS__EXPLANATION</code>
-			<value>To manage borders of a configuration</value>
+			<value>To add/remove borders</value>
 		</message>
 		<message>
-			<code>ADD_BORDERS__EXPLANATION</code>
-			<value>To add border configurations to this game configuration</value>
+			<code>BORDERS__ADD_BORDERS__EXPLANATION</code>
+			<value>To add borders to a game</value>
 		</message>
 		<message>
-			<code>ADD_BORDERS__BORDER_DOES_NOT_EXIST</code>
-			<value>Cannot add border %s, this border does not exist</value>
+			<code>BORDERS__ADD_BORDERS__BORDER_DOES_NOT_EXIST</code>
+			<value>Cannot add border %s to %s, this border does not exist</value>
 		</message>
 		<message>
-			<code>ADD_BORDERS__BORDER_ALREADY_REGISTERED</code>
-			<value>Cannot add border %s, this border is already registered</value>
+			<code>BORDERS__ADD_BORDERS__BORDER_ALREADY_REGISTERED</code>
+			<value>Cannot add %s to %s, this border is already registered</value>
 		</message>
 		<message>
-			<code>ADD_BORDERS__NO_BORDER_ADDED</code>
-			<value>No border has been registered in configuration %s</value>
+			<code>BORDERS__ADD_BORDERS__FAIL_TO_LOAD</code>
+			<value>Fail to load %s file</value>
 		</message>
 		<message>
-			<code>ADD_BORDERS__ONE_BORDER_ADDED</code>
-			<value>The border %s has been registered in configuration %s</value>
+			<code>BORDERS__ADD_BORDERS__NO_BORDER_ADDED</code>
+			<value>No border has been added to %s</value>
 		</message>
 		<message>
-			<code>ADD_BORDERS__SEVERAL_BORDERS_ADDED</code>
-			<value>Borders %s have been registered in configuration %s</value>
+			<code>BORDERS__ADD_BORDERS__ONE_BORDER_ADDED</code>
+			<value>Border %s has been added to %s</value>
 		</message>
 		<message>
-			<code>REMOVE_BORDERS__EXPLANATION</code>
-			<value>To remove border configurations from this game configuration</value>
+			<code>BORDERS__ADD_BORDERS__SEVERAL_BORDERS_ADDED</code>
+			<value>Borders %s have been added to %s</value>
 		</message>
 		<message>
-			<code>REMOVE_BORDERS__BORDER_NOT_REGISTERED</code>
-			<value>Cannot remove border %s, this border is not registered for configuration %s</value>
+			<code>BORDERS__REMOVE_BORDERS__EXPLANATION</code>
+			<value>To remove borders from a game</value>
 		</message>
 		<message>
-			<code>REMOVE_BORDERS__NO_BORDER_REMOVED</code>
-			<value>No border has been removed from configuration %s</value>
+			<code>BORDERS__REMOVE_BORDERS__BORDER_NOT_REGISTERED</code>
+			<value>Cannot remove %s from %s, this border is not registered</value>
 		</message>
 		<message>
-			<code>REMOVE_BORDERS__ONE_BORDER_REMOVED</code>
-			<value>The border %s has been removed from configuration %s</value>
+			<code>BORDERS__REMOVE_BORDERS__NO_BORDER_REMOVED</code>
+			<value>No border has been removed from %s</value>
 		</message>
 		<message>
-			<code>REMOVE_BORDERS__SEVERAL_BORDERS_REMOVED</code>
-			<value>Borders %s have been removed from configuration %s</value>
+			<code>BORDERS__REMOVE_BORDERS__ONE_BORDER_REMOVED</code>
+			<value>The border %s has been removed from %s</value>
 		</message>
 		<message>
-			<code>LIST_BORDERS__EXPLANATION</code>
-			<value>To display the name of each registered border for this configuration</value>
+			<code>BORDERS__REMOVE_BORDERS__SEVERAL_BORDERS_REMOVED</code>
+			<value>Borders %s have been removed from %s</value>
 		</message>
 		<message>
-			<code>LIST_BORDERS__ALL_REGISTERED_BORDERS</code>
-			<value>List of all registered borders for all worlds :%n%s</value>
+			<code>BORDERS__LIST_BORDERS__EXPLANATION</code>
+			<value>To display the name of border associated to a world</value>
 		</message>
 		<message>
-			<code>LIST_BORDERS__REGISTERED_BORDER_FOR_WORLD</code>
-			<value>Registered border for the %s</value>
+			<code>BORDERS__LIST_BORDERS__ALL_REGISTERED_BORDERS</code>
+			<value>Borders for all worlds:%n%s</value>
 		</message>
 		<message>
-			<code>DETAILS__EXPLANATION</code>
-			<value>To display characteristics of one or more registered borders for this configuration</value>
+			<code>BORDERS__LIST_BORDERS__WORLD_NOT_FOUND</code>
+			<value>Cannot display the border of %s, this world does not exist</value>
 		</message>
 		<message>
-			<code>DETAILS_BORDERS__DETAILS_ON_ALL_REGISTERED_BORDERS</code>
-			<value>Characteristics on all registered borders for the configuration %s :%n%s</value>
+			<code>BORDERS__LIST_BORDERS__REGISTERED_BORDER_FOR_WORLD</code>
+			<value>%s's border: %s</value>
 		</message>
 		<message>
-			<code>DETAILS_BORDERS__BORDER_NOT_REGISTERED</code>
-			<value>Cannot display characteristics of border %s, this border is not registered for configuration %s</value>
+			<code>BORDERS__RELOAD_BORDERS__EXPLANATION</code>
+			<value>To reload a border file</value>
 		</message>
 		<message>
-			<code>DETAILS_BORDERS__DETAILS_ON_SOME_BORDERS</code>
-			<value>Characteristics of borders %s :%n%s</value>
+			<code>BORDERS__RELOAD_BORDERS__BORDER_NOT_REGISTERED</code>
+			<value>Cannot reload %s, %s does not contains this border</value>
 		</message>
 		<message>
-			<code>RELOAD_BORDERS__EXPLANATION</code>
-			<value>To reload a border that has been modified by command "/border"</value>
+			<code>BORDERS__RELOAD_BORDERS__NO_BORDER_FILE</code>
+			<value>Cannot reload %s, the file of this border does not exist</value>
 		</message>
 		<message>
-			<code>RELOAD_BORDERS__BORDER_NOT_REGISTERED</code>
-			<value>Cannot reload border "%s", this border is not registered for configuration %s</value>
+			<code>BORDERS__RELOAD_BORDERS__NO_BORDER_RELOADED</code>
+			<value>No border has been reloaded</value>
 		</message>
 		<message>
-			<code>RELOAD_BORDERS__BORDER_DOES_NOT_EXIST</code>
-			<value>Cannot reload border "%s", the file of this border does not exist</value>
+			<code>BORDERS__RELOAD_BORDERS__ONE_BORDER_RELOADED</code>
+			<value>The border %s of %s has been reloaded</value>
 		</message>
 		<message>
-			<code>RELOAD_BORDERS__ANY_BORDER_RELOADED</code>
-			<value>Any border has been reloaded</value>
+			<code>BORDERS__RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED</code>
+			<value>Borders %s of %s have been reloaded</value>
 		</message>
 		<message>
-			<code>RELOAD_BORDERS__ONE_BORDER_RELOADED</code>
-			<value>The border %s has been reloaded</value>
+			<code>BORDERS__DETAILS__EXPLANATION</code>
+			<value>To display characteristics of one or several borders for a game</value>
 		</message>
 		<message>
-			<code>RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED</code>
-			<value>Borders %s have been reloaded</value>
+			<code>BORDERS__DETAILS_BORDERS__BORDER_NOT_REGISTERED</code>
+			<value>Cannot display characteristics of borders, %s does not contain %s</value>
 		</message>
 	</messages>
 </dictionary>

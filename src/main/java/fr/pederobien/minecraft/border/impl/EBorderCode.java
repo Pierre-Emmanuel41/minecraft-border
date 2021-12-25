@@ -1,4 +1,4 @@
-package fr.pederobien.minecraft.border.commands;
+package fr.pederobien.minecraft.border.impl;
 
 import fr.pederobien.minecraft.dictionary.impl.PlayerGroup;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;
@@ -215,7 +215,7 @@ public enum EBorderCode implements IMinecraftCode {
 	BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED,
 
 	// Code for in game messages
-	MOVING_BORDER(PlayerGroup.ALL), MOVING_BORDER_COUNT_DOWN(PlayerGroup.ALL);
+	BORDER__MOVING_BORDER(PlayerGroup.ALL), BORDER__MOVING_BORDER_COUNT_DOWN(PlayerGroup.ALL);
 
 	private IPlayerGroup group;
 

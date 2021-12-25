@@ -10,14 +10,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pederobien.dictionary.impl.JarXmlDictionaryParser;
 import fr.pederobien.minecraft.border.commands.border.BorderCommandTree;
+import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
+import fr.pederobien.minecraft.game.platform.impl.PlatformPersistence;
 
 public class BorderPlugin extends JavaPlugin {
 	private static final Path DICTIONARY_FOLDER = Paths.get("resources/dictionaries");
 
 	private static Plugin instance;
-	private static BorderPersistence persistence;
+	private static PlatformPersistence<IBorder> persistence;
 	private static BorderCommandTree borderTree;
 
 	/**
@@ -30,7 +32,7 @@ public class BorderPlugin extends JavaPlugin {
 	/**
 	 * @return The persistence that serialize and deserialize configurations.
 	 */
-	public static BorderPersistence getPersistence() {
+	public static PlatformPersistence<IBorder> getPersistence() {
 		return persistence;
 	}
 
@@ -46,8 +48,8 @@ public class BorderPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		instance = this;
-		persistence = new BorderPersistence();
-		borderTree = new BorderCommandTree(persistence.getPersistence());
+		persistence = new BorderPersistence().getPersistence();
+		borderTree = new BorderCommandTree(getPersistence());
 
 		registerDictionaries();
 		registerTabExecutors();

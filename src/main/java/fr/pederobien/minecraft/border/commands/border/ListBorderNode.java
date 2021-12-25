@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 
 import org.bukkit.command.CommandSender;
 
-import fr.pederobien.minecraft.border.commands.EBorderCode;
+import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
 import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceListNode;

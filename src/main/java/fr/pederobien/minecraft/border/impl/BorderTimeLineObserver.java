@@ -4,7 +4,6 @@ import java.time.LocalTime;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import fr.pederobien.minecraft.border.commands.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderConfigurable;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
@@ -46,7 +45,7 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 
 		// Action to perform during the count down
 		Consumer<Integer> countDownAction = count -> {
-			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.MOVING_BORDER_COUNT_DOWN);
+			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.BORDER__MOVING_BORDER_COUNT_DOWN);
 			builder.withDisplayOption(DisplayOption.TITLE).withColor(EColor.GOLD);
 			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld())));
 			send(builder.build(count));
@@ -54,7 +53,7 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 
 		// Action to perform when the count down is over.
 		Consumer<LocalTime> internalOnTimeAction = time -> {
-			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.MOVING_BORDER);
+			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.BORDER__MOVING_BORDER);
 			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld())));
 			border.getWorldBorder().setSize(border.getFinalDiameter(), (long) border.getWorldBorder().getSize() / border.getSpeed().longValue());
 			send(builder.withColor(EColor.DARK_RED).build());

@@ -111,4 +111,11 @@ public interface IBorder extends INominable {
 	 * @return The world border associated to the world of this configuration.
 	 */
 	WorldBorder getWorldBorder();
+
+	/**
+	 * Reload the content of the file associated to this border in to order to update this border.
+	 * 
+	 * @return true if this border has been updated, false otherwise.
+	 */
+	boolean reload();
 }

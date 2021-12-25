@@ -14,37 +14,37 @@ public interface IBorderList {
 	String getName();
 
 	/**
-	 * Append the given border configuration to this list. If a border configuration is already registered for the world, then the
-	 * former configuration is replaced.
+	 * Appends the given border to this list. If a border is already registered for the world, then the former configuration is
+	 * replaced.
 	 * 
-	 * @param configuration The border configuration to add.
+	 * @param border The border to add.
 	 */
-	void add(IBorder configuration);
+	void add(IBorder border);
 
 	/**
-	 * Remove from this list the border configuration associated to the given name.
+	 * Removes from this list the border associated to the given name.
 	 * 
-	 * @param configuration The configuration to remove.
+	 * @param name The border name to remove.
 	 * 
-	 * @return The removed configuration if registered, null otherwise.
+	 * @return The removed border if registered, null otherwise.
 	 */
 	IBorder remove(String name);
 
 	/**
-	 * Remove the given border configuration from this list.
+	 * Removes the given border from this list.
 	 * 
-	 * @param configuration The configuration to remove.
+	 * @param border The border to remove.
 	 * 
-	 * @return True if the configuration was registered, false otherwise.
+	 * @return True if the border was registered, false otherwise.
 	 */
-	boolean remove(IBorder configuration);
+	boolean remove(IBorder border);
 
 	/**
-	 * Remove the border configuration registered for the given world.
+	 * Removes the border associated to the given world.
 	 * 
-	 * @param world The world used as key to filter all registered border configurations.
+	 * @param world The world used to remove the associated border.
 	 * 
-	 * @return The removed configuration if registered, null otherwise.
+	 * @return The removed border if registered, null otherwise.
 	 */
 	IBorder remove(World world);
 
@@ -54,20 +54,20 @@ public interface IBorderList {
 	void clear();
 
 	/**
-	 * Get the border configuration for the given world if it exists.
+	 * Get the border associated to the given world if it exists.
 	 * 
 	 * @param world The world used as key to filter all registered border configurations.
 	 * 
-	 * @return An optional that contains the registered border configuration if it exists, an empty optional otherwise.
+	 * @return An optional that contains the registered border if it exists, an empty optional otherwise.
 	 */
 	Optional<IBorder> getBorder(World world);
 
 	/**
-	 * Get the configuration associated to the given name.
+	 * Get the border associated to the given name.
 	 * 
-	 * @param name The configuration name.
+	 * @param name The border name.
 	 * 
-	 * @return An optional that contains the configuration if it is registered, an empty optional otherwise.
+	 * @return An optional that contains the border if it is registered, an empty optional otherwise.
 	 */
 	Optional<IBorder> getBorder(String name);
 

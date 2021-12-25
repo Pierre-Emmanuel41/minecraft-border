@@ -14,6 +14,8 @@ import fr.pederobien.minecraft.border.event.BorderSpeedChangePostEvent;
 import fr.pederobien.minecraft.border.event.BorderStartTimeChangePostEvent;
 import fr.pederobien.minecraft.border.event.BorderWorldChangePostEvent;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
+import fr.pederobien.minecraft.border.persistence.BorderPersistence;
+import fr.pederobien.minecraft.game.platform.impl.PlatformPersistence;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.utils.event.EventManager;
 
@@ -165,6 +167,22 @@ public class Border implements IBorder {
 	@Override
 	public WorldBorder getWorldBorder() {
 		return getWorld().getWorldBorder();
+	}
+
+	@Override
+	public boolean reload() {
+		PlatformPersistence<IBorder> persistence = new BorderPersistence().getPersistence();
+		if (!persistence.deserialize(getName()))
+			return false;
+
+		setName(persistence.get().getName());
+		setWorld(persistence.get().getWorld());
+		setCenter(persistence.get().getCenter());
+		setInitialDiameter(persistence.get().getInitialDiameter());
+		setFinalDiameter(persistence.get().getFinalDiameter());
+		setSpeed(persistence.get().getSpeed());
+		setStartTime(persistence.get().getStartTime());
+		return true;
 	}
 
 	@Override
