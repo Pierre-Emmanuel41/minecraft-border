@@ -1,15 +1,19 @@
 package fr.pederobien.minecraft.border.impl;
 
 import java.time.LocalTime;
-import java.util.StringJoiner;
 
 import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 
+import fr.pederobien.minecraft.border.event.BorderCenterChangePostEvent;
+import fr.pederobien.minecraft.border.event.BorderFinalDiameterChangePostEvent;
+import fr.pederobien.minecraft.border.event.BorderInitialDiameterChangePostEvent;
 import fr.pederobien.minecraft.border.event.BorderNameChangePostEvent;
+import fr.pederobien.minecraft.border.event.BorderSpeedChangePostEvent;
+import fr.pederobien.minecraft.border.event.BorderStartTimeChangePostEvent;
+import fr.pederobien.minecraft.border.event.BorderWorldChangePostEvent;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
-import fr.pederobien.minecraft.game.impl.DisplayHelper;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.utils.event.EventManager;
 
@@ -59,7 +63,12 @@ public class Border implements IBorder {
 
 	@Override
 	public void setWorld(World world) {
+		if (getWorld().equals(world))
+			return;
+
+		World oldWorld = this.world;
 		this.world = world;
+		EventManager.callEvent(new BorderWorldChangePostEvent(this, oldWorld));
 	}
 
 	@Override
@@ -72,7 +81,9 @@ public class Border implements IBorder {
 		if (getCenter().equals(center))
 			return;
 
+		Block oldCenter = this.center;
 		this.center = center;
+		EventManager.callEvent(new BorderCenterChangePostEvent(this, oldCenter));
 	}
 
 	@Override
@@ -85,7 +96,9 @@ public class Border implements IBorder {
 		if (getInitialDiameter() == this.initialDiameter)
 			return;
 
+		int oldInitialDiameter = this.initialDiameter;
 		this.initialDiameter = initialDiameter;
+		EventManager.callEvent(new BorderInitialDiameterChangePostEvent(this, oldInitialDiameter));
 	}
 
 	@Override
@@ -98,7 +111,9 @@ public class Border implements IBorder {
 		if (getFinalDiameter() == finalDiameter)
 			return;
 
+		int oldFinalDiameter = this.finalDiameter;
 		this.finalDiameter = finalDiameter;
+		EventManager.callEvent(new BorderFinalDiameterChangePostEvent(this, oldFinalDiameter));
 	}
 
 	@Override
@@ -111,7 +126,10 @@ public class Border implements IBorder {
 		if (getSpeed() == speed)
 			return;
 
+		double oldSpeed = this.speed;
+		LocalTime oldMoveTime = getMoveTime();
 		this.speed = speed;
+		EventManager.callEvent(new BorderSpeedChangePostEvent(this, oldSpeed, oldMoveTime));
 	}
 
 	@Override
@@ -124,7 +142,9 @@ public class Border implements IBorder {
 		if (getStartTime().equals(startTime))
 			return;
 
+		LocalTime oldStartTime = this.startTime;
 		this.startTime = startTime;
+		EventManager.callEvent(new BorderStartTimeChangePostEvent(this, oldStartTime));
 	}
 
 	@Override
@@ -148,11 +168,6 @@ public class Border implements IBorder {
 	}
 
 	@Override
-	public void reset() {
-		getWorldBorder().reset();
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -166,21 +181,7 @@ public class Border implements IBorder {
 
 	@Override
 	public String toString() {
-		StringJoiner joiner = new StringJoiner("\n");
-		joiner.add("Name : " + getName());
-		joiner.add("World : " + display(world, getWorld().getName()));
-		joiner.add("Center : " + display(center, DisplayHelper.toString(getCenter())));
-		joiner.add("Initial diameter : " + display(initialDiameter, getInitialDiameter() + " blocks"));
-		joiner.add("Final diameter : " + display(finalDiameter, getFinalDiameter() + " blocks"));
-		joiner.add("Speed : " + display(speed, DisplayHelper.format(getSpeed()) + " block/s"));
-		joiner.add("Start time : " + display(startTime, DisplayHelper.toString(getStartTime(), true)));
-		joiner.add("Move time : " + DisplayHelper.toString(getMoveTime(), true));
-		joiner.add("End time : " + getStartTime().plusSeconds(getMoveTime().toSecondOfDay()));
-		return joiner.toString();
-	}
-
-	private String display(Object object, String display) {
-		return display.concat(object == null ? " (default value)" : "");
+		return name;
 	}
 
 	private Double getDistance() {

@@ -111,10 +111,4 @@ public interface IBorder extends INominable {
 	 * @return The world border associated to the world of this configuration.
 	 */
 	WorldBorder getWorldBorder();
-
-	/**
-	 * Reset the border associated to its world. This configuration is also removed from the list of observers of the
-	 * {@link IObservableTimeLine} passed to the method {@link #apply(IObservableTimeLine)}.
-	 */
-	void reset();
 }
