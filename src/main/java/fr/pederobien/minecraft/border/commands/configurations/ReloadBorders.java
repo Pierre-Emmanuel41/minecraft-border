@@ -6,11 +6,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import fr.pederobien.minecraft.border.exceptions.BorderConfigurationNotRegisteredException;
-import fr.pederobien.minecraft.border.interfaces.IBorderConfiguration;
-import fr.pederobien.minecraft.border.interfaces.IGameBorderConfiguration;
+import fr.pederobien.minecraft.border.interfaces.IBorder;
+import fr.pederobien.minecraft.border.interfaces.IBorderList;
 import fr.pederobien.minecraftgameplateform.exceptions.configurations.ConfigurationNotFoundException;
 
-public class ReloadBorders<T extends IGameBorderConfiguration> extends AbstractGameBorderConfigurationEdition<T> {
+public class ReloadBorders<T extends IBorderList> extends AbstractGameBorderConfigurationEdition<T> {
 
 	protected ReloadBorders() {
 		super(EBordersLabel.RELOAD, EBordersMessageCode.RELOAD_BORDERS__EXPLANATION);
@@ -18,12 +18,12 @@ public class ReloadBorders<T extends IGameBorderConfiguration> extends AbstractG
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		List<IBorderConfiguration> removed, reload;
+		List<IBorder> removed, reload;
 		try {
 			removed = getConfigurationsFromGameConfiguration(args);
 			get().remove(removed);
 			reload = getConfigurations(args);
-			for (IBorderConfiguration border : reload)
+			for (IBorder border : reload)
 				get().add(border);
 		} catch (BorderConfigurationNotRegisteredException e) {
 			sendSynchro(sender, EBordersMessageCode.RELOAD_BORDERS__BORDER_NOT_REGISTERED, e.getNotRegisteredBorderConfigurationName(), get().getName());

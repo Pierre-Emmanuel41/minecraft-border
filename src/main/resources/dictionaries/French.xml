@@ -9,196 +9,264 @@
 	</locales>
 	<messages>
 		<message>
+			<code>BORDER_NAME</code>
+			<value>Nom : %s</value>
+		</message>
+		<message>
+			<code>BORDER_WORLD</code>
+			<value>Monde : %s</value>
+		</message>
+		<message>
+			<code>BORDER_CENTER</code>
+			<value>Centre : %s</value>
+		</message>
+		<message>
+			<code>BORDER_INITIAL_DIAMETER</code>
+			<value>Diamètre initial : %s</value>
+		</message>
+		<message>
+			<code>BORDER_FINAL_DIAMETER</code>
+			<value>Diamètre final : %s</value>
+		</message>
+		<message>
+			<code>BORDER_SPEED</code>
+			<value>Vitesse : %s bloc/s</value>
+		</message>
+		<message>
+			<code>BORDER_START_TIME</code>
+			<value>Déplacement après : %s</value>
+		</message>
+		<message>
+			<code>BORDER_MOVE_TIME</code>
+			<value>Déplacement pendant : %s</value>
+		</message>
+		<message>
+			<code>BORDER_END_TIME</code>
+			<value>Termine de se déplacer à : %s</value>
+		</message>
+		<message>
+			<code>BORDER__INTEGER__BAD_FORMAT</code>
+			<value>Un entier</value>
+		</message>
+		<message>
+			<code>BORDER__STRICTLY_POSITIVE_INTEGER__BAD_FORMAT</code>
+			<value>Un entier strictement positif</value>
+		</message>
+		<message>
 			<code>BORDER__EXPLANATION</code>
 			<value>Pour configurer une bordure</value>
 		</message>
 		<message>
-			<code>NEW_BORDER__EXPLANATION</code>
-			<value>Pour définir une nouvelle configuration de bordure</value>
+			<code>BORDER__NEW_BORDER__EXPLANATION</code>
+			<value>Pour créer une nouvelle bordure à configurer</value>
 		</message>
 		<message>
-			<code>NEW_BORDER__NAME_IS_MISSING</code>
-			<value>Impossible de définir une nouvelle bordure, il manque le nom</value>
+			<code>BORDER__NEW_BORDER__NAME_IS_MISSING</code>
+			<value>Impossible de définir une nouvelle border, le nom est manquant</value>
 		</message>
 		<message>
-			<code>NEW_BORDER__NAME_ALREADY_TAKEN</code>
-			<value>Une bordure %s existe déjà</value>
+			<code>BORDER__NEW_BORDER__NAME_ALREADY_USED</code>
+			<value>La bordure %s existe déjà</value>
 		</message>
 		<message>
-			<code>NEW_BORDER__BORDER_CREATED</code>
+			<code>BORDER__NEW_BORDER__BORDER_CREATED</code>
 			<value>La bordure %s a été créée</value>
 		</message>
 		<message>
-			<code>CURRENT_BORDER__EXPLANATION</code>
-			<value>Pour afficher les caractéristiques de la bordure courante</value>
+			<code>BORDER__DETAILS_BORDER__EXPLANATION</code>
+			<value>Pour afficher les charactéristiques d'une bordure</value>
 		</message>
 		<message>
-			<code>CURRENT_BORDER__ON_CURRENT</code>
-			<value>Caractéristiques de la bordure courante :%n%s</value>
+			<code>BORDER__DETAILS_BORDER__ON_DETAILS</code>
+			<value>Charactéristiques de la bordure :%n%s</value>
 		</message>
 		<message>
-			<code>LOAD_BORDER__EXPLANATION</code>
-			<value>Pour charger une configuration de bordure</value>
-		</message>
-		<message>
-			<code>LOAD_BORDER__NAME_IS_MISSING</code>
-			<value>Impossible de charger une configuration de bordure, il manque le nom</value>
-		</message>
-		<message>
-			<code>LOAD_BORDER__BORDER_LOADED</code>
-			<value>La bordure %s a été chargée</value>
-		</message>
-		<message>
-			<code>DELETE_BORDER__EXPLANATION</code>
-			<value>Pour supprimer le fichier d'une bordure</value>
-		</message>
-		<message>
-			<code>DELETE_BORDER__NAME_IS_MISSING</code>
-			<value>Impossible de supprimer le fichier une bordue, il manque le nom</value>
-		</message>
-		<message>
-			<code>DELETE_BORDER__DID_NOT_DELETED</code>
-			<value>La suppresion de la bordure %s n'a pas pu s'effectuer correctement</value>
-		</message>
-		<message>
-			<code>DELETE_BORDER__BORDER_DELETED</code>
-			<value>Le fichier de la bordure %s a été supprimé</value>
-		</message>
-		<message>
-			<code>LIST_BORDER__EXPLANATION</code>
-			<value>Pour afficher le nom des bordures existantes</value>
-		</message>
-		<message>
-			<code>LIST_BORDER__NO_ELEMENT</code>
-			<value>Il n’existe aucune bordure</value>
-		</message>
-		<message>
-			<code>LIST_BORDER__ONE_ELEMENT</code>
-			<value>Il existe une bordure :%n%s</value>
-		</message>
-		<message>
-			<code>LIST_BORDER__SEVERAL_ELEMENTS</code>
-			<value>Liste des bordures existantes :%n%s</value>
-		</message>
-		<message>
-			<code>RENAME_BORDER__EXPLANATION</code>
+			<code>BORDER__RENAME_BORDER__EXPLANATION</code>
 			<value>Pour renommer une bordure</value>
 		</message>
 		<message>
-			<code>RENAME_BORDER__NAME_IS_MISSING</code>
-			<value>Impossible de renommer la bordure %s, il manque le nom</value>
+			<code>BORDER__RENAME_BORDER__NAME_IS_MISSING</code>
+			<value>Impossible de renommer la bordure %s, le nom est manquant</value>
 		</message>
 		<message>
-			<code>RENAME_BORDER__NAME_ALREADY_TAKEN</code>
-			<value>Impossible de renommer la bordure %s en %s, une bordure du même nom existe déjà</value>
+			<code>BORDER__RENAME_BORDER__NAME_ALREADY_USED</code>
+			<value>Impossible de renommer la bordure %s en %s, la bordure %s existe déjà</value>
 		</message>
 		<message>
-			<code>RENAME_BORDER__BORDER_RENAMED</code>
-			<value>La bordure %s a été renommée en %s</value>
+			<code>BORDER__RENAME_BORDER__BORDER_RENAMED</code>
+			<value>La bordure %s a été renommée %s</value>
 		</message>
 		<message>
-			<code>SAVE_BORDER__EXPLANATION</code>
-			<value>Pour sauvegarder la bordure courante</value>
+			<code>BORDER__DELETE_BORDER__EXPLANATION</code>
+			<value>Pour supprimer le fichier d'une bordure</value>
 		</message>
 		<message>
-			<code>SAVE_BORDER__BORDER_SAVED</code>
+			<code>BORDER__DELETE_BORDER__NAME_IS_MISSING</code>
+			<value>Impossible de supprimer le fichier une bordure, le nom est manquant</value>
+		</message>
+		<message>
+			<code>BORDER__DELETE_BORDER__BORDER_DELETED</code>
+			<value>Le fichier de la bordure %s a été supprimé</value>
+		</message>
+		<message>
+			<code>BORDER__LOAD_BORDER__EXPLANATION</code>
+			<value>Pour charger une bordure à configurer</value>
+		</message>
+		<message>
+			<code>BORDER__LOAD_BORDER__NAME_IS_MISSING</code>
+			<value>Impossible de charger une bordure, le nom est manquant</value>
+		</message>
+		<message>
+			<code>BORDER__LOAD_BORDER__BORDER_LOADED</code>
+			<value>La bordure %s a été chargée</value>
+		</message>
+		<message>
+			<code>BORDER__LIST_BORDER__EXPLANATION</code>
+			<value>Pour afficher les noms des fichiers de bordure</value>
+		</message>
+		<message>
+			<code>BORDER__LIST_BORDER__NO_ELEMENT</code>
+			<value>Il n’existe aucune bordure</value>
+		</message>
+		<message>
+			<code>BORDER__LIST_BORDER__ONE_ELEMENT</code>
+			<value>Il existe une bordure :%n%s</value>
+		</message>
+		<message>
+			<code>BORDER__LIST_BORDER__SEVERAL_ELEMENTS</code>
+			<value>Liste des bordures existantes :%n%s</value>
+		</message>
+		<message>
+			<code>BORDER__SAVE_BORDER__EXPLANATION</code>
+			<value>Pour sauvegarder les charactéristiques d'une bordure</value>
+		</message>
+		<message>
+			<code>BORDER__SAVE_BORDER__FAIL_TO_SAVE</code>
+			<value>La sauvegarde de la bordure %s a échouée</value>
+		</message>
+		<message>
+			<code>BORDER__SAVE_BORDER__BORDER_SAVED</code>
 			<value>La bordure %s a été sauvegardée</value>
 		</message>
 		<message>
-			<code>WORLD_BORDER__EXPLANATION</code>
-			<value>Pour définir le monde dans lequel la bordure s'applique</value>
+			<code>BORDER__WORLD_BORDER__EXPLANATION</code>
+			<value>Pour définir le monde dans lequel la bordure est appliquée</value>
 		</message>
 		<message>
-			<code>WORLD_BORDER__WORLD_NAME_IS_MISSING</code>
-			<value>Impossible de définir le monde de la bordure, il manque le nom</value>
+			<code>BORDER__WORLD_BORDER__WORLD_NAME_IS_MISSING</code>
+			<value>Impossible de définir le monde de la bordure, le nom est manquant</value>
 		</message>
 		<message>
-			<code>WORLD_BORDER__WORLD_DEFINED</code>
-			<value>La bordure %s est associée au monde %s</value>
+			<code>BORDER__WORLD_BORDER__WORLD_NOT_FOUND</code>
+			<value>Impossible de définir le monde de la bordure, %s n'existe pas</value>
 		</message>
 		<message>
-			<code>CENTER_BORDER__EXPLANATION</code>
-			<value>Pour définir le centre de la bordure</value>
+			<code>BORDER__WORLD_BORDER__WORLD_UPDATED</code>
+			<value>La bordure %s est associée à %s</value>
 		</message>
 		<message>
-			<code>CENTER_BORDER__CENTER_DEFINED</code>
-			<value>Le centre de la bordure est défini en X=%s Z=%s</value>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__EXPLANATION</code>
+			<value>Pour définir le diamètre initial d'une bordure</value>
 		</message>
 		<message>
-			<code>INITIAL_BORDER_DIAMETER__EXPLANATION</code>
-			<value>Pour définir le diamètre initial de la bordure</value>
-		</message>
-		<message>
-			<code>INITIAL_BORDER_DIAMETER__ON_TAB_COMPLETE</code>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__COMPLETION</code>
 			<value>&lt;diamètre initial&gt;</value>
 		</message>
 		<message>
-			<code>INITIAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
 			<value>Impossible de définir le diamètre initial de la bordure %s, il manque le diamètre</value>
 		</message>
 		<message>
-			<code>INITIAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
 			<value>Impossible de définir le diamètre initial de la bordure %s, le diamètre est négatif</value>
 		</message>
 		<message>
-			<code>INITIAL_BORDER_DIAMETER__DIAMETER_DEFINED</code>
-			<value>Le diamètre initial de la bordure %s est de %s bloc(s)</value>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_UPDATED</code>
+			<value>Le diamètre initial de la bordure %s est %s bloc(s)</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__EXPLANATION</code>
-			<value>Pour définir le diamètre final de la bordure</value>
+			<code>BORDER__CENTER_BORDER__EXPLANATION</code>
+			<value>Pour définir le centre d'une bordure</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__ON_TAB_COMPLETE</code>
+			<code>BORDER__CENTER_BORDER__X_IS_MISSING</code>
+			<value>Impossible de définir le centre de la bordure %s, la coordonnée X est manquante</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__X_IS_MISSING</code>
+			<value>Impossible de définir le centre de la bordure %s, la coordonnée Y est manquante</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__Y_IS_NEGATIVE</code>
+			<value>Impossible de définir le centre de la bordure %s, la coordonnée Y doit être supérieure à 0</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__Y_IS_GREATER_THAN_256</code>
+			<value>Impossible de définir le centre de la bordure %s, la coordonnée Y doit être inférieure à 256</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__Z_IS_MISSING</code>
+			<value>Impossible de définir le centre de la bordure %s, la coordonnée Z est manquante</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__CENTER_UPDATED</code>
+			<value>Le centre de la bordure %s est %s </value>
+		</message>
+		<message>
+			<code>BORDER__FINAL_BORDER_DIAMETER__EXPLANATION</code>
+			<value>Pour définir le diamètre final d'une bordure</value>
+		</message>
+		<message>
+			<code>BORDER__FINAL_BORDER_DIAMETER__COMPLETION</code>
 			<value>&lt;diamètre final&gt;</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
+			<code>BORDER__FINAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
 			<value>Impossible de définir le diamètre final de la bordure %s, il manque le diamètre</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
+			<code>BORDER__FINAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
 			<value>Impossible de définir le diamètre final de la bordure %s, le diamètre est négatif</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__DIAMETER_DEFINED</code>
-			<value>Le diamètre final de la bordure %s est de %s bloc(s)</value>
+			<code>BORDER__FINAL_BORDER_DIAMETER__DIAMETER_UPDATED</code>
+			<value>Le diamètre final de la bordure %s est %s bloc(s)</value>
 		</message>
 		<message>
-			<code>SPEED_BORDER__EXPLANATION</code>
-			<value>Pour définir la vitesse de déplacement de la bordure</value>
-		</message>
-		<message>
-			<code>SPEED_BORDER__ON_TAB_COMPLETE</code>
-			<value>&lt;bloc/s&gt;</value>
-		</message>
-		<message>
-			<code>SPEED_BORDER__SPEED_IS_MISSING</code>
-			<value>Impossible de définir la vitesse de la bordure, il manque la vitesse</value>
-		</message>
-		<message>
-			<code>SPEED_BORDER__SPEED_IS_NEGATIVE</code>
-			<value>Impossible de définir la vitesse de la bordure, la vitesse doit être strictement positive</value>
-		</message>
-		<message>
-			<code>SPEED_BORDER__SPEED_DEFINED</code>
-			<value>la vitesse de la bordure %s est définie à %s bloc/s, temps de déplacement : %s</value>
-		</message>
-		<message>
-			<code>START_TIME_BORDER__EXPLANATION</code>
+			<code>BORDER__START_TIME_BORDER__EXPLANATION</code>
 			<value>Pour définir le temps à partir duquel la bordure se déplace de son diamètre initial à son diamètre final</value>
 		</message>
 		<message>
-			<code>START_TIME_BORDER__TIME_IS_MISSING</code>
-			<value>Impossible de définir le temps au bout duquel la bordure se déplace, il manque le temps</value>
+			<code>BORDER__START_TIME_BORDER__TIME_IS_MISSING</code>
+			<value>Impossible de définir le temps au bout duquel la bordure se déplace, le temps est manquant</value>
 		</message>
 		<message>
-			<code>START_TIME_BORDER__BORDER_MOVES_AT_THE_BEGINNING</code>
+			<code>BORDER__START_TIME_BORDER__BORDER_MOVES_AT_THE_BEGINNING</code>
 			<value>La bordure %s se déplacera dés le début de la partie</value>
 		</message>
 		<message>
-			<code>START_TIME_BORDER__START_TIME_DEFINED</code>
+			<code>BORDER__START_TIME_BORDER__START_TIME_UPDATED</code>
 			<value>La bordure %s se déplacera après %s de jeu</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__EXPLANATION</code>
+			<value>Pour définir la vitesse de la bordure</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__ON_TAB_COMPLETE</code>
+			<value>&lt;vitesse bloc/s&gt;</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__SPEED_IS_MISSING</code>
+			<value>Impossible de définir la vitesse de la bordure %s, il manque la vitesse</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__SPEED_IS_NEGATIVE</code>
+			<value>Impossible de définir la vitesse de la bordure %s, la vitesse doit être strictement positive</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__SPEED_DEFINED</code>
+			<value>La bordure %s se déplacera à %s bloc/s, temps de déplacement : %s</value>
 		</message>
 		<message>
 			<code>MOVE_TIME_BORDER__EXPLANATION</code>

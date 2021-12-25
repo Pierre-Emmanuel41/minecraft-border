@@ -1,9 +1,9 @@
 package fr.pederobien.minecraft.border.commands.configurations;
 
-import fr.pederobien.minecraft.border.interfaces.IGameBorderConfiguration;
+import fr.pederobien.minecraft.border.interfaces.IBorderList;
 import fr.pederobien.minecraftgameplateform.commands.configurations.AbstractGameConfigurationEdition;
 
-public class CommonBorders<T extends IGameBorderConfiguration> extends AbstractGameConfigurationEdition<T> {
+public class CommonBorders<T extends IBorderList> extends AbstractGameConfigurationEdition<T> {
 
 	protected CommonBorders() {
 		super(EBordersLabel.BORDERS, EBordersMessageCode.BORDERS__EXPLANATION);

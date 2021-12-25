@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 import org.bukkit.World;
 
 import fr.pederobien.minecraft.border.exceptions.BorderConfigurationNotRegisteredException;
-import fr.pederobien.minecraft.border.interfaces.IBorderConfiguration;
-import fr.pederobien.minecraft.border.interfaces.IGameBorderConfiguration;
+import fr.pederobien.minecraft.border.interfaces.IBorder;
+import fr.pederobien.minecraft.border.interfaces.IBorderList;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
 import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageCode;
 import fr.pederobien.minecraftgameplateform.commands.configurations.AbstractGameConfigurationEdition;
@@ -19,8 +19,8 @@ import fr.pederobien.minecraftgameplateform.interfaces.element.ILabel;
 import fr.pederobien.minecraftmanagers.WorldManager;
 import fr.pederobien.persistence.interfaces.IPersistence;
 
-public class AbstractGameBorderConfigurationEdition<T extends IGameBorderConfiguration> extends AbstractGameConfigurationEdition<T> {
-	public static final IPersistence<IBorderConfiguration> PERSISTENCE = BorderPersistence.getInstance();
+public class AbstractGameBorderConfigurationEdition<T extends IBorderList> extends AbstractGameConfigurationEdition<T> {
+	public static final IPersistence<IBorder> PERSISTENCE = BorderPersistence.getInstance();
 
 	protected AbstractGameBorderConfigurationEdition(ILabel label, IMinecraftMessageCode explanation) {
 		super(label, explanation);
@@ -46,8 +46,8 @@ public class AbstractGameBorderConfigurationEdition<T extends IGameBorderConfigu
 	 * 
 	 * @throws ConfigurationNotFoundException If the configuration file associated to a name does not exist.
 	 */
-	protected List<IBorderConfiguration> getConfigurations(String... args) {
-		List<IBorderConfiguration> configurations = new ArrayList<IBorderConfiguration>();
+	protected List<IBorder> getConfigurations(String... args) {
+		List<IBorder> configurations = new ArrayList<IBorder>();
 		String current = "";
 		PERSISTENCE.set(null);
 		try {
@@ -71,10 +71,10 @@ public class AbstractGameBorderConfigurationEdition<T extends IGameBorderConfigu
 	 * @throws BorderConfigurationNotRegisteredException If there is any registered configuration for a name.
 	 * @see #get()
 	 */
-	protected List<IBorderConfiguration> getConfigurationsFromGameConfiguration(String... args) {
-		List<IBorderConfiguration> configurations = new ArrayList<IBorderConfiguration>();
+	protected List<IBorder> getConfigurationsFromGameConfiguration(String... args) {
+		List<IBorder> configurations = new ArrayList<IBorder>();
 		for (String name : args) {
-			Optional<IBorderConfiguration> optConf = get().getBorder(name);
+			Optional<IBorder> optConf = get().getBorder(name);
 			if (!optConf.isPresent())
 				throw new BorderConfigurationNotRegisteredException(get(), name);
 			configurations.add(optConf.get());
@@ -91,7 +91,7 @@ public class AbstractGameBorderConfigurationEdition<T extends IGameBorderConfigu
 	 *         <code>WorldName + " : none"</code> if any border is registered.
 	 */
 	protected String concat(World world) {
-		Optional<IBorderConfiguration> optBorder = get().getBorder(world);
+		Optional<IBorder> optBorder = get().getBorder(world);
 		return WorldManager.getWorldNameNormalised(world) + " : " + (optBorder.isPresent() ? optBorder.get().getName() : " none ");
 	}
 }

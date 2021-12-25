@@ -1,0 +1,80 @@
+package fr.pederobien.minecraft.border.impl;
+
+import java.time.LocalTime;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
+import fr.pederobien.minecraft.border.commands.EBorderCode;
+import fr.pederobien.minecraft.border.interfaces.IBorder;
+import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
+import fr.pederobien.minecraft.dictionary.impl.MinecraftMessageEvent.MinecraftMessageEventBuilder;
+import fr.pederobien.minecraft.dictionary.impl.PlayerGroup;
+import fr.pederobien.minecraft.game.impl.time.CountDown;
+import fr.pederobien.minecraft.game.interfaces.time.ICountDown;
+import fr.pederobien.minecraft.game.interfaces.time.IObsTimeLine;
+import fr.pederobien.minecraft.managers.EColor;
+import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
+import fr.pederobien.minecraft.managers.WorldManager;
+import fr.pederobien.utils.event.EventManager;
+import fr.pederobien.utils.event.IEventListener;
+
+public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICodeSender {
+	private ICountDown countDown;
+	private LocalTime nextTime;
+
+	/**
+	 * Creates a time line observer associated to the given border. When a game starts, it is registered as time line observer for the
+	 * {@link IBorder#getStartTime()} value. The first <code>LocalTime</code> parameter refers to the absolute time (since the
+	 * beginning of the game) at which the count down is over, the second <code>LocalTime</code> parameter refers to the next time at
+	 * which this observer should be notified.
+	 * 
+	 * @param border       The border for this observer. It contains informations in order to observe the time line.
+	 * @param initialValue The initial count down value.
+	 * @param onTimeAction The action to perform when the count down is over.
+	 */
+	public BorderTimeLineObserver(IBorder border, int initialValue, Function<LocalTime, LocalTime> onTimeAction) {
+		String worldName = WorldManager.getWorldNameNormalised(border.getWorld());
+
+		// Action to perform during the count down
+		Consumer<Integer> countDownAction = count -> {
+			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.MOVING_BORDER_COUNT_DOWN);
+			builder.withDisplayOption(DisplayOption.TITLE).withColor(EColor.GOLD);
+			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld())));
+			send(builder.build(count));
+		};
+
+		// Action to perform when the count down is over.
+		Consumer<LocalTime> internalOnTimeAction = time -> {
+			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.MOVING_BORDER);
+			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld())));
+			border.getWorldBorder().setSize(border.getFinalDiameter(), (long) border.getWorldBorder().getSize() / border.getSpeed().longValue());
+			send(builder.withColor(EColor.DARK_RED).build());
+			nextTime = onTimeAction.apply(time);
+		};
+
+		countDown = new CountDown(initialValue, countDownAction, internalOnTimeAction);
+
+		EventManager.registerListener(this);
+	}
+
+	/**
+	 * Creates a time line observer associated to this border. When a game starts, it is registered as time line observer for the
+	 * {@link IBorder#getStartTime()} value. And then will never be notified.
+	 * 
+	 * @param border       The border associated to this observer.
+	 * @param initialValue The initial count down value.
+	 */
+	public BorderTimeLineObserver(IBorder border, int initialValue) {
+		this(border, initialValue, time -> null);
+	}
+
+	@Override
+	public ICountDown getCountDown() {
+		return countDown;
+	}
+
+	@Override
+	public LocalTime getNextTime() {
+		return nextTime;
+	}
+}

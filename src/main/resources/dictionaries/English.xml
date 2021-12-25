@@ -12,196 +12,264 @@
 	</locales>
 	<messages>
 		<message>
+			<code>BORDER_NAME</code>
+			<value>Name: %s</value>
+		</message>
+		<message>
+			<code>BORDER_WORLD</code>
+			<value>World: %s</value>
+		</message>
+		<message>
+			<code>BORDER_CENTER</code>
+			<value>Center: %s</value>
+		</message>
+		<message>
+			<code>BORDER_INITIAL_DIAMETER</code>
+			<value>Initial diameter: %s</value>
+		</message>
+		<message>
+			<code>BORDER_FINAL_DIAMETER</code>
+			<value>Final diameter: %s</value>
+		</message>
+		<message>
+			<code>BORDER_SPEED</code>
+			<value>Speed: %s block/s</value>
+		</message>
+		<message>
+			<code>BORDER_START_TIME</code>
+			<value>Move after: %s</value>
+		</message>
+		<message>
+			<code>BORDER_MOVE_TIME</code>
+			<value>Move during: %s</value>
+		</message>
+		<message>
+			<code>BORDER_END_TIME</code>
+			<value>Finish to move at: %s</value>
+		</message>
+		<message>
+			<code>BORDER__INTEGER__BAD_FORMAT</code>
+			<value>An integer</value>
+		</message>
+		<message>
+			<code>BORDER__STRICTLY_POSITIVE_INTEGER__BAD_FORMAT</code>
+			<value>A strictly positive integer</value>
+		</message>
+		<message>
 			<code>BORDER__EXPLANATION</code>
 			<value>To configure a border</value>
 		</message>
 		<message>
-			<code>NEW_BORDER__EXPLANATION</code>
-			<value>To create a new border configuration</value>
+			<code>BORDER__NEW_BORDER__EXPLANATION</code>
+			<value>To create a new border to configure</value>
 		</message>
 		<message>
-			<code>NEW_BORDER__NAME_IS_MISSING</code>
+			<code>BORDER__NEW_BORDER__NAME_IS_MISSING</code>
 			<value>Cannot define a new border, the name is missing</value>
 		</message>
 		<message>
-			<code>NEW_BORDER__NAME_ALREADY_TAKEN</code>
-			<value>A border %s already exists</value>
+			<code>BORDER__NEW_BORDER__NAME_ALREADY_USED</code>
+			<value>Cannot create a new border, The %s border already exists</value>
 		</message>
 		<message>
-			<code>NEW_BORDER__BORDER_CREATED</code>
-			<value>The border %s has been created</value>
+			<code>BORDER__NEW_BORDER__BORDER_CREATED</code>
+			<value>Border %s has been created</value>
 		</message>
 		<message>
-			<code>DETAILS_BORDER__EXPLANATION</code>
-			<value>To display current border's characteristics</value>
+			<code>BORDER__DETAILS_BORDER__EXPLANATION</code>
+			<value>To display border's characteristics</value>
 		</message>
 		<message>
-			<code>DETAILS_BORDER__ON_DETAILS</code>
-			<value>Current border's characteristics :%n%s</value>
+			<code>BORDER__DETAILS_BORDER__ON_DETAILS</code>
+			<value>Current border's characteristics:%n%s</value>
 		</message>
 		<message>
-			<code>LOAD_BORDER__EXPLANATION</code>
-			<value>To load a border configuration</value>
-		</message>
-		<message>
-			<code>LOAD_BORDER__NAME_IS_MISSING</code>
-			<value>Cannot load a border configuration, the name is missing</value>
-		</message>
-		<message>
-			<code>LOAD_BORDER__BORDER_LOADED</code>
-			<value>The border %s has been loaded</value>
-		</message>
-		<message>
-			<code>DELETE_BORDER__EXPLANATION</code>
-			<value>To delete a border file</value>
-		</message>
-		<message>
-			<code>DELETE_BORDER__NAME_IS_MISSING</code>
-			<value>Cannot delete a border, the name is missing</value>
-		</message>
-		<message>
-			<code>DELETE_BORDER__DID_NOT_DELETED</code>
-			<value>The deletion of border %s was not successful</value>
-		</message>
-		<message>
-			<code>DELETE_BORDER__BORDER_DELETED</code>
-			<value>The %s border file has been deleted</value>
-		</message>
-		<message>
-			<code>LIST_BORDER__EXPLANATION</code>
-			<value>To display existing border's names</value>
-		</message>
-		<message>
-			<code>LIST_BORDER__NO_ELEMENT</code>
-			<value>No existing border</value>
-		</message>
-		<message>
-			<code>LIST_BORDER__ONE_ELEMENT</code>
-			<value>There is one existing border :%n%s</value>
-		</message>
-		<message>
-			<code>LIST_BORDER__SEVERAL_ELEMENTS</code>
-			<value>List of existing borders :%n%s</value>
-		</message>
-		<message>
-			<code>RENAME_BORDER__EXPLANATION</code>
+			<code>BORDER__RENAME_BORDER__EXPLANATION</code>
 			<value>To rename a border</value>
 		</message>
 		<message>
-			<code>RENAME_BORDER__NAME_IS_MISSING</code>
+			<code>BORDER__RENAME_BORDER__NAME_IS_MISSING</code>
 			<value>Cannot rename border %s, the name is missing</value>
 		</message>
 		<message>
-			<code>RENAME_BORDER__NAME_ALREADY_TAKEN</code>
-			<value>Cannot rename border %s as %s, a border with the same name already exist</value>
+			<code>BORDER__RENAME_BORDER__NAME_ALREADY_USED</code>
+			<value>Cannot rename border %s as %s, the %s border already exists</value>
 		</message>
 		<message>
-			<code>RENAME_BORDER__BORDER_RENAMED</code>
-			<value>The border %s has been renamed as %s</value>
+			<code>BORDER__RENAME_BORDER__BORDER_RENAMED</code>
+			<value>Border %s has been renamed as %s</value>
 		</message>
 		<message>
-			<code>SAVE_BORDER__EXPLANATION</code>
-			<value>To save the current border</value>
+			<code>BORDER__DELETE_BORDER__EXPLANATION</code>
+			<value>To delete the border file</value>
 		</message>
 		<message>
-			<code>SAVE_BORDER__BORDER_SAVED</code>
-			<value>The border %s saved</value>
+			<code>BORDER__DELETE_BORDER__NAME_IS_MISSING</code>
+			<value>Cannot delete the border's file, the name is missing</value>
 		</message>
 		<message>
-			<code>WORLD_BORDER__EXPLANATION</code>
+			<code>BORDER__DELETE_BORDER__BORDER_DELETED</code>
+			<value>The %s border's file has been deleted</value>
+		</message>
+		<message>
+			<code>BORDER__LOAD_BORDER__EXPLANATION</code>
+			<value>To load a border to configure</value>
+		</message>
+		<message>
+			<code>BORDER__LOAD_BORDER__NAME_IS_MISSING</code>
+			<value>Cannot load a border, the name is missing</value>
+		</message>
+		<message>
+			<code>BORDER__LOAD_BORDER__BORDER_LOADED</code>
+			<value>The border %s has been loaded</value>
+		</message>
+		<message>
+			<code>BORDER__LIST_BORDER__EXPLANATION</code>
+			<value>To display border file names</value>
+		</message>
+		<message>
+			<code>BORDER__LIST_BORDER__NO_ELEMENT</code>
+			<value>No existing border</value>
+		</message>
+		<message>
+			<code>BORDER__LIST_BORDER__ONE_ELEMENT</code>
+			<value>There is one existing border :%n%s</value>
+		</message>
+		<message>
+			<code>BORDER__LIST_BORDER__SEVERAL_ELEMENTS</code>
+			<value>List of existing borders :%n%s</value>
+		</message>
+		<message>
+			<code>BORDER__SAVE_BORDER__EXPLANATION</code>
+			<value>To save characteristics of a border</value>
+		</message>
+		<message>
+			<code>BORDER__SAVE_BORDER__FAIL_TO_SAVE</code>
+			<value>The save of border %s has failed</value>
+		</message>
+		<message>
+			<code>BORDER__SAVE_BORDER__BORDER_SAVED</code>
+			<value>Border %s has been saved</value>
+		</message>
+		<message>
+			<code>BORDER__WORLD_BORDER__EXPLANATION</code>
 			<value>To define the world in which the border is applied</value>
 		</message>
 		<message>
-			<code>WORLD_BORDER__WORLD_NAME_IS_MISSING</code>
+			<code>BORDER__WORLD_BORDER__WORLD_NAME_IS_MISSING</code>
 			<value>Cannot set the border's world, the name is missing</value>
 		</message>
 		<message>
-			<code>WORLD_BORDER__WORLD_DEFINED</code>
+			<code>BORDER__WORLD_BORDER__WORLD_NOT_FOUND</code>
+			<value>Cannot set the border's world, %s does not exist</value>
+		</message>
+		<message>
+			<code>BORDER__WORLD_BORDER__WORLD_UPDATED</code>
 			<value>The border %s is associated to the %s</value>
 		</message>
 		<message>
-			<code>CENTER_BORDER__EXPLANATION</code>
-			<value>To set the border's center</value>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__EXPLANATION</code>
+			<value>To set the initial diameter of a border</value>
 		</message>
 		<message>
-			<code>CENTER_BORDER__CENTER_DEFINED</code>
-			<value>The border center is defined in X=%s Z=%s</value>
-		</message>
-		<message>
-			<code>INITIAL_BORDER_DIAMETER__EXPLANATION</code>
-			<value>To set the initial border diameter</value>
-		</message>
-		<message>
-			<code>INITIAL_BORDER_DIAMETER__ON_TAB_COMPLETE</code>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__COMPLETION</code>
 			<value>&lt;initial diameter&gt;</value>
 		</message>
 		<message>
-			<code>INITIAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
 			<value>Cannot set the initial diameter of border %s, the diameter is missing</value>
 		</message>
 		<message>
-			<code>INITIAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
-			<value>Cannot set the initial diameter of border %, the diameter is negative</value>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
+			<value>Cannot set the initial diameter of border %s, the diameter is negative</value>
 		</message>
 		<message>
-			<code>INITIAL_BORDER_DIAMETER__DIAMETER_DEFINED</code>
+			<code>BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_UPDATED</code>
 			<value>The initial diameter of border %s is %s block(s)</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__EXPLANATION</code>
-			<value>To set the final border diameter</value>
+			<code>BORDER__CENTER_BORDER__EXPLANATION</code>
+			<value>To set the center of a border</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__ON_TAB_COMPLETE</code>
+			<code>BORDER__CENTER_BORDER__X_IS_MISSING</code>
+			<value>Cannot set the center of border %s, the X coordinate is missing</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__X_IS_MISSING</code>
+			<value>Cannot set the center of border %s, the Y coordinate is missing</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__Y_IS_NEGATIVE</code>
+			<value>Cannot set the center of border %s, the Y coordinate should be greater than 0</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__Y_IS_GREATER_THAN_256</code>
+			<value>Cannot set the center of border %s, the Y coordinate should be less than 256</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__Z_IS_MISSING</code>
+			<value>Cannot set the center of border %s, the Z coordinate is missing</value>
+		</message>
+		<message>
+			<code>BORDER__CENTER_BORDER__CENTER_UPDATED</code>
+			<value>The center of border %s is %s</value>
+		</message>
+		<message>
+			<code>BORDER__FINAL_BORDER_DIAMETER__EXPLANATION</code>
+			<value>To set the final diameter of a border</value>
+		</message>
+		<message>
+			<code>BORDER__FINAL_BORDER_DIAMETER__COMPLETION</code>
 			<value>&lt;final diameter&gt;</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
+			<code>BORDER__FINAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
 			<value>Cannot set the final diameter of border %s, the diameter is missing</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
-			<value>Cannot set the final diameter of border %, the diameter is negative</value>
+			<code>BORDER__FINAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
+			<value>Cannot set the final diameter of border %s, the diameter is negative</value>
 		</message>
 		<message>
-			<code>FINAL_BORDER_DIAMETER__DIAMETER_DEFINED</code>
+			<code>BORDER__FINAL_BORDER_DIAMETER__DIAMETER_UPDATED</code>
 			<value>The final diameter of border %s is %s block(s)</value>
 		</message>
 		<message>
-			<code>SPEED_BORDER__EXPLANATION</code>
-			<value>To set the border’s speed</value>
-		</message>
-		<message>
-			<code>SPEED_BORDER__ON_TAB_COMPLETE</code>
-			<value>&lt;block/s&gt;</value>
-		</message>
-		<message>
-			<code>SPEED_BORDER__SPEED_IS_MISSING</code>
-			<value>Cannot set the border's speed, the speed is missing</value>
-		</message>
-		<message>
-			<code>SPEED_BORDER__SPEED_IS_NEGATIVE</code>
-			<value>Cannot set the border's speed, the speed must be strictly positive</value>
-		</message>
-		<message>
-			<code>SPEED_BORDER__SPEED_DEFINED</code>
-			<value>The speed of border %s defined as %.2f bloc/s, time to move the border : %s</value>
-		</message>
-		<message>
-			<code>START_TIME_BORDER__EXPLANATION</code>
+			<code>BORDER__START_TIME_BORDER__EXPLANATION</code>
 			<value>To set the time after which the border moves from its initial diameter to its final diameter</value>
 		</message>
 		<message>
-			<code>START_TIME_BORDER__TIME_IS_MISSING</code>
+			<code>BORDER__START_TIME_BORDER__TIME_IS_MISSING</code>
 			<value>Cannot set the time after which the border moves, the time is missing</value>
 		</message>
 		<message>
-			<code>START_TIME_BORDER__BORDER_MOVES_AT_THE_BEGINNING</code>
-			<value>The border %s will move from the start of the game</value>
+			<code>BORDER__START_TIME_BORDER__BORDER_MOVES_AT_THE_BEGINNING</code>
+			<value>The border %s will move from the beginning of the game</value>
 		</message>
 		<message>
-			<code>START_TIME_BORDER__START_TIME_DEFINED</code>
+			<code>BORDER__START_TIME_BORDER__START_TIME_UPDATED</code>
 			<value>The border %s will move after %s of play</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__EXPLANATION</code>
+			<value>To set the speed of a border</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__COMPLETION</code>
+			<value>&lt;speed block/s&gt;</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__SPEED_IS_MISSING</code>
+			<value>Cannot set the speed of border %s, the speed is missing</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__SPEED_IS_NEGATIVE</code>
+			<value>Cannot set the speed of border %s, the speed must be strictly positive</value>
+		</message>
+		<message>
+			<code>BORDER__SPEED_BORDER__SPEED_UPATED</code>
+			<value>Border %s will move at %.2f bloc/s, time to move the border : %s</value>
 		</message>
 		<message>
 			<code>MOVE_TIME_BORDER__EXPLANATION</code>

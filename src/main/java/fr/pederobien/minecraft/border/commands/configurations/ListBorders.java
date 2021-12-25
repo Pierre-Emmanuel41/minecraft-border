@@ -7,11 +7,11 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import fr.pederobien.minecraft.border.interfaces.IGameBorderConfiguration;
+import fr.pederobien.minecraft.border.interfaces.IBorderList;
 import fr.pederobien.minecraftgameplateform.dictionary.ECommonMessageCode;
 import fr.pederobien.minecraftmanagers.WorldManager;
 
-public class ListBorders<T extends IGameBorderConfiguration> extends AbstractGameBorderConfigurationEdition<T> {
+public class ListBorders<T extends IBorderList> extends AbstractGameBorderConfigurationEdition<T> {
 
 	protected ListBorders() {
 		super(EBordersLabel.LIST, EBordersMessageCode.LIST_BORDERS__EXPLANATION);

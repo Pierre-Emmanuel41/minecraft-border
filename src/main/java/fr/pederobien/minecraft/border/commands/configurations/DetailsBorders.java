@@ -8,10 +8,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import fr.pederobien.minecraft.border.exceptions.BorderConfigurationNotRegisteredException;
-import fr.pederobien.minecraft.border.interfaces.IBorderConfiguration;
-import fr.pederobien.minecraft.border.interfaces.IGameBorderConfiguration;
+import fr.pederobien.minecraft.border.interfaces.IBorder;
+import fr.pederobien.minecraft.border.interfaces.IBorderList;
 
-public class DetailsBorders<T extends IGameBorderConfiguration> extends AbstractGameBorderConfigurationEdition<T> {
+public class DetailsBorders<T extends IBorderList> extends AbstractGameBorderConfigurationEdition<T> {
 
 	protected DetailsBorders() {
 		super(EBordersLabel.DETAILS, EBordersMessageCode.DETAILS__EXPLANATION);
@@ -22,15 +22,15 @@ public class DetailsBorders<T extends IGameBorderConfiguration> extends Abstract
 		String delimiter = "\n----------------------------------------------------\n";
 		StringJoiner joiner = new StringJoiner(delimiter, delimiter, delimiter);
 		if (args.length == 0) {
-			for (IBorderConfiguration configuration : get().getBorders())
+			for (IBorder configuration : get().getBorders())
 				joiner.add(configuration.toString());
 			sendSynchro(sender, EBordersMessageCode.DETAILS_BORDERS__DETAILS_ON_ALL_REGISTERED_BORDERS, get().getName(), joiner);
 			return true;
 		}
-		List<IBorderConfiguration> configurations = null;
+		List<IBorder> configurations = null;
 		try {
 			configurations = getConfigurationsFromGameConfiguration(args);
-			for (IBorderConfiguration configuration : configurations)
+			for (IBorder configuration : configurations)
 				joiner.add(configuration.toString());
 		} catch (BorderConfigurationNotRegisteredException e) {
 			sendSynchro(sender, EBordersMessageCode.DETAILS_BORDERS__BORDER_NOT_REGISTERED, e.getNotRegisteredBorderConfigurationName(), get().getName());

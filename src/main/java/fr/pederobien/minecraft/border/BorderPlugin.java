@@ -2,68 +2,73 @@ package fr.pederobien.minecraft.border;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import fr.pederobien.dictionary.interfaces.IDictionaryParser;
-import fr.pederobien.minecraft.border.interfaces.IBorderConfiguration;
-import fr.pederobien.minecraftgameplateform.interfaces.commands.IParentCommand;
-import fr.pederobien.minecraftgameplateform.utils.Plateform;
+import fr.pederobien.dictionary.impl.JarXmlDictionaryParser;
+import fr.pederobien.minecraft.border.commands.border.BorderCommandTree;
+import fr.pederobien.minecraft.border.persistence.BorderPersistence;
+import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
 
 public class BorderPlugin extends JavaPlugin {
-	private static Plugin plugin;
-	private static IParentCommand<IBorderConfiguration> borderCommand;
+	private static final Path DICTIONARY_FOLDER = Paths.get("resources/dictionaries");
+
+	private static Plugin instance;
+	private static BorderPersistence persistence;
+	private static BorderCommandTree borderTree;
 
 	/**
 	 * @return The plugin associated to this border plugin.
 	 */
-	public static Plugin get() {
-		return plugin;
+	public static Plugin instance() {
+		return instance;
 	}
 
 	/**
-	 * @return The current border configuration for this plugin.
+	 * @return The persistence that serialize and deserialize configurations.
 	 */
-	public static IBorderConfiguration getCurrentBorder() {
-		return borderCommand.getParent().get();
+	public static BorderPersistence getPersistence() {
+		return persistence;
+	}
+
+	/**
+	 * Get the tree to modify the characteristics of a border.
+	 * 
+	 * @return The border tree associated to this plugin.
+	 */
+	public static BorderCommandTree getBorderTree() {
+		return borderTree;
 	}
 
 	@Override
 	public void onEnable() {
-		Plateform.getPluginHelper().register(this);
-		plugin = this;
+		instance = this;
+		persistence = new BorderPersistence();
+		borderTree = new BorderCommandTree(persistence.getPersistence());
 
-		borderCommand = new BorderCommand(this);
 		registerDictionaries();
-	}
-
-	@Override
-	public void onDisable() {
-		super.onDisable();
+		registerTabExecutors();
 	}
 
 	private void registerDictionaries() {
-		String[] dictionaries = new String[] { "Border.xml", "Borders.xml" };
-		// Registering French dictionaries
-		registerDictionary("French", dictionaries);
-
-		// Registering English dictionaries
-		registerDictionary("English", dictionaries);
-	}
-
-	private void registerDictionary(String parent, String... dictionaryNames) {
-		Path jarPath = Plateform.ROOT.getParent().resolve(getName().concat(".jar"));
-		String dictionariesFolder = "resources/dictionaries/".concat(parent).concat("/");
-		for (String name : dictionaryNames)
-			registerDictionary(Plateform.getDefaultDictionaryParser(dictionariesFolder.concat(name)), jarPath);
-	}
-
-	private void registerDictionary(IDictionaryParser parser, Path jarPath) {
 		try {
-			Plateform.getNotificationCenter().getDictionaryContext().register(parser, jarPath);
+			JarXmlDictionaryParser dictionaryParser = new JarXmlDictionaryParser(getFile().toPath());
+
+			MinecraftDictionaryContext context = MinecraftDictionaryContext.instance();
+			String[] dictionaries = new String[] { "English.xml", "French.xml" };
+			for (String dictionary : dictionaries)
+				context.register(dictionaryParser.parse(DICTIONARY_FOLDER.resolve(dictionary)));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void registerTabExecutors() {
+		PluginCommand border = getCommand(borderTree.getRoot().getLabel());
+		border.setTabCompleter(borderTree.getRoot());
+		border.setExecutor(borderTree.getRoot());
 	}
 }

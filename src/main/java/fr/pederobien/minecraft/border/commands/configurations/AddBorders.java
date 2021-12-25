@@ -7,11 +7,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import fr.pederobien.minecraft.border.exceptions.BorderConfigurationAlreadyRegisteredException;
-import fr.pederobien.minecraft.border.interfaces.IBorderConfiguration;
-import fr.pederobien.minecraft.border.interfaces.IGameBorderConfiguration;
+import fr.pederobien.minecraft.border.interfaces.IBorder;
+import fr.pederobien.minecraft.border.interfaces.IBorderList;
 import fr.pederobien.minecraftgameplateform.exceptions.configurations.ConfigurationNotFoundException;
 
-public class AddBorders<T extends IGameBorderConfiguration> extends AbstractGameBorderConfigurationEdition<T> {
+public class AddBorders<T extends IBorderList> extends AbstractGameBorderConfigurationEdition<T> {
 
 	protected AddBorders() {
 		super(EBordersLabel.ADD, EBordersMessageCode.ADD_BORDERS__EXPLANATION);
@@ -19,10 +19,10 @@ public class AddBorders<T extends IGameBorderConfiguration> extends AbstractGame
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		List<IBorderConfiguration> configurations;
+		List<IBorder> configurations;
 		try {
 			configurations = getConfigurations(args);
-			for (IBorderConfiguration configuration : configurations)
+			for (IBorder configuration : configurations)
 				get().add(configuration);
 		} catch (ConfigurationNotFoundException e) {
 			sendSynchro(sender, EBordersMessageCode.ADD_BORDERS__BORDER_DOES_NOT_EXIST, e.getConfigurationName());

@@ -7,10 +7,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import fr.pederobien.minecraft.border.exceptions.BorderConfigurationNotRegisteredException;
-import fr.pederobien.minecraft.border.interfaces.IBorderConfiguration;
-import fr.pederobien.minecraft.border.interfaces.IGameBorderConfiguration;
+import fr.pederobien.minecraft.border.interfaces.IBorder;
+import fr.pederobien.minecraft.border.interfaces.IBorderList;
 
-public class RemoveBorders<T extends IGameBorderConfiguration> extends AbstractGameBorderConfigurationEdition<T> {
+public class RemoveBorders<T extends IBorderList> extends AbstractGameBorderConfigurationEdition<T> {
 
 	protected RemoveBorders() {
 		super(EBordersLabel.REMOVE, EBordersMessageCode.REMOVE_BORDERS__EXPLANATION);
@@ -18,7 +18,7 @@ public class RemoveBorders<T extends IGameBorderConfiguration> extends AbstractG
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		List<IBorderConfiguration> configurations;
+		List<IBorder> configurations;
 		try {
 			configurations = getConfigurationsFromGameConfiguration(args);
 			get().remove(configurations);
