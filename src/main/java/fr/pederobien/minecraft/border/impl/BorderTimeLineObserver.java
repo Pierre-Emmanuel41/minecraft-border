@@ -6,19 +6,25 @@ import java.util.function.Function;
 
 import fr.pederobien.minecraft.border.commands.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
+import fr.pederobien.minecraft.border.interfaces.IBorderConfigurable;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftMessageEvent.MinecraftMessageEventBuilder;
 import fr.pederobien.minecraft.dictionary.impl.PlayerGroup;
+import fr.pederobien.minecraft.game.event.GameStartPostEvent;
+import fr.pederobien.minecraft.game.event.GameStopPostEvent;
 import fr.pederobien.minecraft.game.impl.time.CountDown;
 import fr.pederobien.minecraft.game.interfaces.time.ICountDown;
 import fr.pederobien.minecraft.game.interfaces.time.IObsTimeLine;
+import fr.pederobien.minecraft.game.platform.Platform;
 import fr.pederobien.minecraft.managers.EColor;
 import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
 import fr.pederobien.minecraft.managers.WorldManager;
+import fr.pederobien.utils.event.EventHandler;
 import fr.pederobien.utils.event.EventManager;
 import fr.pederobien.utils.event.IEventListener;
 
 public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICodeSender {
+	private IBorder border;
 	private ICountDown countDown;
 	private LocalTime nextTime;
 
@@ -33,6 +39,9 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 	 * @param onTimeAction The action to perform when the count down is over.
 	 */
 	public BorderTimeLineObserver(IBorder border, int initialValue, Function<LocalTime, LocalTime> onTimeAction) {
+		this.border = border;
+		nextTime = border.getStartTime();
+
 		String worldName = WorldManager.getWorldNameNormalised(border.getWorld());
 
 		// Action to perform during the count down
@@ -76,5 +85,21 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 	@Override
 	public LocalTime getNextTime() {
 		return nextTime;
+	}
+
+	@EventHandler
+	private void onGameStart(GameStartPostEvent event) {
+		if (!(event.getGame() instanceof IBorderConfigurable) || ((IBorderConfigurable) event.getGame()).getBorderList().toList().contains(border))
+			return;
+
+		Platform.get(event.getGame().getPlugin()).getTimeLine().register(nextTime, this);
+	}
+
+	@EventHandler
+	private void onGameStop(GameStopPostEvent event) {
+		if (!(event.getGame() instanceof IBorderConfigurable) || ((IBorderConfigurable) event.getGame()).getBorderList().toList().contains(border))
+			return;
+
+		Platform.get(event.getGame().getPlugin()).getTimeLine().unregister(nextTime, this);
 	}
 }
