@@ -193,7 +193,7 @@
 			<value>Impossible de définir le centre de la bordure %s, la coordonnée X est manquante</value>
 		</message>
 		<message>
-			<code>BORDER__CENTER_BORDER__X_IS_MISSING</code>
+			<code>BORDER__CENTER_BORDER__Y_IS_MISSING</code>
 			<value>Impossible de définir le centre de la bordure %s, la coordonnée Y est manquante</value>
 		</message>
 		<message>

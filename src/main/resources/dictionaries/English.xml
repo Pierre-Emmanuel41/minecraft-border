@@ -196,7 +196,7 @@
 			<value>Cannot set the center of border %s, the X coordinate is missing</value>
 		</message>
 		<message>
-			<code>BORDER__CENTER_BORDER__X_IS_MISSING</code>
+			<code>BORDER__CENTER_BORDER__Y_IS_MISSING</code>
 			<value>Cannot set the center of border %s, the Y coordinate is missing</value>
 		</message>
 		<message>
