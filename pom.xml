@@ -25,13 +25,20 @@
 		</dependency>
 		<dependency>
 			<groupId>fr.pederobien.minecraft</groupId>
-			<artifactId>game-plateform</artifactId>
+			<artifactId>game</artifactId>
+			<version>1.0_MC_1.13.2-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>fr.pederobien.minecraft</groupId>
+			<artifactId>platform</artifactId>
 			<version>1.0_MC_1.13.2-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>minecraft-border_v${project.version}</finalName>
 		<resources>
 			<resource>
 				<targetPath>.</targetPath>
