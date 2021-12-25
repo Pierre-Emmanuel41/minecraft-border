@@ -1,4 +1,4 @@
-package fr.pederobien.minecraft.border.commands.configurations;
+package fr.pederobien.minecraft.border.commands.borders;
 
 import fr.pederobien.minecraft.border.interfaces.IBorderConfigurable;
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;

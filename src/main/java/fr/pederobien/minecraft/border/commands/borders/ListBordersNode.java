@@ -1,4 +1,4 @@
-package fr.pederobien.minecraft.border.commands.configurations;
+package fr.pederobien.minecraft.border.commands.borders;
 
 import java.util.List;
 import java.util.Optional;

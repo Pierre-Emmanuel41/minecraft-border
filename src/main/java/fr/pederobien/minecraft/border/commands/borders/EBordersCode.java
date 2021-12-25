@@ -1,4 +1,4 @@
-package fr.pederobien.minecraft.border.commands.configurations;
+package fr.pederobien.minecraft.border.commands.borders;
 
 import fr.pederobien.minecraft.dictionary.impl.PlayerGroup;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;

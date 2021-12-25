@@ -1,4 +1,4 @@
-package fr.pederobien.minecraft.border.commands.configurations;
+package fr.pederobien.minecraft.border.commands.borders;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
