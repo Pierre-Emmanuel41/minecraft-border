@@ -1,8 +1,6 @@
 package fr.pederobien.minecraft.border;
 
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
@@ -15,9 +13,10 @@ import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
 import fr.pederobien.minecraft.game.platform.impl.PlatformPersistence;
+import fr.pederobien.utils.AsyncConsole;
 
 public class BorderPlugin extends JavaPlugin {
-	private static final Path DICTIONARY_FOLDER = Paths.get("resources/dictionaries");
+	private static final String DICTIONARY_FOLDER = "resources/dictionaries/";
 
 	private static Plugin instance;
 	private static PlatformPersistence<IBorder> persistence;
@@ -64,9 +63,11 @@ public class BorderPlugin extends JavaPlugin {
 			String[] dictionaries = new String[] { "English.xml", "French.xml" };
 			for (String dictionary : dictionaries)
 				try {
-					context.register(dictionaryParser.parse(DICTIONARY_FOLDER.resolve(dictionary)));
+					context.register(dictionaryParser.parse(DICTIONARY_FOLDER.concat(dictionary)));
 				} catch (MessageRegisteredException e) {
-					e.printStackTrace();
+					AsyncConsole.print(e);
+					for (StackTraceElement element : e.getStackTrace())
+						AsyncConsole.print(element);
 				}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
