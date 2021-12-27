@@ -6,7 +6,7 @@ import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 
-import fr.pederobien.minecraft.game.platform.interfaces.INominable;
+import fr.pederobien.minecraft.platform.interfaces.INominable;
 
 public interface IBorder extends INominable {
 

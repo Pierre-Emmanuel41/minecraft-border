@@ -11,7 +11,7 @@ import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.game.impl.DisplayHelper;
 import fr.pederobien.minecraft.game.impl.EGameCode;
-import fr.pederobien.minecraft.game.platform.impl.EPlatformCode;
+import fr.pederobien.minecraft.platform.impl.EPlatformCode;
 
 public class StartTimeBorderNode extends BorderNode {
 

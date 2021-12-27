@@ -15,8 +15,8 @@ import fr.pederobien.minecraft.border.event.BorderStartTimeChangePostEvent;
 import fr.pederobien.minecraft.border.event.BorderWorldChangePostEvent;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
-import fr.pederobien.minecraft.game.platform.impl.PlatformPersistence;
 import fr.pederobien.minecraft.managers.WorldManager;
+import fr.pederobien.minecraft.platform.impl.PlatformPersistence;
 import fr.pederobien.utils.event.EventManager;
 
 public class Border implements IBorder {

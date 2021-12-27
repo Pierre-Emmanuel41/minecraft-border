@@ -4,15 +4,15 @@ import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;
 import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceDeleteNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceDetailsNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceListNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceLoadNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceNewNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceNodeFactory;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceRenameNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceSaveNode;
-import fr.pederobien.minecraft.game.platform.interfaces.IPlatformPersistence;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDeleteNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDetailsNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceListNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceLoadNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNewNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceRenameNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceSaveNode;
+import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 
 public class BorderCommandTree {
 	private IMinecraftCodeNode root;

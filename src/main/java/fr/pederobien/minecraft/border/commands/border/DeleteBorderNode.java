@@ -7,9 +7,9 @@ import org.bukkit.command.CommandSender;
 import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceDeleteNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceDeleteNode.PersistenceDeleteNodeBuilder;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceNodeFactory;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDeleteNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDeleteNode.PersistenceDeleteNodeBuilder;
 
 public class DeleteBorderNode implements ICodeSender {
 	private PersistenceDeleteNode deleteNode;

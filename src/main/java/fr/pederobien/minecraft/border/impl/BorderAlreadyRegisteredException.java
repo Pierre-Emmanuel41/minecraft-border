@@ -2,7 +2,7 @@ package fr.pederobien.minecraft.border.impl;
 
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
-import fr.pederobien.minecraft.game.platform.exceptions.PlatformException;
+import fr.pederobien.minecraft.platform.exceptions.PlatformException;
 
 public class BorderAlreadyRegisteredException extends PlatformException {
 	private static final long serialVersionUID = 1L;

@@ -12,7 +12,7 @@ import fr.pederobien.minecraft.border.commands.border.BorderCommandTree;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
-import fr.pederobien.minecraft.game.platform.impl.PlatformPersistence;
+import fr.pederobien.minecraft.platform.impl.PlatformPersistence;
 import fr.pederobien.utils.AsyncConsole;
 
 public class BorderPlugin extends JavaPlugin {

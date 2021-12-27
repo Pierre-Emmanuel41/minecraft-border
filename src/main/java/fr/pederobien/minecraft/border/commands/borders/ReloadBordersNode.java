@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
-import fr.pederobien.minecraft.game.platform.impl.PlatformPersistence;
+import fr.pederobien.minecraft.platform.impl.PlatformPersistence;
 
 public class ReloadBordersNode extends BordersNode {
 	private PlatformPersistence<IBorder> persistence;

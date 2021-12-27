@@ -11,10 +11,10 @@ import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftMessageEvent.MinecraftMessageEventBuilder;
 import fr.pederobien.minecraft.game.impl.DisplayHelper;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceDetailsNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceNodeFactory;
 import fr.pederobien.minecraft.managers.EColor;
 import fr.pederobien.minecraft.managers.WorldManager;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDetailsNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 
 public class DetailsBorderNode implements ICodeSender {
 	private PersistenceDetailsNode<IBorder> detailsNode;

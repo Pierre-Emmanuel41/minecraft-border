@@ -7,9 +7,9 @@ import org.bukkit.command.CommandSender;
 import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceNewNode;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceNewNode.PersistenceNewNodeBuilder;
-import fr.pederobien.minecraft.game.platform.commands.persistence.PersistenceNodeFactory;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNewNode;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNewNode.PersistenceNewNodeBuilder;
 
 public class NewBorderNode implements ICodeSender {
 	private PersistenceNewNode<IBorder> newNode;

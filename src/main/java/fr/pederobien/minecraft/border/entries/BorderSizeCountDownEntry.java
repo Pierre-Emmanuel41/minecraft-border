@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.game.impl.DisplayHelper;
-import fr.pederobien.minecraft.game.platform.Platform;
+import fr.pederobien.minecraft.platform.Platform;
 
 public class BorderSizeCountDownEntry extends BorderSizeEntry {
 	private boolean isCountDownEquals0;

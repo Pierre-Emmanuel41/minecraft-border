@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import fr.pederobien.minecraft.border.impl.Border;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.persistence.loaders.BorderSerializerV10;
-import fr.pederobien.minecraft.game.platform.impl.PlatformPersistence;
+import fr.pederobien.minecraft.platform.impl.PlatformPersistence;
 import fr.pederobien.persistence.impl.Persistences;
 import fr.pederobien.persistence.impl.xml.XmlPersistence;
 
