@@ -5,5 +5,5 @@ public interface IBorderConfigurable {
 	/**
 	 * @return The list of borders
 	 */
-	IBorderList getBorderList();
+	IBorderList getBorders();
 }

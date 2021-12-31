@@ -1,6 +1,7 @@
 package fr.pederobien.minecraft.border.commands.border;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -17,8 +18,8 @@ public class SpeedBorderNode extends BorderNode {
 	 * 
 	 * @param border The border associated to this node.
 	 */
-	protected SpeedBorderNode(IBorder border) {
-		super(border, "speed", EBorderCode.BORDER__SPEED_BORDER__EXPLANATION, b -> b != null);
+	protected SpeedBorderNode(Supplier<IBorder> border) {
+		super(border, "speed", EBorderCode.BORDER__SPEED_BORDER__EXPLANATION);
 	}
 
 	@Override
@@ -33,13 +34,12 @@ public class SpeedBorderNode extends BorderNode {
 			send(eventBuilder(sender, EBorderCode.BORDER__SPEED_BORDER__SPEED_IS_MISSING, getBorder().getName()));
 			return false;
 		} catch (NumberFormatException e) {
-			send(eventBuilder(sender, EGameCode.BAD_FORMAT, EBorderCode.BORDER__INTEGER__BAD_FORMAT));
+			send(eventBuilder(sender, EGameCode.BAD_FORMAT, getMessage(sender, EBorderCode.BORDER__INTEGER__BAD_FORMAT)));
 			return false;
 		}
 
 		getBorder().setSpeed(speed);
-		String moveTime = DisplayHelper.toString(getBorder().getMoveTime(), false);
-		send(eventBuilder(sender, EBorderCode.BORDER__SPEED_BORDER__SPEED_UPATED, getBorder().getName(), speed, moveTime));
+		sendSuccessful(sender, EBorderCode.BORDER__SPEED_BORDER__SPEED_UPATED, getBorder().getName(), speed, DisplayHelper.toString(getBorder().getMoveTime(), false));
 		return true;
 	}
 

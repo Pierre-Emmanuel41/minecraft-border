@@ -1,6 +1,7 @@
 package fr.pederobien.minecraft.border.commands.border;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -17,8 +18,8 @@ public class WorldBorderNode extends BorderNode {
 	 * 
 	 * @param border The border associated to this node.
 	 */
-	protected WorldBorderNode(IBorder border) {
-		super(border, "world", EBorderCode.BORDER__WORLD_BORDER__EXPLANATION, b -> b != null);
+	protected WorldBorderNode(Supplier<IBorder> border) {
+		super(border, "world", EBorderCode.BORDER__WORLD_BORDER__EXPLANATION);
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class WorldBorderNode extends BorderNode {
 		}
 
 		getBorder().setWorld(world);
-		send(eventBuilder(sender, EBorderCode.BORDER__WORLD_BORDER__WORLD_UPDATED, getBorder().getName(), name));
+		sendSuccessful(sender, EBorderCode.BORDER__WORLD_BORDER__WORLD_UPDATED, getBorder().getName(), name);
 		return true;
 	}
 

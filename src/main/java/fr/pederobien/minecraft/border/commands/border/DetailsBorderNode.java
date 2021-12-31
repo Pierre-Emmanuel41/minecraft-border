@@ -9,9 +9,7 @@ import org.bukkit.command.CommandSender;
 import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
-import fr.pederobien.minecraft.dictionary.impl.MinecraftMessageEvent.MinecraftMessageEventBuilder;
 import fr.pederobien.minecraft.game.impl.DisplayHelper;
-import fr.pederobien.minecraft.managers.EColor;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDetailsNode;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
@@ -29,8 +27,8 @@ public class DetailsBorderNode implements ICodeSender {
 			String initialDiameter = getMessage(sender, EBorderCode.BORDER_INITIAL_DIAMETER, border.getInitialDiameter());
 			String finalDiameter = getMessage(sender, EBorderCode.BORDER_FINAL_DIAMETER, border.getFinalDiameter());
 			String speed = getMessage(sender, EBorderCode.BORDER_SPEED, border.getSpeed());
-			String startTime = getMessage(sender, EBorderCode.BORDER_START_TIME, DisplayHelper.toString(border.getStartTime(), false));
-			String moveTime = getMessage(sender, EBorderCode.BORDER_MOVE_TIME, DisplayHelper.toString(border.getMoveTime(), false));
+			String startTime = getMessage(sender, EBorderCode.BORDER_START_TIME, DisplayHelper.toString(border.getStartTime(), true));
+			String moveTime = getMessage(sender, EBorderCode.BORDER_MOVE_TIME, DisplayHelper.toString(border.getMoveTime(), true));
 			LocalTime end = border.getStartTime().plusSeconds(border.getMoveTime().toSecondOfDay());
 			String endTime = getMessage(sender, EBorderCode.BORDER_END_TIME, DisplayHelper.toString(end, false));
 
@@ -39,8 +37,7 @@ public class DetailsBorderNode implements ICodeSender {
 			joiner.add(name).add(world).add(center).add(initialDiameter).add(finalDiameter).add(speed).add(startTime).add(moveTime).add(endTime);
 
 			// Step3: Sending the result with green prefix and suffix.
-			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.BORDER__DETAILS_BORDER__ON_DETAILS);
-			send(builder.withPrefix(DEFAULT_PREFIX, EColor.GREEN).withSuffix(DEFAULT_SUFFIX, EColor.GREEN).build(joiner));
+			sendSuccessful(sender, EBorderCode.BORDER__DETAILS_BORDER__ON_DETAILS, joiner);
 		};
 
 		// Creating the node that displays the details of the current border.

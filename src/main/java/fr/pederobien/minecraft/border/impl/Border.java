@@ -50,7 +50,7 @@ public class Border implements IBorder {
 
 	@Override
 	public void setName(String name) {
-		if (this.name == name)
+		if (this.name.equals(name))
 			return;
 
 		String oldName = this.name;
@@ -68,7 +68,7 @@ public class Border implements IBorder {
 		if (getWorld().equals(world))
 			return;
 
-		World oldWorld = this.world;
+		World oldWorld = getWorld();
 		this.world = world;
 		EventManager.callEvent(new BorderWorldChangePostEvent(this, oldWorld));
 	}
@@ -83,7 +83,7 @@ public class Border implements IBorder {
 		if (getCenter().equals(center))
 			return;
 
-		Block oldCenter = this.center;
+		Block oldCenter = getCenter();
 		this.center = center;
 		EventManager.callEvent(new BorderCenterChangePostEvent(this, oldCenter));
 	}
@@ -95,10 +95,10 @@ public class Border implements IBorder {
 
 	@Override
 	public void setInitialDiameter(int initialDiameter) {
-		if (getInitialDiameter() == this.initialDiameter)
+		if (getInitialDiameter().equals(initialDiameter))
 			return;
 
-		int oldInitialDiameter = this.initialDiameter;
+		int oldInitialDiameter = getInitialDiameter();
 		this.initialDiameter = initialDiameter;
 		EventManager.callEvent(new BorderInitialDiameterChangePostEvent(this, oldInitialDiameter));
 	}
@@ -110,10 +110,10 @@ public class Border implements IBorder {
 
 	@Override
 	public void setFinalDiameter(int finalDiameter) {
-		if (getFinalDiameter() == finalDiameter)
+		if (getFinalDiameter().equals(finalDiameter))
 			return;
 
-		int oldFinalDiameter = this.finalDiameter;
+		int oldFinalDiameter = getFinalDiameter();
 		this.finalDiameter = finalDiameter;
 		EventManager.callEvent(new BorderFinalDiameterChangePostEvent(this, oldFinalDiameter));
 	}
@@ -128,7 +128,7 @@ public class Border implements IBorder {
 		if (getSpeed() == speed)
 			return;
 
-		double oldSpeed = this.speed;
+		double oldSpeed = getSpeed();
 		LocalTime oldMoveTime = getMoveTime();
 		this.speed = speed;
 		EventManager.callEvent(new BorderSpeedChangePostEvent(this, oldSpeed, oldMoveTime));
@@ -144,7 +144,7 @@ public class Border implements IBorder {
 		if (getStartTime().equals(startTime))
 			return;
 
-		LocalTime oldStartTime = this.startTime;
+		LocalTime oldStartTime = getStartTime();
 		this.startTime = startTime;
 		EventManager.callEvent(new BorderStartTimeChangePostEvent(this, oldStartTime));
 	}

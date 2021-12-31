@@ -88,7 +88,7 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 
 	@EventHandler
 	private void onGameStart(GameStartPostEvent event) {
-		if (!(event.getGame() instanceof IBorderConfigurable) || ((IBorderConfigurable) event.getGame()).getBorderList().toList().contains(border))
+		if (!(event.getGame() instanceof IBorderConfigurable) || ((IBorderConfigurable) event.getGame()).getBorders().toList().contains(border))
 			return;
 
 		Platform.get(event.getGame().getPlugin()).getTimeLine().register(nextTime, this);
@@ -96,7 +96,7 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 
 	@EventHandler
 	private void onGameStop(GameStopPostEvent event) {
-		if (!(event.getGame() instanceof IBorderConfigurable) || ((IBorderConfigurable) event.getGame()).getBorderList().toList().contains(border))
+		if (!(event.getGame() instanceof IBorderConfigurable) || ((IBorderConfigurable) event.getGame()).getBorders().toList().contains(border))
 			return;
 
 		Platform.get(event.getGame().getPlugin()).getTimeLine().unregister(nextTime, this);

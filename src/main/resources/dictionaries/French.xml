@@ -46,7 +46,7 @@
 		</message>
 		<message>
 			<code>BORDER__INTEGER__BAD_FORMAT</code>
-			<value>Un entier</value>
+			<value>un entier</value>
 		</message>
 		<message>
 			<code>BORDER__STRICTLY_POSITIVE_INTEGER__BAD_FORMAT</code>
@@ -86,11 +86,11 @@
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__NAME_IS_MISSING</code>
-			<value>Impossible de renommer la bordure %s, le nom est manquant</value>
+			<value>Impossible de renommer %s, le nom est manquant</value>
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__NAME_ALREADY_USED</code>
-			<value>Impossible de renommer la bordure %s en %s, la bordure %s existe déjà</value>
+			<value>Impossible de renommer %s en %s, la bordure %s existe déjà</value>
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__BORDER_RENAMED</code>
@@ -102,7 +102,7 @@
 		</message>
 		<message>
 			<code>BORDER__DELETE_BORDER__NAME_IS_MISSING</code>
-			<value>Impossible de supprimer le fichier une bordure, le nom est manquant</value>
+			<value>Impossible de supprimer le fichier d'une bordure, le nom est manquant</value>
 		</message>
 		<message>
 			<code>BORDER__DELETE_BORDER__BORDER_DELETED</code>
@@ -142,7 +142,7 @@
 		</message>
 		<message>
 			<code>BORDER__SAVE_BORDER__FAIL_TO_SAVE</code>
-			<value>La sauvegarde de la bordure %s a échouée</value>
+			<value>La sauvegarde de %s a échouée</value>
 		</message>
 		<message>
 			<code>BORDER__SAVE_BORDER__BORDER_SAVED</code>
@@ -174,15 +174,15 @@
 		</message>
 		<message>
 			<code>BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
-			<value>Impossible de définir le diamètre initial de la bordure %s, il manque le diamètre</value>
+			<value>Impossible de définir le diamètre initial de %s, il manque le diamètre</value>
 		</message>
 		<message>
 			<code>BORDER__INITIAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
-			<value>Impossible de définir le diamètre initial de la bordure %s, le diamètre est négatif</value>
+			<value>Impossible de définir le diamètre initial de %s, le diamètre est négatif</value>
 		</message>
 		<message>
 			<code>BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_UPDATED</code>
-			<value>Le diamètre initial de la bordure %s est %s bloc(s)</value>
+			<value>Le diamètre initial de %s est %s bloc(s)</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__EXPLANATION</code>
@@ -190,27 +190,27 @@
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__X_IS_MISSING</code>
-			<value>Impossible de définir le centre de la bordure %s, la coordonnée X est manquante</value>
+			<value>Impossible de définir le centre de %s, la coordonnée X est manquante</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__Y_IS_MISSING</code>
-			<value>Impossible de définir le centre de la bordure %s, la coordonnée Y est manquante</value>
+			<value>Impossible de définir le centre de %s, la coordonnée Y est manquante</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__Y_IS_NEGATIVE</code>
-			<value>Impossible de définir le centre de la bordure %s, la coordonnée Y doit être supérieure à 0</value>
+			<value>Impossible de définir le centre de %s, la coordonnée Y doit être supérieure à 0</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__Y_IS_GREATER_THAN_256</code>
-			<value>Impossible de définir le centre de la bordure %s, la coordonnée Y doit être inférieure à 256</value>
+			<value>Impossible de définir le centre de %s, la coordonnée Y doit être inférieure à 256</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__Z_IS_MISSING</code>
-			<value>Impossible de définir le centre de la bordure %s, la coordonnée Z est manquante</value>
+			<value>Impossible de définir le centre de %s, la coordonnée Z est manquante</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__CENTER_UPDATED</code>
-			<value>Le centre de la bordure %s est %s </value>
+			<value>Le centre de %s est %s </value>
 		</message>
 		<message>
 			<code>BORDER__FINAL_BORDER_DIAMETER__EXPLANATION</code>
@@ -222,15 +222,15 @@
 		</message>
 		<message>
 			<code>BORDER__FINAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
-			<value>Impossible de définir le diamètre final de la bordure %s, il manque le diamètre</value>
+			<value>Impossible de définir le diamètre final de %s, il manque le diamètre</value>
 		</message>
 		<message>
 			<code>BORDER__FINAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
-			<value>Impossible de définir le diamètre final de la bordure %s, le diamètre est négatif</value>
+			<value>Impossible de définir le diamètre final de %s, le diamètre est négatif</value>
 		</message>
 		<message>
 			<code>BORDER__FINAL_BORDER_DIAMETER__DIAMETER_UPDATED</code>
-			<value>Le diamètre final de la bordure %s est %s bloc(s)</value>
+			<value>Le diamètre final de %s est %s bloc(s)</value>
 		</message>
 		<message>
 			<code>BORDER__START_TIME_BORDER__EXPLANATION</code>
@@ -258,11 +258,11 @@
 		</message>
 		<message>
 			<code>BORDER__SPEED_BORDER__SPEED_IS_MISSING</code>
-			<value>Impossible de définir la vitesse de la bordure %s, il manque la vitesse</value>
+			<value>Impossible de définir la vitesse de %s, il manque la vitesse</value>
 		</message>
 		<message>
 			<code>BORDER__SPEED_BORDER__SPEED_IS_NEGATIVE</code>
-			<value>Impossible de définir la vitesse de la bordure %s, la vitesse doit être strictement positive</value>
+			<value>Impossible de définir la vitesse de %s, la vitesse doit être strictement positive</value>
 		</message>
 		<message>
 			<code>BORDER__SPEED_BORDER__SPEED_DEFINED</code>
@@ -282,7 +282,7 @@
 		</message>
 		<message>
 			<code>BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED</code>
-			<value>La bordure %s se déplacera à son diamètre final en %s à la vitesse de %s bloc/s</value>
+			<value>La bordure %s se déplacera à son diamètre final en %s à la vitesse de %.2f bloc/s</value>
 		</message>
 		<message>
 			<code>BORDER__MOVING_BORDER</code>

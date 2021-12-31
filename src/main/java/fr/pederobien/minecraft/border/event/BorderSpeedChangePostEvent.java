@@ -41,8 +41,8 @@ public class BorderSpeedChangePostEvent extends BorderEvent {
 	public String toString() {
 		StringJoiner joiner = new StringJoiner(", ", "{", "}");
 		joiner.add("border=" + getBorder().getName());
-		joiner.add(String.format("oldSpeed= %2.f block/s (oldMoveTime = %s)", getOldSpeed(), DisplayHelper.toString(getOldMoveTime(), true)));
-		joiner.add(String.format("newSpeed= %2.f block/s (newMoveTime = %s)", getBorder().getSpeed(), DisplayHelper.toString(getBorder().getMoveTime(), true)));
+		joiner.add(String.format("oldSpeed= %.2f block/s (oldMoveTime = %s)", getOldSpeed(), DisplayHelper.toString(getOldMoveTime(), true)));
+		joiner.add(String.format("newSpeed= %.2f block/s (newMoveTime = %s)", getBorder().getSpeed(), DisplayHelper.toString(getBorder().getMoveTime(), true)));
 		return String.format("%s_%s", getName(), joiner);
 	}
 }

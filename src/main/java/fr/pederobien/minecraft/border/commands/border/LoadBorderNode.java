@@ -9,8 +9,8 @@ import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceLoadNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceLoadNode.PersistenceLoadNodeBuilder;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 
 public class LoadBorderNode implements ICodeSender {
 	private PersistenceLoadNode loadNode;
@@ -24,7 +24,7 @@ public class LoadBorderNode implements ICodeSender {
 
 		// Action to perform when a border is loaded.
 		BiConsumer<CommandSender, IBorder> onLoaded = (sender, border) -> {
-			send(eventBuilder(sender, EBorderCode.BORDER__LOAD_BORDER__BORDER_LOADED, border.getName()));
+			sendSuccessful(sender, EBorderCode.BORDER__LOAD_BORDER__BORDER_LOADED, border.getName());
 		};
 		builder.onLoaded(onLoaded);
 

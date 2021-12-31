@@ -1,6 +1,7 @@
 package fr.pederobien.minecraft.border.commands.border;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -18,8 +19,8 @@ public class CenterBorderNode extends BorderNode {
 	 * 
 	 * @param border The border associated to this node.
 	 */
-	protected CenterBorderNode(IBorder border) {
-		super(border, "center", EBorderCode.BORDER__CENTER_BORDER__EXPLANATION, b -> b != null);
+	protected CenterBorderNode(Supplier<IBorder> border) {
+		super(border, "center", EBorderCode.BORDER__CENTER_BORDER__EXPLANATION);
 	}
 
 	@Override
@@ -31,26 +32,26 @@ public class CenterBorderNode extends BorderNode {
 			send(eventBuilder(sender, EBorderCode.BORDER__CENTER_BORDER__X_IS_MISSING, getBorder().getName()));
 			return false;
 		} catch (NumberFormatException e) {
-			send(eventBuilder(sender, EGameCode.BAD_FORMAT, EBorderCode.BORDER__INTEGER__BAD_FORMAT));
+			send(eventBuilder(sender, EGameCode.BAD_FORMAT, getMessage(sender, EBorderCode.BORDER__INTEGER__BAD_FORMAT)));
 			return false;
 		}
 
 		int yCoord;
 		try {
 			yCoord = Integer.parseInt(args[1]);
-			if (yCoord <= 0) {
-				send(eventBuilder(sender, EBorderCode.BORDER__CENTER_BORDER__Y_IS_NEGATIVE).build());
+			if (yCoord < 0) {
+				send(eventBuilder(sender, EBorderCode.BORDER__CENTER_BORDER__Y_IS_NEGATIVE, getBorder().getName()));
 				return false;
 			}
 			if (yCoord > 256) {
-				send(eventBuilder(sender, EBorderCode.BORDER__CENTER_BORDER__Y_IS_GREATER_THAN_256).build());
+				send(eventBuilder(sender, EBorderCode.BORDER__CENTER_BORDER__Y_IS_GREATER_THAN_256, getBorder().getName()));
 				return false;
 			}
 		} catch (IndexOutOfBoundsException e) {
 			send(eventBuilder(sender, EBorderCode.BORDER__CENTER_BORDER__Y_IS_MISSING, getBorder().getName()));
 			return false;
 		} catch (NumberFormatException e) {
-			send(eventBuilder(sender, EGameCode.BAD_FORMAT, EBorderCode.BORDER__INTEGER__BAD_FORMAT));
+			send(eventBuilder(sender, EGameCode.BAD_FORMAT, getMessage(sender, EBorderCode.BORDER__INTEGER__BAD_FORMAT)));
 			return false;
 		}
 
@@ -61,12 +62,12 @@ public class CenterBorderNode extends BorderNode {
 			send(eventBuilder(sender, EBorderCode.BORDER__CENTER_BORDER__Z_IS_MISSING, getBorder().getName()));
 			return false;
 		} catch (NumberFormatException e) {
-			send(eventBuilder(sender, EGameCode.BAD_FORMAT, EBorderCode.BORDER__INTEGER__BAD_FORMAT));
+			send(eventBuilder(sender, EGameCode.BAD_FORMAT, getMessage(sender, EBorderCode.BORDER__INTEGER__BAD_FORMAT)));
 			return false;
 		}
 
 		getBorder().setCenter(WorldManager.getBlockAt(getBorder().getWorld(), xCoord, yCoord, zCoord));
-		send(eventBuilder(sender, EBorderCode.BORDER__CENTER_BORDER__CENTER_UPDATED, getBorder().getName(), DisplayHelper.toString(getBorder().getCenter())));
+		sendSuccessful(sender, EBorderCode.BORDER__CENTER_BORDER__CENTER_UPDATED, getBorder().getName(), DisplayHelper.toString(getBorder().getCenter()));
 		return true;
 	}
 
@@ -76,9 +77,9 @@ public class CenterBorderNode extends BorderNode {
 		case 1:
 			return check(args[0], e -> isNotStrictInt(e), asList("<X> <Y> <Z>"));
 		case 2:
-			return check(args[1], e -> isNotStrictInt(e), check(args[1], e -> isStrictInt(e), asList("<Y> <Z>")));
+			return check(args[1], e -> isNotStrictInt(e), check(args[0], e -> isStrictInt(e), asList("<Y> <Z>")));
 		case 3:
-			return check(args[2], e -> isNotStrictInt(e), check(args[2], e -> isStrictInt(e), asList("<Z>")));
+			return check(args[2], e -> isNotStrictInt(e), check(args[1], e -> isStrictInt(e), asList("<Z>")));
 		default:
 			return emptyList();
 		}

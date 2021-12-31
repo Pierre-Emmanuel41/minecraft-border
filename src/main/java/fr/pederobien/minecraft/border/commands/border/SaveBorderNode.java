@@ -23,7 +23,7 @@ public class SaveBorderNode implements ICodeSender {
 
 		// Action when the border is serialized
 		BiConsumer<CommandSender, IBorder> onSerialized = (sender, border) -> {
-			send(eventBuilder(sender, EBorderCode.BORDER__SAVE_BORDER__BORDER_SAVED, border.getName()));
+			sendSuccessful(sender, EBorderCode.BORDER__SAVE_BORDER__BORDER_SAVED, border.getName());
 		};
 		builder.onSerialized(onSerialized);
 

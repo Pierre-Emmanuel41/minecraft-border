@@ -11,23 +11,19 @@ import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceListNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceListNode.PersistenceListNodeBuilder;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 
 public class ListBorderNode implements ICodeSender {
 	private PersistenceListNode listNode;
 
 	protected ListBorderNode(PersistenceNodeFactory<IBorder> factory) {
 		// Action When there is no border file on the server
-		Consumer<CommandSender> onNoElement = sender -> {
-			send(eventBuilder(sender, EBorderCode.BORDER__LIST_BORDER__NO_ELEMENT).build());
-		};
+		Consumer<CommandSender> onNoElement = sender -> sendSuccessful(sender, EBorderCode.BORDER__LIST_BORDER__NO_ELEMENT);
 		PersistenceListNodeBuilder builder = factory.listNode(onNoElement);
 
 		// Action when there is one border file on the server
-		BiConsumer<CommandSender, String> onOneElement = (sender, border) -> {
-			send(eventBuilder(sender, EBorderCode.BORDER__LIST_BORDER__ONE_ELEMENT, border));
-		};
+		BiConsumer<CommandSender, String> onOneElement = (sender, border) -> sendSuccessful(sender, EBorderCode.BORDER__LIST_BORDER__ONE_ELEMENT, border);
 		builder.onOneElement(onOneElement);
 
 		// Action when there are several border files on the server
@@ -36,7 +32,7 @@ public class ListBorderNode implements ICodeSender {
 			for (String border : borders)
 				joiner.add(border);
 
-			send(eventBuilder(sender, EBorderCode.BORDER__LIST_BORDER__SEVERAL_ELEMENTS, joiner));
+			sendSuccessful(sender, EBorderCode.BORDER__LIST_BORDER__SEVERAL_ELEMENTS, joiner);
 		};
 		builder.onSeveralElements(onSeveralElements);
 

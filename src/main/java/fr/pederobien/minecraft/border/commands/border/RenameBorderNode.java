@@ -30,7 +30,7 @@ public class RenameBorderNode implements ICodeSender {
 
 		// Action when the border has been renamed.
 		Consumer3<CommandSender, String, String> onRenamed = (sender, oldName, newName) -> {
-			send(eventBuilder(sender, EBorderCode.BORDER__RENAME_BORDER__BORDER_RENAMED, oldName, newName));
+			sendSuccessful(sender, EBorderCode.BORDER__RENAME_BORDER__BORDER_RENAMED, oldName, newName);
 		};
 		builder.onRenamed(onRenamed);
 

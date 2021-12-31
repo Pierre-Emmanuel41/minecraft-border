@@ -8,8 +8,8 @@ import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNewNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNewNode.PersistenceNewNodeBuilder;
+import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 
 public class NewBorderNode implements ICodeSender {
 	private PersistenceNewNode<IBorder> newNode;
@@ -22,10 +22,12 @@ public class NewBorderNode implements ICodeSender {
 		PersistenceNewNodeBuilder<IBorder> builder = factory.newNodeBuilder(onNameIsMissing);
 
 		// Action when the name is already used.
-		builder.onNameAlreadyTaken((sender, oldName, newName) -> send(eventBuilder(sender, EBorderCode.BORDER__NEW_BORDER__NAME_ALREADY_USED, oldName, newName)));
+		builder.onNameAlreadyTaken((sender, name) -> send(eventBuilder(sender, EBorderCode.BORDER__NEW_BORDER__NAME_ALREADY_USED, name)));
 
 		// Action when the border is created.
-		builder.onCreated((sender, border) -> send(eventBuilder(sender, EBorderCode.BORDER__NEW_BORDER__BORDER_CREATED, border.getName())));
+		builder.onCreated((sender, border) -> {
+			sendSuccessful(sender, EBorderCode.BORDER__NEW_BORDER__BORDER_CREATED, border.getName());
+		});
 
 		// Creating the node that creates borders.
 		newNode = builder.build(EBorderCode.BORDER__NEW_BORDER__EXPLANATION);

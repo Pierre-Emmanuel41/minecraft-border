@@ -3,6 +3,7 @@ package fr.pederobien.minecraft.border.commands.border;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.game.impl.DisplayHelper;
+import fr.pederobien.minecraft.game.impl.EGameCode;
 import fr.pederobien.minecraft.platform.impl.EPlatformCode;
 
 public class MoveTimeBorderNode extends BorderNode {
@@ -19,8 +21,8 @@ public class MoveTimeBorderNode extends BorderNode {
 	 * 
 	 * @param border The border associated to this node.
 	 */
-	protected MoveTimeBorderNode(IBorder border) {
-		super(border, "moveTime", EBorderCode.BORDER__MOVE_TIME_BORDER__EXPLANATION, b -> b != null);
+	protected MoveTimeBorderNode(Supplier<IBorder> border) {
+		super(border, "moveTime", EBorderCode.BORDER__MOVE_TIME_BORDER__EXPLANATION);
 	}
 
 	@Override
@@ -29,17 +31,19 @@ public class MoveTimeBorderNode extends BorderNode {
 		try {
 			moveTime = LocalTime.parse(args[0]);
 		} catch (IndexOutOfBoundsException e) {
+			send(eventBuilder(sender, EBorderCode.BORDER__MOVE_TIME_BORDER__TIME_IS_MISSING, getBorder().getName()));
 			return false;
 		} catch (DateTimeParseException e) {
+			send(eventBuilder(sender, EGameCode.BAD_FORMAT, getMessage(sender, EPlatformCode.TIME_FORMAT__COMPLETION)));
 			return false;
 		}
 
 		getBorder().setMoveTime(moveTime);
 		if (moveTime.equals(LocalTime.MIN))
-			send(eventBuilder(sender, EBorderCode.BORDER__MOVE_TIME_BORDER__INSTANTLY_MOVE, getBorder().getName()));
+			sendSuccessful(sender, EBorderCode.BORDER__MOVE_TIME_BORDER__INSTANTLY_MOVE, getBorder().getName());
 		else {
 			String moveTimeFormat = DisplayHelper.toString(getBorder().getMoveTime(), false);
-			send(eventBuilder(sender, EBorderCode.BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED, getBorder(), moveTimeFormat, getBorder().getSpeed()));
+			sendSuccessful(sender, EBorderCode.BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED, getBorder(), moveTimeFormat, getBorder().getSpeed());
 		}
 		return true;
 	}

@@ -43,13 +43,13 @@ public class BorderCommandTree {
 		root.add(loadNode = new LoadBorderNode(factory).getNode());
 		root.add(listNode = new ListBorderNode(factory).getNode());
 		root.add(saveNode = new SaveBorderNode(factory).getNode());
-		root.add(worldNode = new WorldBorderNode(getBorder()));
-		root.add(initialDiameterNode = new InitialDiameterBorderNode(getBorder()));
-		root.add(centerNode = new CenterBorderNode(getBorder()));
-		root.add(finalDiameterNode = new FinalDiameterBorderNode(getBorder()));
-		root.add(startTimeNode = new StartTimeBorderNode(getBorder()));
-		root.add(speedNode = new SpeedBorderNode(getBorder()));
-		root.add(moveTimeNode = new MoveTimeBorderNode(getBorder()));
+		root.add(worldNode = new WorldBorderNode(() -> getBorder()));
+		root.add(initialDiameterNode = new InitialDiameterBorderNode(() -> getBorder()));
+		root.add(centerNode = new CenterBorderNode(() -> getBorder()));
+		root.add(finalDiameterNode = new FinalDiameterBorderNode(() -> getBorder()));
+		root.add(startTimeNode = new StartTimeBorderNode(() -> getBorder()));
+		root.add(speedNode = new SpeedBorderNode(() -> getBorder()));
+		root.add(moveTimeNode = new MoveTimeBorderNode(() -> getBorder()));
 	}
 
 	/**

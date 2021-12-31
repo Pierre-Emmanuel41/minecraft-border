@@ -81,7 +81,7 @@
 		</message>
 		<message>
 			<code>BORDER__DETAILS_BORDER__ON_DETAILS</code>
-			<value>Current border's characteristics:%n%s</value>
+			<value>Border's characteristics:%n%s</value>
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__EXPLANATION</code>
@@ -89,11 +89,11 @@
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__NAME_IS_MISSING</code>
-			<value>Cannot rename border %s, the name is missing</value>
+			<value>Cannot rename %s, the name is missing</value>
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__NAME_ALREADY_USED</code>
-			<value>Cannot rename border %s as %s, the %s border already exists</value>
+			<value>Cannot rename %s as %s, the %s border already exists</value>
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__BORDER_RENAMED</code>
@@ -145,7 +145,7 @@
 		</message>
 		<message>
 			<code>BORDER__SAVE_BORDER__FAIL_TO_SAVE</code>
-			<value>The save of border %s has failed</value>
+			<value>The save of %s has failed</value>
 		</message>
 		<message>
 			<code>BORDER__SAVE_BORDER__BORDER_SAVED</code>
@@ -177,15 +177,15 @@
 		</message>
 		<message>
 			<code>BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
-			<value>Cannot set the initial diameter of border %s, the diameter is missing</value>
+			<value>Cannot set the initial diameter of %s, the diameter is missing</value>
 		</message>
 		<message>
 			<code>BORDER__INITIAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
-			<value>Cannot set the initial diameter of border %s, the diameter is negative</value>
+			<value>Cannot set the initial diameter of %s, the diameter is negative</value>
 		</message>
 		<message>
 			<code>BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_UPDATED</code>
-			<value>The initial diameter of border %s is %s block(s)</value>
+			<value>The initial diameter of %s is %s block(s)</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__EXPLANATION</code>
@@ -193,27 +193,27 @@
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__X_IS_MISSING</code>
-			<value>Cannot set the center of border %s, the X coordinate is missing</value>
+			<value>Cannot set the center of %s, the X coordinate is missing</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__Y_IS_MISSING</code>
-			<value>Cannot set the center of border %s, the Y coordinate is missing</value>
+			<value>Cannot set the center of %s, the Y coordinate is missing</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__Y_IS_NEGATIVE</code>
-			<value>Cannot set the center of border %s, the Y coordinate should be greater than 0</value>
+			<value>Cannot set the center of %s, the Y coordinate should be greater than 0</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__Y_IS_GREATER_THAN_256</code>
-			<value>Cannot set the center of border %s, the Y coordinate should be less than 256</value>
+			<value>Cannot set the center of %s, the Y coordinate should be less than 256</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__Z_IS_MISSING</code>
-			<value>Cannot set the center of border %s, the Z coordinate is missing</value>
+			<value>Cannot set the center of %s, the Z coordinate is missing</value>
 		</message>
 		<message>
 			<code>BORDER__CENTER_BORDER__CENTER_UPDATED</code>
-			<value>The center of border %s is %s</value>
+			<value>The center of %s is %s</value>
 		</message>
 		<message>
 			<code>BORDER__FINAL_BORDER_DIAMETER__EXPLANATION</code>
@@ -225,15 +225,15 @@
 		</message>
 		<message>
 			<code>BORDER__FINAL_BORDER_DIAMETER__DIAMETER_IS_MISSING</code>
-			<value>Cannot set the final diameter of border %s, the diameter is missing</value>
+			<value>Cannot set the final diameter of %s, the diameter is missing</value>
 		</message>
 		<message>
 			<code>BORDER__FINAL_BORDER_DIAMETER__NEGATIVE_DIAMETER</code>
-			<value>Cannot set the final diameter of border %s, the diameter is negative</value>
+			<value>Cannot set the final diameter of %s, the diameter is negative</value>
 		</message>
 		<message>
 			<code>BORDER__FINAL_BORDER_DIAMETER__DIAMETER_UPDATED</code>
-			<value>The final diameter of border %s is %s block(s)</value>
+			<value>The final diameter of %s is %s block(s)</value>
 		</message>
 		<message>
 			<code>BORDER__START_TIME_BORDER__EXPLANATION</code>
@@ -261,15 +261,15 @@
 		</message>
 		<message>
 			<code>BORDER__SPEED_BORDER__SPEED_IS_MISSING</code>
-			<value>Cannot set the speed of border %s, the speed is missing</value>
+			<value>Cannot set the speed of %s, the speed is missing</value>
 		</message>
 		<message>
 			<code>BORDER__SPEED_BORDER__SPEED_IS_NEGATIVE</code>
-			<value>Cannot set the speed of border %s, the speed must be strictly positive</value>
+			<value>Cannot set the speed of %s, the speed must be strictly positive</value>
 		</message>
 		<message>
 			<code>BORDER__SPEED_BORDER__SPEED_UPATED</code>
-			<value>Border %s will move at %.2f bloc/s, time to move the border : %s</value>
+			<value>The border %s will move at %.2f bloc/s, time to move : %s</value>
 		</message>
 		<message>
 			<code>BORDER__MOVE_TIME_BORDER__EXPLANATION</code>
@@ -285,7 +285,7 @@
 		</message>
 		<message>
 			<code>BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED</code>
-			<value>The border %s will move to its final diameter in %s at speed %s block/s</value>
+			<value>The border %s will move to its final diameter in %s at speed %.2f block/s</value>
 		</message>
 		<message>
 			<code>BORDER__MOVING_BORDER</code>

@@ -1,6 +1,7 @@
 package fr.pederobien.minecraft.border.commands.border;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,8 +17,8 @@ public class FinalDiameterBorderNode extends BorderNode {
 	 * 
 	 * @param border The border associated to this node.
 	 */
-	protected FinalDiameterBorderNode(IBorder border) {
-		super(border, "finalDiameter", EBorderCode.BORDER__FINAL_BORDER_DIAMETER__EXPLANATION, b -> b != null);
+	protected FinalDiameterBorderNode(Supplier<IBorder> border) {
+		super(border, "finalDiameter", EBorderCode.BORDER__FINAL_BORDER_DIAMETER__EXPLANATION);
 	}
 
 	@Override
@@ -32,12 +33,12 @@ public class FinalDiameterBorderNode extends BorderNode {
 			send(eventBuilder(sender, EBorderCode.BORDER__FINAL_BORDER_DIAMETER__DIAMETER_IS_MISSING, getBorder().getName()));
 			return false;
 		} catch (NumberFormatException e) {
-			send(eventBuilder(sender, EGameCode.BAD_FORMAT, EBorderCode.BORDER__STRICTLY_POSITIVE_INTEGER__BAD_FORMAT));
+			send(eventBuilder(sender, EGameCode.BAD_FORMAT, getMessage(sender, EBorderCode.BORDER__STRICTLY_POSITIVE_INTEGER__BAD_FORMAT)));
 			return false;
 		}
 
 		getBorder().setFinalDiameter(diameter);
-		send(eventBuilder(sender, EBorderCode.BORDER__FINAL_BORDER_DIAMETER__DIAMETER_UPDATED, getBorder().getName(), getBorder().getFinalDiameter()));
+		sendSuccessful(sender, EBorderCode.BORDER__FINAL_BORDER_DIAMETER__DIAMETER_UPDATED, getBorder().getName(), getBorder().getFinalDiameter());
 		return true;
 	}
 

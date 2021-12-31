@@ -16,12 +16,12 @@ public class BordersCommandTree {
 	public BordersCommandTree(IBorderConfigurable borderConfigurable) {
 		this.borderConfigurable = borderConfigurable;
 
-		root = new MinecraftCodeRootNode("borders", EBordersCode.BORDERS__EXPLANATION, () -> borderConfigurable.getBorderList() != null);
-		root.add(addNode = new AddBordersNode(borderConfigurable.getBorderList()));
-		root.add(removeNode = new RemoveBordersNode(borderConfigurable.getBorderList()));
-		root.add(listNode = new ListBordersNode(borderConfigurable.getBorderList()));
-		root.add(reloadNode = new ReloadBordersNode(borderConfigurable.getBorderList()));
-		root.add(detailsNode = new DetailsBordersNode(borderConfigurable.getBorderList()));
+		root = new MinecraftCodeRootNode("borders", EBordersCode.BORDERS__EXPLANATION, () -> borderConfigurable.getBorders() != null);
+		root.add(addNode = new AddBordersNode(borderConfigurable.getBorders()));
+		root.add(removeNode = new RemoveBordersNode(borderConfigurable.getBorders()));
+		root.add(listNode = new ListBordersNode(borderConfigurable.getBorders()));
+		root.add(reloadNode = new ReloadBordersNode(borderConfigurable.getBorders()));
+		root.add(detailsNode = new DetailsBordersNode(borderConfigurable.getBorders()));
 	}
 
 	/**
