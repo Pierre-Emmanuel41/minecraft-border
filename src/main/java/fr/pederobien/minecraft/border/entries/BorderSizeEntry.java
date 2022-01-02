@@ -23,7 +23,7 @@ public class BorderSizeEntry extends BorderEntry {
 	 */
 	public BorderSizeEntry(int score, IBorder border, String pattern) {
 		super(score, border);
-		this.world = border.getWorld();
+		this.world = border.getWorld().get();
 		this.format = new DecimalFormat(pattern);
 	}
 

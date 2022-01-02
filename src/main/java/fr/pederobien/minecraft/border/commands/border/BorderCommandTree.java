@@ -4,26 +4,19 @@ import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;
 import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDeleteNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDetailsNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceListNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceLoadNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNewNode;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceRenameNode;
-import fr.pederobien.minecraft.platform.commands.persistence.PersistenceSaveNode;
 import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 
 public class BorderCommandTree {
 	private IMinecraftCodeNode root;
 	private PersistenceNodeFactory<IBorder> factory;
-	private PersistenceNewNode<IBorder> newNode;
-	private PersistenceDetailsNode<IBorder> detailsNode;
-	private PersistenceRenameNode renameNode;
-	private PersistenceDeleteNode deleteNode;
-	private PersistenceLoadNode loadNode;
-	private PersistenceListNode listNode;
-	private PersistenceSaveNode saveNode;
+	private NewBorderNode newNode;
+	private DetailsBorderNode detailsNode;
+	private RenameBorderNode renameNode;
+	private DeleteBorderNode deleteNode;
+	private LoadBorderNode loadNode;
+	private ListBorderNode listNode;
+	private SaveBorderNode saveNode;
 	private WorldBorderNode worldNode;
 	private InitialDiameterBorderNode initialDiameterNode;
 	private CenterBorderNode centerNode;
@@ -36,13 +29,13 @@ public class BorderCommandTree {
 		root = new MinecraftCodeRootNode("border", EBorderCode.BORDER__EXPLANATION, () -> true);
 
 		factory = new PersistenceNodeFactory<IBorder>(persistence);
-		root.add(newNode = new NewBorderNode(factory).getNode());
-		root.add(detailsNode = new DetailsBorderNode(factory).getNode());
-		root.add(renameNode = new RenameBorderNode(factory).getNode());
-		root.add(deleteNode = new DeleteBorderNode(factory).getNode());
-		root.add(loadNode = new LoadBorderNode(factory).getNode());
-		root.add(listNode = new ListBorderNode(factory).getNode());
-		root.add(saveNode = new SaveBorderNode(factory).getNode());
+		root.add((newNode = new NewBorderNode(factory)).getNode());
+		root.add((detailsNode = new DetailsBorderNode(factory)).getNode());
+		root.add((renameNode = new RenameBorderNode(factory)).getNode());
+		root.add((deleteNode = new DeleteBorderNode(factory)).getNode());
+		root.add((loadNode = new LoadBorderNode(factory)).getNode());
+		root.add((listNode = new ListBorderNode(factory)).getNode());
+		root.add((saveNode = new SaveBorderNode(factory)).getNode());
 		root.add(worldNode = new WorldBorderNode(() -> getBorder()));
 		root.add(initialDiameterNode = new InitialDiameterBorderNode(() -> getBorder()));
 		root.add(centerNode = new CenterBorderNode(() -> getBorder()));
@@ -78,49 +71,49 @@ public class BorderCommandTree {
 	/**
 	 * @return The node that creates a new border to configure.
 	 */
-	public PersistenceNewNode<IBorder> getNewNode() {
+	public NewBorderNode getNewNode() {
 		return newNode;
 	}
 
 	/**
 	 * @return The node that displays the details of the current border.
 	 */
-	public PersistenceDetailsNode<IBorder> getDetailsNode() {
+	public DetailsBorderNode getDetailsNode() {
 		return detailsNode;
 	}
 
 	/**
 	 * @return The node that renames border.
 	 */
-	public PersistenceRenameNode getRenameNode() {
+	public RenameBorderNode getRenameNode() {
 		return renameNode;
 	}
 
 	/**
 	 * @return The node that deletes border files.
 	 */
-	public PersistenceDeleteNode getDeleteNode() {
+	public DeleteBorderNode getDeleteNode() {
 		return deleteNode;
 	}
 
 	/**
 	 * @return The node that loads borders.
 	 */
-	public PersistenceLoadNode getLoadNode() {
+	public LoadBorderNode getLoadNode() {
 		return loadNode;
 	}
 
 	/**
 	 * @return The node that displays the list of border files.
 	 */
-	public PersistenceListNode getListNode() {
+	public ListBorderNode getListNode() {
 		return listNode;
 	}
 
 	/**
 	 * @return The node that saves borders.
 	 */
-	public PersistenceSaveNode getSaveNode() {
+	public SaveBorderNode getSaveNode() {
 		return saveNode;
 	}
 

@@ -47,9 +47,9 @@ public class BorderSerializerV10 extends AbstractBorderSerializer {
 		root.appendChild(world);
 
 		Element center = createElement(BorderXmlTag.CENTER);
-		setAttribute(center, BorderXmlTag.X_COORDINATE, element.getCenter().getX());
-		setAttribute(center, BorderXmlTag.Y_COORDINATE, element.getCenter().getY());
-		setAttribute(center, BorderXmlTag.Z_COORDINATE, element.getCenter().getZ());
+		setAttribute(center, BorderXmlTag.X_COORDINATE, element.getCenter().get().getX());
+		setAttribute(center, BorderXmlTag.Y_COORDINATE, element.getCenter().get().getY());
+		setAttribute(center, BorderXmlTag.Z_COORDINATE, element.getCenter().get().getZ());
 		root.appendChild(center);
 
 		Element initialDiameter = createElement(BorderXmlTag.INITIAL_DIAMETER);

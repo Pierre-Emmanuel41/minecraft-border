@@ -21,12 +21,12 @@ public class BorderCountDown extends BorderEntry {
 
 	@Override
 	public String getBefore() {
-		return WorldManager.getWorldNameNormalised(getBorder().getWorld()) + " : ";
+		return WorldManager.getWorldNameNormalised(getBorder().getWorld().get()) + " : ";
 	}
 
 	@Override
 	protected String updateCurrentValue(Player player) {
 		int seconds = Platform.get(getObjective().getPlugin()).getTimeLine().getTimeTask().getGameTime().toSecondOfDay();
-		return DisplayHelper.toString(getBorder().getStartTime().minusSeconds(seconds), false);
+		return DisplayHelper.toString(getBorder().getStartTime().get().minusSeconds(seconds), false);
 	}
 }

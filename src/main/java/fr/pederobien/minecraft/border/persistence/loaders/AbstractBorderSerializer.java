@@ -33,7 +33,7 @@ public abstract class AbstractBorderSerializer extends AbstractXmlSerializer<IBo
 	 */
 	public void setWorld(IBorder element, Element root) {
 		Node world = getElementsByTagName(root, BorderXmlTag.WORLD).item(0);
-		element.setWorld(WorldManager.getWorld(world.getChildNodes().item(0).getNodeValue()));
+		element.getWorld().set(WorldManager.getWorld(world.getChildNodes().item(0).getNodeValue()));
 	}
 
 	/**
@@ -47,7 +47,7 @@ public abstract class AbstractBorderSerializer extends AbstractXmlSerializer<IBo
 		int x = getIntAttribute(center, BorderXmlTag.X_COORDINATE);
 		int y = getIntAttribute(center, BorderXmlTag.Y_COORDINATE);
 		int z = getIntAttribute(center, BorderXmlTag.Z_COORDINATE);
-		element.setCenter(WorldManager.getBlockAt(element.getWorld(), x, y, z));
+		element.getCenter().set(WorldManager.getBlockAt(element.getWorld().get(), x, y, z));
 	}
 
 	/**
@@ -58,7 +58,7 @@ public abstract class AbstractBorderSerializer extends AbstractXmlSerializer<IBo
 	 */
 	public void setInitialDiameter(IBorder element, Element root) {
 		Node initialDiameter = getElementsByTagName(root, BorderXmlTag.INITIAL_DIAMETER).item(0);
-		element.setInitialDiameter(getIntNodeValue(initialDiameter.getChildNodes().item(0)));
+		element.getInitialDiameter().set(getIntNodeValue(initialDiameter.getChildNodes().item(0)));
 	}
 
 	/**
@@ -69,7 +69,7 @@ public abstract class AbstractBorderSerializer extends AbstractXmlSerializer<IBo
 	 */
 	public void setFinalDiameter(IBorder element, Element root) {
 		Node finalDiameter = getElementsByTagName(root, BorderXmlTag.FINAL_DIAMETER).item(0);
-		element.setFinalDiameter(getIntNodeValue(finalDiameter.getChildNodes().item(0)));
+		element.getFinalDiameter().set(getIntNodeValue(finalDiameter.getChildNodes().item(0)));
 	}
 
 	/**
@@ -80,7 +80,7 @@ public abstract class AbstractBorderSerializer extends AbstractXmlSerializer<IBo
 	 */
 	public void setSpeed(IBorder element, Element root) {
 		Node speed = getElementsByTagName(root, BorderXmlTag.BORDER_SPEED).item(0);
-		element.setSpeed(getDoubleNodeValue(speed.getChildNodes().item(0)));
+		element.getSpeed().set(getDoubleNodeValue(speed.getChildNodes().item(0)));
 	}
 
 	/**
@@ -91,6 +91,6 @@ public abstract class AbstractBorderSerializer extends AbstractXmlSerializer<IBo
 	 */
 	public void setStartTime(IBorder element, Element root) {
 		Node startTime = getElementsByTagName(root, BorderXmlTag.START_TIME).item(0);
-		element.setStartTime(getLocalTimeNodeValue(startTime.getChildNodes().item(0)));
+		element.getStartTime().set(getLocalTimeNodeValue(startTime.getChildNodes().item(0)));
 	}
 }

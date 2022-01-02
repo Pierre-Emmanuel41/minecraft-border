@@ -38,7 +38,7 @@ public class SpeedBorderNode extends BorderNode {
 			return false;
 		}
 
-		getBorder().setSpeed(speed);
+		getBorder().getSpeed().set(speed);
 		sendSuccessful(sender, EBorderCode.BORDER__SPEED_BORDER__SPEED_UPATED, getBorder().getName(), speed, DisplayHelper.toString(getBorder().getMoveTime(), false));
 		return true;
 	}

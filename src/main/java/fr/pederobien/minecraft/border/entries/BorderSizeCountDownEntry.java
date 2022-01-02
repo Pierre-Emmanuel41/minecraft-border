@@ -30,7 +30,7 @@ public class BorderSizeCountDownEntry extends BorderSizeEntry {
 		String current = "";
 		if (!isCountDownEquals0) {
 			int seconds = Platform.get(getObjective().getPlugin()).getTimeLine().getTimeTask().getGameTime().toSecondOfDay();
-			countDown = getBorder().getStartTime().minusSeconds(seconds);
+			countDown = getBorder().getStartTime().get().minusSeconds(seconds);
 			if (!countDown.equals(LocalTime.of(0, 0, 0)))
 				current += DisplayHelper.toString(countDown, false) + " | ";
 			else

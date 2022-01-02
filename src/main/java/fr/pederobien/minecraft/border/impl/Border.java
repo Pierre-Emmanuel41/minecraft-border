@@ -6,32 +6,22 @@ import org.bukkit.World;
 import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 
-import fr.pederobien.minecraft.border.event.BorderCenterChangePostEvent;
-import fr.pederobien.minecraft.border.event.BorderFinalDiameterChangePostEvent;
-import fr.pederobien.minecraft.border.event.BorderInitialDiameterChangePostEvent;
 import fr.pederobien.minecraft.border.event.BorderNameChangePostEvent;
-import fr.pederobien.minecraft.border.event.BorderSpeedChangePostEvent;
-import fr.pederobien.minecraft.border.event.BorderStartTimeChangePostEvent;
-import fr.pederobien.minecraft.border.event.BorderWorldChangePostEvent;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
 import fr.pederobien.minecraft.managers.WorldManager;
+import fr.pederobien.minecraft.platform.impl.Configurable;
 import fr.pederobien.minecraft.platform.impl.PlatformPersistence;
+import fr.pederobien.minecraft.platform.interfaces.IConfigurable;
 import fr.pederobien.utils.event.EventManager;
 
 public class Border implements IBorder {
-	private static final World DEFAULT_WORLD = WorldManager.OVERWORLD;
-	private static final Integer DEFAULT_INITIAL_DIAMETER = 2000;
-	private static final Integer DEFAULT_FINAL_DIAMETER = 30;
-	private static final Double DEFAULT_BORDER_SPEED = 1.0;
-	private static final LocalTime DEFAULT_START_TIME = LocalTime.of(2, 0, 0);
-
 	private String name;
-	private World world;
-	private Block center;
-	private Integer initialDiameter, finalDiameter;
-	private Double speed;
-	private LocalTime startTime;
+	private IConfigurable<World> world;
+	private IConfigurable<Block> center;
+	private IConfigurable<Integer> initialDiameter, finalDiameter;
+	private IConfigurable<Double> speed;
+	private IConfigurable<LocalTime> startTime;
 	private boolean isMoving;
 
 	/**
@@ -41,6 +31,13 @@ public class Border implements IBorder {
 	 */
 	public Border(String name) {
 		this.name = name;
+
+		world = new Configurable<World>("world", WorldManager.OVERWORLD);
+		center = new Configurable<Block>("center", WorldManager.getHighestBlockYAt(getWorld().get(), 0, 0));
+		initialDiameter = new Configurable<Integer>("initialDiameter", 2000);
+		finalDiameter = new Configurable<Integer>("finalDiameter", 30);
+		speed = new Configurable<Double>("speed", 1.0);
+		startTime = new Configurable<LocalTime>("startTime", LocalTime.of(2, 0, 0));
 	}
 
 	@Override
@@ -59,104 +56,43 @@ public class Border implements IBorder {
 	}
 
 	@Override
-	public World getWorld() {
-		return world == null ? DEFAULT_WORLD : world;
+	public IConfigurable<World> getWorld() {
+		return world;
 	}
 
 	@Override
-	public void setWorld(World world) {
-		if (getWorld().equals(world))
-			return;
-
-		World oldWorld = getWorld();
-		this.world = world;
-		EventManager.callEvent(new BorderWorldChangePostEvent(this, oldWorld));
+	public IConfigurable<Block> getCenter() {
+		return center;
 	}
 
 	@Override
-	public Block getCenter() {
-		return center == null ? WorldManager.getHighestBlockYAt(getWorld(), 0, 0) : center;
+	public IConfigurable<Integer> getInitialDiameter() {
+		return initialDiameter;
 	}
 
 	@Override
-	public void setCenter(Block center) {
-		if (getCenter().equals(center))
-			return;
-
-		Block oldCenter = getCenter();
-		this.center = center;
-		EventManager.callEvent(new BorderCenterChangePostEvent(this, oldCenter));
+	public IConfigurable<Integer> getFinalDiameter() {
+		return finalDiameter;
 	}
 
 	@Override
-	public Integer getInitialDiameter() {
-		return initialDiameter == null ? DEFAULT_INITIAL_DIAMETER : initialDiameter;
+	public IConfigurable<Double> getSpeed() {
+		return speed;
 	}
 
 	@Override
-	public void setInitialDiameter(int initialDiameter) {
-		if (getInitialDiameter().equals(initialDiameter))
-			return;
-
-		int oldInitialDiameter = getInitialDiameter();
-		this.initialDiameter = initialDiameter;
-		EventManager.callEvent(new BorderInitialDiameterChangePostEvent(this, oldInitialDiameter));
-	}
-
-	@Override
-	public Integer getFinalDiameter() {
-		return finalDiameter == null ? DEFAULT_FINAL_DIAMETER : finalDiameter;
-	}
-
-	@Override
-	public void setFinalDiameter(int finalDiameter) {
-		if (getFinalDiameter().equals(finalDiameter))
-			return;
-
-		int oldFinalDiameter = getFinalDiameter();
-		this.finalDiameter = finalDiameter;
-		EventManager.callEvent(new BorderFinalDiameterChangePostEvent(this, oldFinalDiameter));
-	}
-
-	@Override
-	public Double getSpeed() {
-		return speed == null ? DEFAULT_BORDER_SPEED : speed;
-	}
-
-	@Override
-	public void setSpeed(double speed) {
-		if (getSpeed() == speed)
-			return;
-
-		double oldSpeed = getSpeed();
-		LocalTime oldMoveTime = getMoveTime();
-		this.speed = speed;
-		EventManager.callEvent(new BorderSpeedChangePostEvent(this, oldSpeed, oldMoveTime));
-	}
-
-	@Override
-	public LocalTime getStartTime() {
-		return startTime == null ? DEFAULT_START_TIME : startTime;
-	}
-
-	@Override
-	public void setStartTime(LocalTime startTime) {
-		if (getStartTime().equals(startTime))
-			return;
-
-		LocalTime oldStartTime = getStartTime();
-		this.startTime = startTime;
-		EventManager.callEvent(new BorderStartTimeChangePostEvent(this, oldStartTime));
+	public IConfigurable<LocalTime> getStartTime() {
+		return startTime;
 	}
 
 	@Override
 	public LocalTime getMoveTime() {
-		return LocalTime.MIN.plusSeconds(new Double(getDistance() / getSpeed()).longValue());
+		return LocalTime.MIN.plusSeconds(new Double(getDistance() / getSpeed().get()).longValue());
 	}
 
 	@Override
 	public void setMoveTime(LocalTime moveTime) {
-		setSpeed(getDistance() / ((Integer) moveTime.toSecondOfDay()).doubleValue());
+		getSpeed().set(getDistance() / ((Integer) moveTime.toSecondOfDay()).doubleValue());
 	}
 
 	@Override
@@ -166,7 +102,7 @@ public class Border implements IBorder {
 
 	@Override
 	public WorldBorder getWorldBorder() {
-		return getWorld().getWorldBorder();
+		return getWorld().get().getWorldBorder();
 	}
 
 	@Override
@@ -176,12 +112,12 @@ public class Border implements IBorder {
 			return false;
 
 		setName(persistence.get().getName());
-		setWorld(persistence.get().getWorld());
-		setCenter(persistence.get().getCenter());
-		setInitialDiameter(persistence.get().getInitialDiameter());
-		setFinalDiameter(persistence.get().getFinalDiameter());
-		setSpeed(persistence.get().getSpeed());
-		setStartTime(persistence.get().getStartTime());
+		getWorld().set(persistence.get().getWorld().get());
+		getCenter().set(persistence.get().getCenter().get());
+		getInitialDiameter().set(persistence.get().getInitialDiameter().get());
+		getFinalDiameter().set(persistence.get().getFinalDiameter().get());
+		getSpeed().set(persistence.get().getSpeed().get());
+		getStartTime().set(persistence.get().getStartTime().get());
 		return true;
 	}
 
@@ -203,6 +139,6 @@ public class Border implements IBorder {
 	}
 
 	private Double getDistance() {
-		return (double) Math.abs(getInitialDiameter() - getFinalDiameter());
+		return (double) Math.abs(getInitialDiameter().get() - getFinalDiameter().get());
 	}
 }

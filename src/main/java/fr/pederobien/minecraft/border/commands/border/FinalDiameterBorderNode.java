@@ -37,7 +37,7 @@ public class FinalDiameterBorderNode extends BorderNode {
 			return false;
 		}
 
-		getBorder().setFinalDiameter(diameter);
+		getBorder().getFinalDiameter().set(diameter);
 		sendSuccessful(sender, EBorderCode.BORDER__FINAL_BORDER_DIAMETER__DIAMETER_UPDATED, getBorder().getName(), getBorder().getFinalDiameter());
 		return true;
 	}

@@ -37,7 +37,7 @@ public class InitialDiameterBorderNode extends BorderNode {
 			return false;
 		}
 
-		getBorder().setInitialDiameter(diameter);
+		getBorder().getInitialDiameter().set(diameter);
 		sendSuccessful(sender, EBorderCode.BORDER__INITIAL_BORDER_DIAMETER__DIAMETER_UPDATED, getBorder().getName(), getBorder().getInitialDiameter());
 		return true;
 	}

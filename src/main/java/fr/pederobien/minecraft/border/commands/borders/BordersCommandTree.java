@@ -1,12 +1,15 @@
 package fr.pederobien.minecraft.border.commands.borders;
 
+import fr.pederobien.minecraft.border.commands.border.BorderCommandTree;
 import fr.pederobien.minecraft.border.interfaces.IBorderConfigurable;
+import fr.pederobien.minecraft.border.persistence.BorderPersistence;
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;
 import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeNode;
 
 public class BordersCommandTree {
 	private IMinecraftCodeNode root;
 	private IBorderConfigurable borderConfigurable;
+	private BorderCommandTree borderTree;
 	private AddBordersNode addNode;
 	private RemoveBordersNode removeNode;
 	private ListBordersNode listNode;
@@ -17,11 +20,12 @@ public class BordersCommandTree {
 		this.borderConfigurable = borderConfigurable;
 
 		root = new MinecraftCodeRootNode("borders", EBordersCode.BORDERS__EXPLANATION, () -> borderConfigurable.getBorders() != null);
+		borderTree = new BorderCommandTree(new BorderPersistence().getPersistence());
 		root.add(addNode = new AddBordersNode(borderConfigurable.getBorders()));
 		root.add(removeNode = new RemoveBordersNode(borderConfigurable.getBorders()));
 		root.add(listNode = new ListBordersNode(borderConfigurable.getBorders()));
 		root.add(reloadNode = new ReloadBordersNode(borderConfigurable.getBorders()));
-		root.add(detailsNode = new DetailsBordersNode(borderConfigurable.getBorders()));
+		root.add(detailsNode = new DetailsBordersNode(borderConfigurable.getBorders(), borderTree.getDetailsNode()));
 	}
 
 	/**

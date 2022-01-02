@@ -38,7 +38,7 @@ public class WorldBorderNode extends BorderNode {
 			return false;
 		}
 
-		getBorder().setWorld(world);
+		getBorder().getWorld().set(world);
 		sendSuccessful(sender, EBorderCode.BORDER__WORLD_BORDER__WORLD_UPDATED, getBorder().getName(), name);
 		return true;
 	}

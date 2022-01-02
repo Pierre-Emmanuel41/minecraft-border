@@ -66,8 +66,8 @@ public class CenterBorderNode extends BorderNode {
 			return false;
 		}
 
-		getBorder().setCenter(WorldManager.getBlockAt(getBorder().getWorld(), xCoord, yCoord, zCoord));
-		sendSuccessful(sender, EBorderCode.BORDER__CENTER_BORDER__CENTER_UPDATED, getBorder().getName(), DisplayHelper.toString(getBorder().getCenter()));
+		getBorder().getCenter().set(WorldManager.getBlockAt(getBorder().getWorld().get(), xCoord, yCoord, zCoord));
+		sendSuccessful(sender, EBorderCode.BORDER__CENTER_BORDER__CENTER_UPDATED, getBorder().getName(), DisplayHelper.toString(getBorder().getCenter().get()));
 		return true;
 	}
 

@@ -1,6 +1,5 @@
 package fr.pederobien.minecraft.border.commands.borders;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -9,20 +8,20 @@ import java.util.StringJoiner;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import fr.pederobien.minecraft.border.impl.EBorderCode;
+import fr.pederobien.minecraft.border.commands.border.DetailsBorderNode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
-import fr.pederobien.minecraft.game.impl.DisplayHelper;
-import fr.pederobien.minecraft.managers.WorldManager;
 
 public class DetailsBordersNode extends BordersNode {
+	private DetailsBorderNode detailsNode;
 
 	/**
 	 * Creates a node that display the characteristics of one or several borders from the given list.
 	 * 
-	 * @param list The list associated to this node.
+	 * @param list        The list associated to this node.
+	 * @param detailsNode The node to get the details of a border.
 	 */
-	protected DetailsBordersNode(IBorderList list) {
+	protected DetailsBordersNode(IBorderList list, DetailsBorderNode detailsNode) {
 		super(list, "details", EBordersCode.BORDERS__DETAILS__EXPLANATION, l -> l != null);
 	}
 
@@ -40,28 +39,7 @@ public class DetailsBordersNode extends BordersNode {
 			borders.add(optBorder.get());
 		}
 
-		StringJoiner joiner = new StringJoiner("-------------\n", DEFAULT_PREFIX, DEFAULT_SUFFIX);
-
-		for (IBorder border : borders) {
-			// Step 1: Creating translation of each parameter name
-			String name = getMessage(sender, EBorderCode.BORDER_NAME, border.getName());
-			String world = getMessage(sender, EBorderCode.BORDER_WORLD, WorldManager.getWorldNameNormalised(border.getWorld()));
-			String center = getMessage(sender, EBorderCode.BORDER_CENTER, DisplayHelper.toString(border.getCenter()));
-			String initialDiameter = getMessage(sender, EBorderCode.BORDER_INITIAL_DIAMETER, border.getInitialDiameter());
-			String finalDiameter = getMessage(sender, EBorderCode.BORDER_FINAL_DIAMETER, border.getFinalDiameter());
-			String speed = getMessage(sender, EBorderCode.BORDER_SPEED, border.getSpeed());
-			String startTime = getMessage(sender, EBorderCode.BORDER_START_TIME, DisplayHelper.toString(border.getStartTime(), false));
-			String moveTime = getMessage(sender, EBorderCode.BORDER_MOVE_TIME, DisplayHelper.toString(border.getMoveTime(), false));
-			LocalTime end = border.getStartTime().plusSeconds(border.getMoveTime().toSecondOfDay());
-			String endTime = getMessage(sender, EBorderCode.BORDER_END_TIME, DisplayHelper.toString(end, false));
-
-			// Step 2: Joining with a new line
-			StringJoiner borderJoiner = new StringJoiner("\n");
-			borderJoiner.add(name).add(world).add(center).add(initialDiameter).add(finalDiameter).add(speed).add(startTime).add(moveTime).add(endTime);
-			joiner.add(borderJoiner.toString());
-		}
-
-		sender.sendMessage(joiner.toString());
+		sender.sendMessage(getDetails(sender, getList()));
 		return true;
 	}
 
@@ -69,5 +47,22 @@ public class DetailsBordersNode extends BordersNode {
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		List<String> alreadyMentionned = asList(args);
 		return filter(getList().stream().map(border -> border.getName()).filter(name -> !alreadyMentionned.contains(name)), args);
+	}
+
+	/**
+	 * Get the details of each border from the border list. Each parameter name are translated according to the sender nationality.
+	 * 
+	 * @param sender  The sender used to translate parameter name.
+	 * @param borders The list of borders.
+	 * 
+	 * @return The border details.
+	 */
+	public String getDetails(CommandSender sender, IBorderList borders) {
+		StringJoiner joiner = new StringJoiner("-------------\n", DEFAULT_PREFIX, DEFAULT_SUFFIX);
+
+		for (IBorder border : borders.toList())
+			joiner.add(detailsNode.getDetails(sender, border));
+
+		return joiner.toString();
 	}
 }

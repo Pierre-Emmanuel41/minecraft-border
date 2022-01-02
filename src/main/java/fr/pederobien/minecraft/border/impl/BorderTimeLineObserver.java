@@ -16,8 +16,8 @@ import fr.pederobien.minecraft.game.interfaces.time.ICountDown;
 import fr.pederobien.minecraft.game.interfaces.time.IObsTimeLine;
 import fr.pederobien.minecraft.managers.EColor;
 import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
-import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.minecraft.managers.WorldManager;
+import fr.pederobien.minecraft.platform.Platform;
 import fr.pederobien.utils.event.EventHandler;
 import fr.pederobien.utils.event.EventManager;
 import fr.pederobien.utils.event.IEventListener;
@@ -39,23 +39,23 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 	 */
 	public BorderTimeLineObserver(IBorder border, int initialValue, Function<LocalTime, LocalTime> onTimeAction) {
 		this.border = border;
-		nextTime = border.getStartTime();
+		nextTime = border.getStartTime().get();
 
-		String worldName = WorldManager.getWorldNameNormalised(border.getWorld());
+		String worldName = WorldManager.getWorldNameNormalised(border.getWorld().get());
 
 		// Action to perform during the count down
 		Consumer<Integer> countDownAction = count -> {
 			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.BORDER__MOVING_BORDER_COUNT_DOWN);
 			builder.withDisplayOption(DisplayOption.TITLE).withColor(EColor.GOLD);
-			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld())));
+			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld().get())));
 			send(builder.build(count));
 		};
 
 		// Action to perform when the count down is over.
 		Consumer<LocalTime> internalOnTimeAction = time -> {
 			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.BORDER__MOVING_BORDER);
-			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld())));
-			border.getWorldBorder().setSize(border.getFinalDiameter(), (long) border.getWorldBorder().getSize() / border.getSpeed().longValue());
+			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld().get())));
+			border.getWorldBorder().setSize(border.getFinalDiameter().get(), (long) border.getWorldBorder().getSize() / border.getSpeed().get().longValue());
 			send(builder.withColor(EColor.DARK_RED).build());
 			nextTime = onTimeAction.apply(time);
 		};

@@ -48,13 +48,13 @@ public class StartTimeBorderNode extends BorderNode {
 			return false;
 		}
 
-		getBorder().setStartTime(startTime);
+		getBorder().getStartTime().set(startTime);
 
-		if (getBorder().getStartTime().equals(LocalTime.MIN))
+		if (getBorder().getStartTime().get().equals(LocalTime.MIN))
 			sendSuccessful(sender, EBorderCode.BORDER__START_TIME_BORDER__BORDER_MOVES_AT_THE_BEGINNING, getBorder().getName());
 		else {
 			sendSuccessful(sender, EBorderCode.BORDER__START_TIME_BORDER__START_TIME_UPDATED, getBorder().getName(),
-					DisplayHelper.toString(getBorder().getStartTime(), false));
+					DisplayHelper.toString(getBorder().getStartTime().get(), false));
 		}
 		return true;
 	}
