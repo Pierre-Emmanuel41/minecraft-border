@@ -25,6 +25,13 @@ public class BordersCommandTree {
 	}
 
 	/**
+	 * @return The root of this command tree.
+	 */
+	public IMinecraftCodeNode getRoot() {
+		return root;
+	}
+
+	/**
 	 * @return The border configurable managed by this command tree.
 	 */
 	public IBorderConfigurable getBorderConfigurable() {
