@@ -56,6 +56,10 @@
 			<value>A strictly positive integer</value>
 		</message>
 		<message>
+			<code>BORDER__STRICTLY_POSITIVE_DOUBLE__BAD_FORMAT</code>
+			<value>A strictly positive double</value>
+		</message>
+		<message>
 			<code>BORDER__EXPLANATION</code>
 			<value>To configure a border</value>
 		</message>
@@ -92,8 +96,8 @@
 			<value>Cannot rename %s, the name is missing</value>
 		</message>
 		<message>
-			<code>BORDER__RENAME_BORDER__NAME_ALREADY_USED</code>
-			<value>Cannot rename %s as %s, the %s border already exists</value>
+			<code>BORDER__RENAME_BORDER__NAME_IS_ALREADY_USED</code>
+			<value>Cannot rename %s as %s, this border already exists</value>
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__BORDER_RENAMED</code>
@@ -296,6 +300,10 @@
 			<value>Moving %s's border in %s</value>
 		</message>
 		<message>
+			<code>BORDERS_NONE</code>
+			<value>None</value>
+		</message>
+		<message>
 			<code>BORDERS__EXPLANATION</code>
 			<value>To add/remove borders</value>
 		</message>
@@ -356,14 +364,6 @@
 			<value>Borders for all worlds:%n%s</value>
 		</message>
 		<message>
-			<code>BORDERS__LIST_BORDERS__WORLD_NOT_FOUND</code>
-			<value>Cannot display the border of %s, this world does not exist</value>
-		</message>
-		<message>
-			<code>BORDERS__LIST_BORDERS__REGISTERED_BORDER_FOR_WORLD</code>
-			<value>%s's border: %s</value>
-		</message>
-		<message>
 			<code>BORDERS__RELOAD_BORDERS__EXPLANATION</code>
 			<value>To reload a border file</value>
 		</message>
@@ -392,8 +392,20 @@
 			<value>To display characteristics of one or several borders for a game</value>
 		</message>
 		<message>
-			<code>BORDERS__DETAILS_BORDERS__BORDER_NOT_REGISTERED</code>
+			<code>BORDERS__DETAILS_BORDERS__BORDER_NOT_FOUND</code>
 			<value>Cannot display characteristics of borders, %s does not contain %s</value>
+		</message>
+		<message>
+			<code>BORDERS__DETAILS_BORDERS__NO_ELEMENT</code>
+			<value>There is no border associated to %s</value>
+		</message>
+		<message>
+			<code>BORDERS__DETAILS_BORDERS__ONE_ELEMENT</code>
+			<value>%s contains one border:%n%s</value>
+		</message>
+		<message>
+			<code>BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS</code>
+			<value>%s contains borders:%n%s</value>
 		</message>
 	</messages>
 </dictionary>

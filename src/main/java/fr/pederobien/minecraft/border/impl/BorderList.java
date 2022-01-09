@@ -1,19 +1,24 @@
 package fr.pederobien.minecraft.border.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Stream;
 
 import org.bukkit.World;
 
+import fr.pederobien.minecraft.border.event.BorderListBorderAddPostEvent;
+import fr.pederobien.minecraft.border.event.BorderListBorderRemovePostEvent;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
+import fr.pederobien.utils.event.EventManager;
 
 public class BorderList implements IBorderList {
 	private String name;
@@ -37,13 +42,17 @@ public class BorderList implements IBorderList {
 	}
 
 	@Override
-	public void add(IBorder configuration) {
-		addBorder(configuration);
+	public void add(IBorder border) {
+		addBorder(border);
+		EventManager.callEvent(new BorderListBorderAddPostEvent(this, border));
 	}
 
 	@Override
 	public IBorder remove(String name) {
-		return removeBorder(name);
+		IBorder border = removeBorder(name);
+		if (border != null)
+			EventManager.callEvent(new BorderListBorderRemovePostEvent(this, border));
+		return border;
 	}
 
 	@Override
@@ -56,13 +65,16 @@ public class BorderList implements IBorderList {
 		lock.lock();
 		try {
 			Iterator<Map.Entry<String, IBorder>> iterator = borders.entrySet().iterator();
+			IBorder border = null;
 			while (iterator.hasNext()) {
 				Map.Entry<String, IBorder> entry = iterator.next();
-				if (entry.getValue().getWorld().equals(world)) {
-					iterator.remove();
-					return entry.getValue();
+				if (entry.getValue().getWorld().get().equals(world)) {
+					border = entry.getValue();
 				}
 			}
+
+			if (border != null)
+				remove(border);
 		} finally {
 			lock.unlock();
 		}
@@ -71,7 +83,16 @@ public class BorderList implements IBorderList {
 
 	@Override
 	public void clear() {
-		borders.clear();
+		lock.lock();
+		try {
+			Set<String> names = new HashSet<String>(borders.keySet());
+			for (String name : names) {
+				IBorder border = borders.remove(name);
+				EventManager.callEvent(new BorderListBorderRemovePostEvent(this, border));
+			}
+		} finally {
+			lock.unlock();
+		}
 	}
 
 	@Override
@@ -81,7 +102,7 @@ public class BorderList implements IBorderList {
 			Iterator<Map.Entry<String, IBorder>> iterator = borders.entrySet().iterator();
 			while (iterator.hasNext()) {
 				Map.Entry<String, IBorder> entry = iterator.next();
-				if (entry.getValue().getWorld().equals(world))
+				if (entry.getValue().getWorld().get().equals(world))
 					return Optional.of(entry.getValue());
 			}
 		} finally {
@@ -128,6 +149,10 @@ public class BorderList implements IBorderList {
 		try {
 			if (borders.get(border.getName()) != null)
 				throw new BorderAlreadyRegisteredException(this, border);
+
+			Optional<IBorder> optBorder = getBorder(border.getWorld().get());
+			if (optBorder.isPresent())
+				remove(optBorder.get());
 
 			borders.put(border.getName(), border);
 		} finally {

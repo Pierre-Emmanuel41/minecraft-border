@@ -8,11 +8,10 @@ import org.bukkit.block.Block;
 
 import fr.pederobien.minecraft.border.event.BorderNameChangePostEvent;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
-import fr.pederobien.minecraft.border.persistence.BorderPersistence;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.minecraft.platform.impl.Configurable;
-import fr.pederobien.minecraft.platform.impl.PlatformPersistence;
 import fr.pederobien.minecraft.platform.interfaces.IConfigurable;
+import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 import fr.pederobien.utils.event.EventManager;
 
 public class Border implements IBorder {
@@ -106,8 +105,7 @@ public class Border implements IBorder {
 	}
 
 	@Override
-	public boolean reload() {
-		PlatformPersistence<IBorder> persistence = new BorderPersistence().getPersistence();
+	public boolean reload(IPlatformPersistence<IBorder> persistence) {
 		if (!persistence.deserialize(getName()))
 			return false;
 

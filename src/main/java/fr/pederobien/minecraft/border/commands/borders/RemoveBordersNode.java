@@ -3,6 +3,7 @@ package fr.pederobien.minecraft.border.commands.borders;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -17,8 +18,14 @@ public class RemoveBordersNode extends BordersNode {
 	 * 
 	 * @param list The list associated to this node.
 	 */
-	protected RemoveBordersNode(IBorderList list) {
+	protected RemoveBordersNode(Supplier<IBorderList> list) {
 		super(list, "remove", EBordersCode.BORDERS__REMOVE_BORDERS__EXPLANATION, l -> l != null);
+	}
+
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		List<String> alreadyMentionnedBorder = asList(args);
+		return filter(getList().stream().map(conf -> conf.getName()).filter(name -> !alreadyMentionnedBorder.contains(name)), args);
 	}
 
 	@Override
@@ -42,21 +49,15 @@ public class RemoveBordersNode extends BordersNode {
 
 		switch (borders.size()) {
 		case 0:
-			send(eventBuilder(sender, EBordersCode.BORDERS__REMOVE_BORDERS__NO_BORDER_REMOVED, getList().getName()));
+			sendSuccessful(sender, EBordersCode.BORDERS__REMOVE_BORDERS__NO_BORDER_REMOVED, getList().getName());
 			break;
 		case 1:
-			send(eventBuilder(sender, EBordersCode.BORDERS__REMOVE_BORDERS__ONE_BORDER_REMOVED, borderNames, getList().getName()));
+			sendSuccessful(sender, EBordersCode.BORDERS__REMOVE_BORDERS__ONE_BORDER_REMOVED, borderNames, getList().getName());
 			break;
 		default:
-			send(eventBuilder(sender, EBordersCode.BORDERS__REMOVE_BORDERS__SEVERAL_BORDERS_REMOVED, borderNames, getList().getName()));
+			sendSuccessful(sender, EBordersCode.BORDERS__REMOVE_BORDERS__SEVERAL_BORDERS_REMOVED, borderNames, getList().getName());
 			break;
 		}
 		return true;
-	}
-
-	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		List<String> alreadyMentionnedBorder = asList(args);
-		return filter(getList().stream().map(conf -> conf.getName()).filter(name -> !alreadyMentionnedBorder.contains(name)), args);
 	}
 }

@@ -43,7 +43,7 @@ public class MoveTimeBorderNode extends BorderNode {
 			sendSuccessful(sender, EBorderCode.BORDER__MOVE_TIME_BORDER__INSTANTLY_MOVE, getBorder().getName());
 		else {
 			String moveTimeFormat = DisplayHelper.toString(getBorder().getMoveTime(), false);
-			sendSuccessful(sender, EBorderCode.BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED, getBorder(), moveTimeFormat, getBorder().getSpeed());
+			sendSuccessful(sender, EBorderCode.BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED, getBorder(), moveTimeFormat, getBorder().getSpeed().get());
 		}
 		return true;
 	}

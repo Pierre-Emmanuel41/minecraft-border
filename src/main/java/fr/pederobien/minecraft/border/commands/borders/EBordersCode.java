@@ -6,6 +6,7 @@ import fr.pederobien.minecraft.dictionary.interfaces.IPlayerGroup;
 
 public enum EBordersCode implements IMinecraftCode {
 	// Common codes --------------------------------------------------------------
+
 	// Code that returns "none"
 	BORDERS_NONE,
 
@@ -54,12 +55,6 @@ public enum EBordersCode implements IMinecraftCode {
 	// Code when displaying the border to each world
 	BORDERS__LIST_BORDERS__ALL_REGISTERED_BORDERS,
 
-	// Code when the world does not exist
-	BORDERS__LIST_BORDERS__WORLD_NOT_FOUND,
-
-	// Code when displaying the border of a specific world
-	BORDERS__LIST_BORDERS__REGISTERED_BORDER_FOR_WORLD,
-
 	// Code for the "borders reload" command -------------------------------------
 	BORDERS__RELOAD_BORDERS__EXPLANATION,
 
@@ -82,7 +77,18 @@ public enum EBordersCode implements IMinecraftCode {
 	BORDERS__DETAILS__EXPLANATION,
 
 	// Code when a border is not registered
-	BORDERS__DETAILS_BORDERS__BORDER_NOT_REGISTERED;
+	BORDERS__DETAILS_BORDERS__BORDER_NOT_FOUND,
+
+	// Code when a border is not registered
+	BORDERS__DETAILS_BORDERS__NO_ELEMENT,
+
+	// Code when a border is one registered border
+	BORDERS__DETAILS_BORDERS__ONE_ELEMENT,
+
+	// Code when a border is one registered border
+	BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS,
+
+	;
 
 	private IPlayerGroup group;
 

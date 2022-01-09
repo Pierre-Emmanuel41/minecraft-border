@@ -34,7 +34,7 @@ public class SpeedBorderNode extends BorderNode {
 			send(eventBuilder(sender, EBorderCode.BORDER__SPEED_BORDER__SPEED_IS_MISSING, getBorder().getName()));
 			return false;
 		} catch (NumberFormatException e) {
-			send(eventBuilder(sender, EGameCode.BAD_FORMAT, getMessage(sender, EBorderCode.BORDER__INTEGER__BAD_FORMAT)));
+			send(eventBuilder(sender, EGameCode.BAD_FORMAT, getMessage(sender, EBorderCode.BORDER__STRICTLY_POSITIVE_DOUBLE__BAD_FORMAT)));
 			return false;
 		}
 

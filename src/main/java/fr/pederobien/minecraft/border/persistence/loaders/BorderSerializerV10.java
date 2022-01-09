@@ -43,7 +43,7 @@ public class BorderSerializerV10 extends AbstractBorderSerializer {
 		root.appendChild(name);
 
 		Element world = createElement(BorderXmlTag.WORLD);
-		world.appendChild(createTextNode(element.getWorld().getName()));
+		world.appendChild(createTextNode(element.getWorld().get().getName()));
 		root.appendChild(world);
 
 		Element center = createElement(BorderXmlTag.CENTER);

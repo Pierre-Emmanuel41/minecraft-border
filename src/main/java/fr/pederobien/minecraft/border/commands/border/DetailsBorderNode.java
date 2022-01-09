@@ -10,6 +10,7 @@ import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;
 import fr.pederobien.minecraft.game.impl.DisplayHelper;
+import fr.pederobien.minecraft.managers.EColor;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceDetailsNode;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
@@ -20,7 +21,13 @@ public class DetailsBorderNode implements ICodeSender {
 	protected DetailsBorderNode(PersistenceNodeFactory<IBorder> factory) {
 		// Action in order to display the details of the border
 		BiConsumer<CommandSender, IBorder> onDetails = (sender, border) -> {
-			sendSuccessful(sender, EBorderCode.BORDER__DETAILS_BORDER__ON_DETAILS, getDetails(sender, border));
+			String details = getDetails(sender, border);
+			StringJoiner detailsJoiner = new StringJoiner("\n");
+			String[] lines = details.split("\n");
+			for (String line : lines)
+				detailsJoiner.add(color(line));
+
+			sendSuccessful(sender, EBorderCode.BORDER__DETAILS_BORDER__ON_DETAILS, detailsJoiner);
 		};
 
 		// Creating the node that displays the details of the current border.
@@ -55,10 +62,17 @@ public class DetailsBorderNode implements ICodeSender {
 		String startTime = getMessage(sender, EBorderCode.BORDER_START_TIME, DisplayHelper.toString(border.getStartTime().get(), true));
 		String moveTime = getMessage(sender, EBorderCode.BORDER_MOVE_TIME, DisplayHelper.toString(border.getMoveTime(), true));
 		LocalTime end = border.getStartTime().get().plusSeconds(border.getMoveTime().toSecondOfDay());
-		String endTime = getMessage(sender, EBorderCode.BORDER_END_TIME, DisplayHelper.toString(end, false));
+		String endTime = getMessage(sender, EBorderCode.BORDER_END_TIME, DisplayHelper.toString(end, true));
 
 		StringJoiner joiner = new StringJoiner("\n");
 		joiner.add(name).add(world).add(center).add(initialDiameter).add(finalDiameter).add(speed).add(startTime).add(moveTime).add(endTime);
 		return joiner.toString();
+	}
+
+	private String color(String line) {
+		int index = line.indexOf(":");
+		if (index == -1)
+			return line;
+		return EColor.WHITE.getInColor(line.substring(0, index), EColor.GOLD) + line.substring(index);
 	}
 }

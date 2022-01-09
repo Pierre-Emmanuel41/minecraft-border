@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.StringJoiner;
+import java.util.function.Supplier;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -11,8 +12,10 @@ import org.bukkit.command.CommandSender;
 import fr.pederobien.minecraft.border.commands.border.DetailsBorderNode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
+import fr.pederobien.minecraft.managers.EColor;
 
 public class DetailsBordersNode extends BordersNode {
+	private static final String BORDER_SEPARATOR = "\n-------------\n";
 	private DetailsBorderNode detailsNode;
 
 	/**
@@ -21,8 +24,9 @@ public class DetailsBordersNode extends BordersNode {
 	 * @param list        The list associated to this node.
 	 * @param detailsNode The node to get the details of a border.
 	 */
-	protected DetailsBordersNode(IBorderList list, DetailsBorderNode detailsNode) {
+	protected DetailsBordersNode(Supplier<IBorderList> list, DetailsBorderNode detailsNode) {
 		super(list, "details", EBordersCode.BORDERS__DETAILS__EXPLANATION, l -> l != null);
+		this.detailsNode = detailsNode;
 	}
 
 	@Override
@@ -32,14 +36,25 @@ public class DetailsBordersNode extends BordersNode {
 		for (String border : args) {
 			Optional<IBorder> optBorder = getList().getBorder(border);
 			if (!optBorder.isPresent()) {
-				send(eventBuilder(sender, EBordersCode.BORDERS__DETAILS_BORDERS__BORDER_NOT_REGISTERED, getList().getName(), border));
+				send(eventBuilder(sender, EBordersCode.BORDERS__DETAILS_BORDERS__BORDER_NOT_FOUND, getList().getName(), border));
 				return false;
 			}
 
 			borders.add(optBorder.get());
 		}
 
-		sender.sendMessage(getDetails(sender, getList()));
+		String details = getDetails(sender, borders).replace(BORDER_SEPARATOR, EColor.WHITE.getInColor(BORDER_SEPARATOR, EColor.GOLD));
+		switch (borders.size()) {
+		case 0:
+			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__NO_ELEMENT, getList().getName());
+			break;
+		case 1:
+			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__ONE_ELEMENT, getList().getName(), details);
+			break;
+		default:
+			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS, getList().getName(), details);
+			break;
+		}
 		return true;
 	}
 
@@ -57,10 +72,10 @@ public class DetailsBordersNode extends BordersNode {
 	 * 
 	 * @return The border details.
 	 */
-	public String getDetails(CommandSender sender, IBorderList borders) {
-		StringJoiner joiner = new StringJoiner("-------------\n", DEFAULT_PREFIX, DEFAULT_SUFFIX);
+	public String getDetails(CommandSender sender, List<IBorder> borders) {
+		StringJoiner joiner = new StringJoiner(BORDER_SEPARATOR);
 
-		for (IBorder border : borders.toList())
+		for (IBorder border : borders)
 			joiner.add(detailsNode.getDetails(sender, border));
 
 		return joiner.toString();

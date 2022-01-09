@@ -40,6 +40,9 @@ public enum EBorderCode implements IMinecraftCode {
 	// Code when the expected value should be strictly positive integer
 	BORDER__STRICTLY_POSITIVE_INTEGER__BAD_FORMAT,
 
+	// Code when the expected value should be strictly positive double
+	BORDER__STRICTLY_POSITIVE_DOUBLE__BAD_FORMAT,
+
 	// Code for the "border" command ---------------------------------------------
 	BORDER__EXPLANATION,
 

@@ -53,6 +53,10 @@
 			<value>Un entier strictement positif</value>
 		</message>
 		<message>
+			<code>BORDER__STRICTLY_POSITIVE_INTEGER__BAD_FORMAT</code>
+			<value>Un double strictement positif</value>
+		</message>
+		<message>
 			<code>BORDER__EXPLANATION</code>
 			<value>Pour configurer une bordure</value>
 		</message>
@@ -89,8 +93,8 @@
 			<value>Impossible de renommer %s, le nom est manquant</value>
 		</message>
 		<message>
-			<code>BORDER__RENAME_BORDER__NAME_ALREADY_USED</code>
-			<value>Impossible de renommer %s en %s, la bordure %s existe déjà</value>
+			<code>BORDER__RENAME_BORDER__NAME_IS_ALREADY_USED</code>
+			<value>Impossible de renommer %s en %s, cette bordure existe déjà</value>
 		</message>
 		<message>
 			<code>BORDER__RENAME_BORDER__BORDER_RENAMED</code>
@@ -293,6 +297,10 @@
 			<value>Déplacement de la bordure de %s dans %s</value>
 		</message>
 		<message>
+			<code>BORDERS_NONE</code>
+			<value>Aucune</value>
+		</message>
+		<message>
 			<code>BORDERS__EXPLANATION</code>
 			<value>Pour ajouter/enlever des bordures</value>
 		</message>
@@ -353,14 +361,6 @@
 			<value>Bordures de tous les mondes :%n%s</value>
 		</message>
 		<message>
-			<code>BORDERS__LIST_BORDERS__WORLD_NOT_FOUND</code>
-			<value>Impossible d'afficher la bordure de %s, ce monde n'existe pas</value>
-		</message>
-		<message>
-			<code>BORDERS__LIST_BORDERS__REGISTERED_BORDER_FOR_WORLD</code>
-			<value>Bordure de %s : %s</value>
-		</message>
-		<message>
 			<code>BORDERS__RELOAD_BORDERS__EXPLANATION</code>
 			<value>Pour recharger le fichier d'une bordure</value>
 		</message>
@@ -389,8 +389,20 @@
 			<value>Pour afficher les caractéristiques d'une ou plusieurs bordure d'une partie</value>
 		</message>
 		<message>
-			<code>BORDERS__DETAILS_BORDERS__BORDER_NOT_REGISTERED</code>
+			<code>BORDERS__DETAILS_BORDERS__BORDER_NOT_FOUND</code>
 			<value>Impossible d'afficher les caractéristiques d'une bordure, %s ne contient pas %s</value>
+		</message>
+		<message>
+			<code>BORDERS__DETAILS_BORDERS__NO_ELEMENT</code>
+			<value>Il n'y a aucune bordure associée à %s</value>
+		</message>
+		<message>
+			<code>BORDERS__DETAILS_BORDERS__ONE_ELEMENT</code>
+			<value>%s contient une bordure :%n%s</value>
+		</message>
+		<message>
+			<code>BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS</code>
+			<value>%s les bordures :%n%s</value>
 		</message>
 	</messages>
 </dictionary>

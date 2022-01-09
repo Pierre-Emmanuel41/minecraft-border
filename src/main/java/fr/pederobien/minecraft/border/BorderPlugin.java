@@ -9,14 +9,14 @@ import fr.pederobien.minecraft.border.commands.border.BorderCommandTree;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
 import fr.pederobien.minecraft.dictionary.impl.MinecraftDictionaryContext;
-import fr.pederobien.minecraft.platform.impl.PlatformPersistence;
+import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 import fr.pederobien.utils.AsyncConsole;
 
 public class BorderPlugin extends JavaPlugin {
 	private static final String DICTIONARY_FOLDER = "resources/dictionaries/";
 
 	private static Plugin instance;
-	private static PlatformPersistence<IBorder> persistence;
+	private static IPlatformPersistence<IBorder> persistence;
 	private static BorderCommandTree borderTree;
 
 	/**
@@ -29,7 +29,7 @@ public class BorderPlugin extends JavaPlugin {
 	/**
 	 * @return The persistence that serialize and deserialize configurations.
 	 */
-	public static PlatformPersistence<IBorder> getPersistence() {
+	public static IPlatformPersistence<IBorder> getPersistence() {
 		return persistence;
 	}
 

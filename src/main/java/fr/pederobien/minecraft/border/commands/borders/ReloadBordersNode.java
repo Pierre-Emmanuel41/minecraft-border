@@ -3,6 +3,7 @@ package fr.pederobien.minecraft.border.commands.borders;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -10,19 +11,25 @@ import org.bukkit.command.CommandSender;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
 import fr.pederobien.minecraft.border.persistence.BorderPersistence;
-import fr.pederobien.minecraft.platform.impl.PlatformPersistence;
+import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 
 public class ReloadBordersNode extends BordersNode {
-	private PlatformPersistence<IBorder> persistence;
+	private IPlatformPersistence<IBorder> persistence;
 
 	/**
 	 * Creates a node that reload the characteristics of borders in the given list.
 	 * 
 	 * @param list The list associated to this node.
 	 */
-	protected ReloadBordersNode(IBorderList list) {
+	protected ReloadBordersNode(Supplier<IBorderList> list) {
 		super(list, "reload", EBordersCode.BORDERS__RELOAD_BORDERS__EXPLANATION, l -> l != null);
 		persistence = new BorderPersistence().getPersistence();
+	}
+
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		List<String> alreadyMentionned = asList(args);
+		return filter(getList().stream().map(conf -> conf.getName()).filter(name -> !alreadyMentionned.contains(name)), args);
 	}
 
 	@Override
@@ -48,24 +55,19 @@ public class ReloadBordersNode extends BordersNode {
 		String borderNames = concat(args);
 
 		for (IBorder border : borders)
-			border.reload();
+			border.reload(persistence);
 
 		switch (borders.size()) {
 		case 0:
-			send(eventBuilder(sender, EBordersCode.BORDERS__RELOAD_BORDERS__NO_BORDER_RELOADED).build());
+			sendSuccessful(sender, EBordersCode.BORDERS__RELOAD_BORDERS__NO_BORDER_RELOADED);
 			break;
 		case 1:
-			send(eventBuilder(sender, EBordersCode.BORDERS__RELOAD_BORDERS__ONE_BORDER_RELOADED, getList().getName(), borderNames));
+			sendSuccessful(sender, EBordersCode.BORDERS__RELOAD_BORDERS__ONE_BORDER_RELOADED, getList().getName(), borderNames);
 			break;
 		default:
-			send(eventBuilder(sender, EBordersCode.BORDERS__RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED, getList().getName(), borderNames));
+			sendSuccessful(sender, EBordersCode.BORDERS__RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED, getList().getName(), borderNames);
 			break;
 		}
 		return true;
-	}
-
-	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		return filter(getList().stream().map(conf -> conf.getName()), args);
 	}
 }

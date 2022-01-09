@@ -8,6 +8,7 @@ import org.bukkit.block.Block;
 
 import fr.pederobien.minecraft.platform.interfaces.IConfigurable;
 import fr.pederobien.minecraft.platform.interfaces.INominable;
+import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 
 public interface IBorder extends INominable {
 
@@ -70,7 +71,9 @@ public interface IBorder extends INominable {
 	/**
 	 * Reload the content of the file associated to this border in to order to update this border.
 	 * 
+	 * @param persistence The persistence used to reload this border.
+	 * 
 	 * @return true if this border has been updated, false otherwise.
 	 */
-	boolean reload();
+	boolean reload(IPlatformPersistence<IBorder> persistence);
 }

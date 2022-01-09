@@ -3,12 +3,12 @@ package fr.pederobien.minecraft.border.commands.border;
 import fr.pederobien.minecraft.border.impl.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.commandtree.impl.MinecraftCodeRootNode;
-import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeNode;
+import fr.pederobien.minecraft.commandtree.interfaces.IMinecraftCodeRootNode;
 import fr.pederobien.minecraft.platform.commands.persistence.PersistenceNodeFactory;
 import fr.pederobien.minecraft.platform.interfaces.IPlatformPersistence;
 
 public class BorderCommandTree {
-	private IMinecraftCodeNode root;
+	private IMinecraftCodeRootNode root;
 	private PersistenceNodeFactory<IBorder> factory;
 	private NewBorderNode newNode;
 	private DetailsBorderNode detailsNode;
@@ -48,7 +48,7 @@ public class BorderCommandTree {
 	/**
 	 * @return The root of this command tree.
 	 */
-	public IMinecraftCodeNode getRoot() {
+	public IMinecraftCodeRootNode getRoot() {
 		return root;
 	}
 
