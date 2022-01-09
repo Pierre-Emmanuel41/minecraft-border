@@ -53,7 +53,7 @@
 			<value>Un entier strictement positif</value>
 		</message>
 		<message>
-			<code>BORDER__STRICTLY_POSITIVE_INTEGER__BAD_FORMAT</code>
+			<code>BORDER__STRICTLY_POSITIVE_DOUBLE__BAD_FORMAT</code>
 			<value>Un double strictement positif</value>
 		</message>
 		<message>

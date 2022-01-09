@@ -62,10 +62,10 @@ public class ReloadBordersNode extends BordersNode {
 			sendSuccessful(sender, EBordersCode.BORDERS__RELOAD_BORDERS__NO_BORDER_RELOADED);
 			break;
 		case 1:
-			sendSuccessful(sender, EBordersCode.BORDERS__RELOAD_BORDERS__ONE_BORDER_RELOADED, getList().getName(), borderNames);
+			sendSuccessful(sender, EBordersCode.BORDERS__RELOAD_BORDERS__ONE_BORDER_RELOADED, borderNames, getList().getName());
 			break;
 		default:
-			sendSuccessful(sender, EBordersCode.BORDERS__RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED, getList().getName(), borderNames);
+			sendSuccessful(sender, EBordersCode.BORDERS__RELOAD_BORDERS__SEVERAL_BORDERS_RELOADED, borderNames, getList().getName());
 			break;
 		}
 		return true;

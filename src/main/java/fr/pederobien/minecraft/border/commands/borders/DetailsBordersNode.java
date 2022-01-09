@@ -43,16 +43,21 @@ public class DetailsBordersNode extends BordersNode {
 			borders.add(optBorder.get());
 		}
 
-		String details = getDetails(sender, borders).replace(BORDER_SEPARATOR, EColor.WHITE.getInColor(BORDER_SEPARATOR, EColor.GOLD));
+		String details = getDetails(sender, getList().toList());
+		StringJoiner detailsJoiner = new StringJoiner("\n");
+		String[] lines = details.split("\n");
+		for (String line : lines)
+			detailsJoiner.add(color(line));
+
 		switch (borders.size()) {
 		case 0:
 			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__NO_ELEMENT, getList().getName());
 			break;
 		case 1:
-			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__ONE_ELEMENT, getList().getName(), details);
+			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__ONE_ELEMENT, getList().getName(), detailsJoiner);
 			break;
 		default:
-			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS, getList().getName(), details);
+			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS, getList().getName(), detailsJoiner);
 			break;
 		}
 		return true;
@@ -79,5 +84,12 @@ public class DetailsBordersNode extends BordersNode {
 			joiner.add(detailsNode.getDetails(sender, border));
 
 		return joiner.toString();
+	}
+
+	private String color(String line) {
+		int index = line.indexOf(":");
+		if (index == -1)
+			return EColor.DARK_AQUA.getInColor(line);
+		return EColor.WHITE.getInColor(line.substring(0, index), EColor.GOLD) + line.substring(index);
 	}
 }
