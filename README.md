@@ -9,7 +9,7 @@ On Windows there is a restriction regarding the maximal length of a path, that's
 Then, to download this project on your computer you can use the following command line :
 
 ```git
-git clone https://github.com/Pierre-Emmanuel41/minecraft-game-plateform.git
+git clone https://github.com/Pierre-Emmanuel41/minecraft-border.git
 ```
 
 Finally, to add the project as maven dependency on your maven project :
