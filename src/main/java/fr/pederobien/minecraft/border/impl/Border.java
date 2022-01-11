@@ -136,7 +136,7 @@ public class Border implements IBorder {
 		return name;
 	}
 
-	private Double getDistance() {
-		return (double) Math.abs(getInitialDiameter().get() - getFinalDiameter().get());
+	private int getDistance() {
+		return Math.abs(getInitialDiameter().get() - getFinalDiameter().get());
 	}
 }
