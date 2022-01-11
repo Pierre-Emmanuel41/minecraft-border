@@ -54,4 +54,4 @@ borders - To add/remove/reload a border
 &ensp;reload - To reload a border file  
 &ensp;remove - To remove borders from a game
 
-Finally, there are scoreboard entries in order to display border characteristics on player screen. They can be found in the <code>border.entries</code> package.
+Finally, there are scoreboard entries in order to display border characteristics on player screen. They can be found in the <code>border.entries</code> package. And the class <code>BorderTimeLineObserver</code> is responsible to move a border from its initial diameter to its final diameter with a count down and send messages translated in the player's language.
