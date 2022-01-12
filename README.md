@@ -31,6 +31,7 @@ Finally, to add the project as maven dependency on your maven project :
 	<groupId>fr.pederobien.minecraft</groupId>
 	<artifactId>border</artifactId>
 	<version>1.0_MC_1.13.2-SNAPSHOT</version>
+	<scope>provided</scope>
 </dependency>
 ```
 
