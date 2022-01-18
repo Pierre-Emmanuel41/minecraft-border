@@ -7,9 +7,9 @@ import org.bukkit.entity.Player;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.game.impl.DisplayHelper;
 import fr.pederobien.minecraft.platform.Platform;
+import fr.pederobien.utils.event.IEventListener;
 
-public class BorderSizeCountDownEntry extends BorderSizeEntry {
-	private boolean isCountDownEquals0;
+public class BorderSizeCountDownEntry extends BorderSizeEntry implements IEventListener {
 
 	/**
 	 * Creates an entry in order to display the following border information: "&lt;count down&gt; | &lt;size&gt;".
@@ -20,24 +20,22 @@ public class BorderSizeCountDownEntry extends BorderSizeEntry {
 	 */
 	public BorderSizeCountDownEntry(int score, IBorder configuration, String pattern) {
 		super(score, configuration, pattern);
-		isCountDownEquals0 = false;
 	}
-
-	private LocalTime countDown;
 
 	@Override
 	protected String updateCurrentValue(Player player) {
-		String current = "";
-		if (!isCountDownEquals0) {
-			int seconds = Platform.get(getObjective().getPlugin()).getTimeLine().getTimeTask().getGameTime().toSecondOfDay();
-			countDown = getBorder().getStartTime().get().minusSeconds(seconds);
-			if (!countDown.equals(LocalTime.of(0, 0, 0)))
-				current += DisplayHelper.toString(countDown, false) + " | ";
-			else
-				isCountDownEquals0 = true;
+		Platform platform = Platform.get(getObjective().getPlugin());
+		if (platform == null)
+			return "";
+
+		LocalTime gameTime = platform.getTimeLine().getTimeTask().getGameTime();
+		switch (gameTime.compareTo(getBorder().getStartTime().get())) {
+		case -1:
+			LocalTime countDown = getBorder().getStartTime().get().minusSeconds(gameTime.toSecondOfDay());
+			return String.format("%s | %s", DisplayHelper.toString(countDown, false), super.updateCurrentValue(player));
+		default:
+			return super.updateCurrentValue(player);
 		}
-		current += super.updateCurrentValue(player);
-		return current;
 	}
 
 	@Override

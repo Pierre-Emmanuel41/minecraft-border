@@ -26,6 +26,10 @@ public class BorderCountDown extends BorderEntry {
 
 	@Override
 	protected String updateCurrentValue(Player player) {
+		Platform platform = Platform.get(getObjective().getPlugin());
+		if (platform == null)
+			return "";
+
 		int seconds = Platform.get(getObjective().getPlugin()).getTimeLine().getTimeTask().getGameTime().toSecondOfDay();
 		return DisplayHelper.toString(getBorder().getStartTime().get().minusSeconds(seconds), false);
 	}
