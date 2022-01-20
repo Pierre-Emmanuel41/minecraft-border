@@ -217,6 +217,11 @@ public enum EBorderCode implements IMinecraftCode {
 	// Code when the move time is updated
 	BORDER__MOVE_TIME_BORDER__MOVE_TIME_UPDATED,
 
+	// Code for score board entries ------------------------------------------------
+
+	// Code for the "center" translation
+	CENTER,
+
 	// Code for in game messages
 	BORDER__MOVING_BORDER(PlayerGroup.ALL), BORDER__MOVING_BORDER_COUNT_DOWN(PlayerGroup.ALL);
 

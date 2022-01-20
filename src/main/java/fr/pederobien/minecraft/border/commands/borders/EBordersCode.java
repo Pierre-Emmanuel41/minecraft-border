@@ -83,10 +83,7 @@ public enum EBordersCode implements IMinecraftCode {
 	BORDERS__DETAILS_BORDERS__NO_ELEMENT,
 
 	// Code when a border is one registered border
-	BORDERS__DETAILS_BORDERS__ONE_ELEMENT,
-
-	// Code when a border is one registered border
-	BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS,
+	BORDERS__DETAILS_BORDERS__DETAILS,
 
 	;
 

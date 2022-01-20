@@ -43,7 +43,7 @@ public class DetailsBordersNode extends BordersNode {
 			borders.add(optBorder.get());
 		}
 
-		String details = getDetails(sender, getList().toList());
+		String details = getDetails(sender, borders);
 		StringJoiner detailsJoiner = new StringJoiner("\n");
 		String[] lines = details.split("\n");
 		for (String line : lines)
@@ -53,11 +53,8 @@ public class DetailsBordersNode extends BordersNode {
 		case 0:
 			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__NO_ELEMENT, getList().getName());
 			break;
-		case 1:
-			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__ONE_ELEMENT, getList().getName(), detailsJoiner);
-			break;
 		default:
-			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS, getList().getName(), detailsJoiner);
+			sendSuccessful(sender, EBordersCode.BORDERS__DETAILS_BORDERS__DETAILS, getList().getName(), detailsJoiner);
 			break;
 		}
 		return true;

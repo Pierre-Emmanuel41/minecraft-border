@@ -106,17 +106,7 @@ public class Border implements IBorder {
 
 	@Override
 	public boolean reload(IPlatformPersistence<IBorder> persistence) {
-		if (!persistence.deserialize(getName()))
-			return false;
-
-		setName(persistence.get().getName());
-		getWorld().set(persistence.get().getWorld().get());
-		getCenter().set(persistence.get().getCenter().get());
-		getInitialDiameter().set(persistence.get().getInitialDiameter().get());
-		getFinalDiameter().set(persistence.get().getFinalDiameter().get());
-		getSpeed().set(persistence.get().getSpeed().get());
-		getStartTime().set(persistence.get().getStartTime().get());
-		return true;
+		return persistence.deserialize(this);
 	}
 
 	@Override

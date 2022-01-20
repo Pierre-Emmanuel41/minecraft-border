@@ -2,7 +2,6 @@ package fr.pederobien.minecraft.border.impl;
 
 import java.time.LocalTime;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderConfigurable;
@@ -11,43 +10,43 @@ import fr.pederobien.minecraft.dictionary.impl.MinecraftMessageEvent.MinecraftMe
 import fr.pederobien.minecraft.dictionary.impl.PlayerGroup;
 import fr.pederobien.minecraft.game.event.GamePausePostEvent;
 import fr.pederobien.minecraft.game.event.GameResumePostEvent;
-import fr.pederobien.minecraft.game.event.GameStartPostEvent;
 import fr.pederobien.minecraft.game.event.GameStopPostEvent;
 import fr.pederobien.minecraft.game.impl.time.CountDown;
+import fr.pederobien.minecraft.game.interfaces.IGame;
 import fr.pederobien.minecraft.game.interfaces.time.ICountDown;
 import fr.pederobien.minecraft.game.interfaces.time.IObsTimeLine;
 import fr.pederobien.minecraft.managers.EColor;
 import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.minecraft.platform.Platform;
+import fr.pederobien.minecraft.platform.event.ConfigurableValueChangeEvent;
 import fr.pederobien.utils.event.EventHandler;
 import fr.pederobien.utils.event.EventManager;
 import fr.pederobien.utils.event.IEventListener;
 
 public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICodeSender {
 	private IBorder border;
+	private Consumer<Integer> countDownAction;
+	private Consumer<LocalTime> onTimeAction;
 	private ICountDown countDown;
 	private LocalTime nextTime;
 	private boolean isMoving;
 
 	/**
-	 * Creates a time line observer associated to the given border. When a game starts, it is registered as time line observer for the
-	 * {@link IBorder#getStartTime()} value. The first <code>LocalTime</code> parameter refers to the absolute time (since the
-	 * beginning of the game) at which the count down is over, the second <code>LocalTime</code> parameter refers to the next time at
-	 * which this observer should be notified.
+	 * Creates a time line observer associated to the given border. It is registered as time line observer for the
+	 * {@link IBorder#getStartTime()} value.
 	 * 
-	 * @param border       The border for this observer. It contains informations in order to observe the time line.
-	 * @param initialValue The initial count down value.
-	 * @param onTimeAction The action to perform when the count down is over.
+	 * @param border The border for this observer. It contains informations in order to observe the time line.
+	 * @param game   the game associated to this border.
 	 */
-	public BorderTimeLineObserver(IBorder border, int initialValue, Function<LocalTime, LocalTime> onTimeAction) {
+	public BorderTimeLineObserver(IBorder border, IGame game) {
 		this.border = border;
 		nextTime = border.getStartTime().get();
 
 		String worldName = WorldManager.getWorldNameNormalised(border.getWorld().get());
 
 		// Action to perform during the count down
-		Consumer<Integer> countDownAction = count -> {
+		countDownAction = count -> {
 			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.BORDER__MOVING_BORDER_COUNT_DOWN);
 			builder.withDisplayOption(DisplayOption.TITLE).withColor(EColor.GOLD);
 			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld().get())));
@@ -55,29 +54,20 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 		};
 
 		// Action to perform when the count down is over.
-		Consumer<LocalTime> internalOnTimeAction = time -> {
+		onTimeAction = time -> {
 			MinecraftMessageEventBuilder builder = eventBuilder(EBorderCode.BORDER__MOVING_BORDER);
 			builder.withGroup(PlayerGroup.of(worldName, player -> player.getWorld().equals(border.getWorld().get())));
-			border.getWorldBorder().setSize(border.getFinalDiameter().get(), (long) border.getWorldBorder().getSize() / border.getSpeed().get().longValue());
+			border.getWorldBorder().setSize(border.getFinalDiameter().get(), (long) (border.getWorldBorder().getSize() / border.getSpeed().get()));
 			send(builder.withColor(EColor.DARK_RED).build(worldName));
-			nextTime = onTimeAction.apply(time);
 			isMoving = true;
 		};
 
-		countDown = new CountDown(initialValue, countDownAction, internalOnTimeAction);
+		LocalTime startTime = border.getStartTime().get();
+		LocalTime realStartTime = startTime.equals(LocalTime.MIN) ? LocalTime.of(0, 0, 1) : startTime;
+		countDown = new CountDown(startTime.toSecondOfDay() < 5 ? startTime.toSecondOfDay() : 5, countDownAction, onTimeAction);
+		Platform.get(game.getPlugin()).getTimeLine().register(realStartTime, this);
 
 		EventManager.registerListener(this);
-	}
-
-	/**
-	 * Creates a time line observer associated to this border. When a game starts, it is registered as time line observer for the
-	 * {@link IBorder#getStartTime()} value. And then will never be notified.
-	 * 
-	 * @param border       The border associated to this observer.
-	 * @param initialValue The initial count down value.
-	 */
-	public BorderTimeLineObserver(IBorder border, int initialValue) {
-		this(border, initialValue, time -> null);
 	}
 
 	@Override
@@ -88,15 +78,6 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 	@Override
 	public LocalTime getNextTime() {
 		return nextTime;
-	}
-
-	@EventHandler
-	private void onGameStart(GameStartPostEvent event) {
-		if (!(event.getGame() instanceof IBorderConfigurable) || !((IBorderConfigurable) event.getGame()).getBorders().toList().contains(border))
-			return;
-
-		if (nextTime != null)
-			Platform.get(event.getGame().getPlugin()).getTimeLine().register(nextTime, this);
 	}
 
 	@EventHandler
@@ -123,11 +104,40 @@ public class BorderTimeLineObserver implements IObsTimeLine, IEventListener, ICo
 		if (!(event.getGame() instanceof IBorderConfigurable) || !((IBorderConfigurable) event.getGame()).getBorders().toList().contains(border) || !isMoving)
 			return;
 
-		double second = border.getMoveTime().toSecondOfDay() * (getDistance(border.getWorldBorder().getSize()) / getDistance(border.getInitialDiameter().get()));
-		border.getWorldBorder().setSize(border.getFinalDiameter().get(), (long) second);
+		updateSpeed();
+	}
+
+	@EventHandler
+	private void onCenterChange(ConfigurableValueChangeEvent event) {
+		if (!event.getConfigurable().equals(border.getCenter()))
+			return;
+
+		border.getWorldBorder().setCenter(border.getCenter().get().getLocation());
+	}
+
+	@EventHandler
+	private void onSpeedChange(ConfigurableValueChangeEvent event) {
+		if (!event.getConfigurable().equals(border.getSpeed()) || !isMoving)
+			return;
+
+		updateSpeed();
+	}
+
+	@EventHandler
+	private void onInitialDiameterChange(ConfigurableValueChangeEvent event) {
+		if (!event.getConfigurable().equals(border.getInitialDiameter()))
+			return;
+
+		if (!isMoving || border.getInitialDiameter().get() < (Integer) event.getOldValue())
+			border.getWorldBorder().setSize(border.getInitialDiameter().get());
 	}
 
 	private double getDistance(double currentDiameter) {
 		return Math.abs(currentDiameter - (double) border.getFinalDiameter().get());
+	}
+
+	private void updateSpeed() {
+		double second = border.getMoveTime().toSecondOfDay() * (getDistance(border.getWorldBorder().getSize()) / getDistance(border.getInitialDiameter().get()));
+		border.getWorldBorder().setSize(border.getFinalDiameter().get(), (long) second);
 	}
 }

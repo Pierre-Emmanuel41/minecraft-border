@@ -292,6 +292,10 @@
 			<value>The border %s will move to its final diameter in %s at speed %.2f block/s</value>
 		</message>
 		<message>
+			<code>CENTER</code>
+			<value>Center: </value>
+		</message>
+		<message>
 			<code>BORDER__MOVING_BORDER</code>
 			<value>Moving %s's border</value>
 		</message>
@@ -400,12 +404,8 @@
 			<value>There is no border associated to %s</value>
 		</message>
 		<message>
-			<code>BORDERS__DETAILS_BORDERS__ONE_ELEMENT</code>
-			<value>%s contains one border:%n%s</value>
-		</message>
-		<message>
-			<code>BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS</code>
-			<value>%s contains borders:%n%s</value>
+			<code>BORDERS__DETAILS_BORDERS__DETAILS</code>
+			<value>Details of %s:%n%s</value>
 		</message>
 	</messages>
 </dictionary>

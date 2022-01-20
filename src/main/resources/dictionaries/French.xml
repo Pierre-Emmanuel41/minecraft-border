@@ -289,6 +289,10 @@
 			<value>La bordure %s se déplacera à son diamètre final en %s à la vitesse de %.2f bloc/s</value>
 		</message>
 		<message>
+			<code>CENTER</code>
+			<value>Centre : </value>
+		</message>
+		<message>
 			<code>BORDER__MOVING_BORDER</code>
 			<value>Déplacement de la bordure de %s</value>
 		</message>
@@ -397,12 +401,8 @@
 			<value>Il n'y a aucune bordure associée à %s</value>
 		</message>
 		<message>
-			<code>BORDERS__DETAILS_BORDERS__ONE_ELEMENT</code>
-			<value>%s contient une bordure :%n%s</value>
-		</message>
-		<message>
-			<code>BORDERS__DETAILS_BORDERS__SEVERAL_ELEMENTS</code>
-			<value>%s les bordures :%n%s</value>
+			<code>BORDERS__DETAILS_BORDERS__DETAILS</code>
+			<value>Details de %s :%n%s</value>
 		</message>
 	</messages>
 </dictionary>
