@@ -18,27 +18,28 @@ import fr.pederobien.minecraft.border.event.BorderListBorderAddPostEvent;
 import fr.pederobien.minecraft.border.event.BorderListBorderRemovePostEvent;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderList;
+import fr.pederobien.minecraft.game.interfaces.IGame;
 import fr.pederobien.utils.event.EventManager;
 
 public class BorderList implements IBorderList {
-	private String name;
+	private IGame game;
 	private Map<String, IBorder> borders;
 	private Lock lock;
 
 	/**
-	 * Creates a borders list.
+	 * Creates a list borders associated to a game.
 	 * 
-	 * @param name The name of this list.
+	 * @param game the game associated to this list..
 	 */
-	public BorderList(String name) {
-		this.name = name;
+	public BorderList(IGame game) {
+		this.game = game;
 		borders = new LinkedHashMap<String, IBorder>();
 		lock = new ReentrantLock(true);
 	}
 
 	@Override
 	public String getName() {
-		return name;
+		return game.getName();
 	}
 
 	@Override
