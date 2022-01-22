@@ -86,7 +86,7 @@ public class Border implements IBorder {
 
 	@Override
 	public LocalTime getMoveTime() {
-		return LocalTime.MIN.plusSeconds(new Double(getDistance() / getSpeed().get()).longValue());
+		return LocalTime.MIN.plusSeconds(Double.valueOf(getDistance() / getSpeed().get()).longValue());
 	}
 
 	@Override
