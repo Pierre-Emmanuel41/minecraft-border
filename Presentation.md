@@ -4,22 +4,22 @@
 
 As a minecraft player, there is one functionality proposed by this plugin : The command "./border". This command allows server operators to create border configuration files according to their needs. This command proposes the following arguments :
 
-border (minecraft command)  
-&ensp;center - To set the center of a border  
-&ensp;delete - To delete a border file  
-&ensp;details - To display border's characteristics  
-&ensp;finalDiameter - To set the final diameter of a border  
-&ensp;help - To get help about the other argument  
-&ensp;initialDiameter - To set the initial diameter of a border  
-&ensp;list - To display border file names  
-&ensp;load - To load a border to configure  
-&ensp;moveTime - To set the time it takes to move the border from its initial diameter to its final diameter  
-&ensp;new - To create a new border to configure  
-&ensp;rename - To rename a border  
-&ensp;save - To save characteristics of a border  
-&ensp;speed - To set the speed of a border  
-&ensp;startTime - To set the time after which the border moves from its initial diameter to its final diameter  
-&ensp;world - To define the world in which the border is applied  
+<code>border</code> (minecraft command)</br>
+&ensp;<code>center</code> - To set the center of a border.</br>
+&ensp;<code>delete</code> - To delete a border file.</br>
+&ensp;<code>details</code> - To display border's characteristics.</br>
+&ensp;<code>finalDiameter</code> - To set the final diameter of a border.</br>
+&ensp;<code>help</code> - To get help about the other argument.</br>
+&ensp;<code>initialDiameter</code> - To set the initial diameter of a border.</br>
+&ensp;<code>list</code> - To display border file names.</br>
+&ensp;<code>load</code> - To load a border to configure.</br>
+&ensp;<code>moveTime</code> - To set the time it takes to move the border from its initial diameter to its final diameter.</br>
+&ensp;<code>new</code> - To create a new border to configure.</br>
+&ensp;<code>rename</code> - To rename a border.</br>
+&ensp;<code>save</code> - To save characteristics of a border.</br>
+&ensp;<code>speed</code> - To set the speed of a border.</br>
+&ensp;<code>startTime</code> - To set the time after which the border moves from its initial diameter to its final diameter.</br>
+&ensp;<code>world</code> - To define the world in which the border is applied.</br>
 
 Once the border has been configured according to user's needs, running the command <code>./border save</code> will generate the following file:
 
@@ -47,11 +47,11 @@ Second, a border is modelled by the <code>IBorder</code> interface. Each modific
 
 Third, a game can be played in several dimension like in the Overworld, in the Nether or in the End. That is why, if a game has borders in several worlds, then it should implements the <code>IBorderConfigurable</code> interface in order to propose an access its <code>IBorderList</code>. This list is responsible to store border associated to a specific world. This means that if a border associated to the overworld is already present in the border list and the user tries to add another border associated to the overworld, then the previous border is removed. With this interface comes another command tree : <code>BordersCommandTree</code> which provides already implemented minecraft command line argument in order to modify the list of borders associated to a game :
 
-borders - To add/remove/reload a border  
-&ensp;add - To add borders to a game  
-&ensp;details - To display characteristics of one or several borders for a game  
-&ensp;list - To display the name of border associated to a world  
-&ensp;reload - To reload a border file  
-&ensp;remove - To remove borders from a game
+<code>borders</code> - To add/remove/reload a border.</br>
+&ensp;<code>add</code> - To add borders to a game.</br>
+&ensp;<code>details</code> - To display characteristics of one or several borders for a game.</br>
+&ensp;<code>list</code> - To display the name of border associated to a world.</br>
+&ensp;<code>reload</code> - To reload a border file.</br>
+&ensp;<code>remove</code> - To remove borders from a game.</br>
 
 Finally, there are scoreboard entries in order to display border characteristics on player screen. They can be found in the <code>border.entries</code> package. And the class <code>BorderTimeLineObserver</code> is responsible to move a border from its initial diameter to its final diameter with a count down and send messages translated in the player's language.
