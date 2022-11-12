@@ -3,6 +3,7 @@ package fr.pederobien.minecraft.border.impl;
 import java.time.LocalTime;
 import java.util.function.Consumer;
 
+import fr.pederobien.minecraft.border.commands.border.EBorderCode;
 import fr.pederobien.minecraft.border.interfaces.IBorder;
 import fr.pederobien.minecraft.border.interfaces.IBorderConfigurable;
 import fr.pederobien.minecraft.commandtree.interfaces.ICodeSender;

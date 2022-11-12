@@ -1,4 +1,4 @@
-package fr.pederobien.minecraft.border.impl;
+package fr.pederobien.minecraft.border.commands.border;
 
 import fr.pederobien.minecraft.dictionary.impl.PlayerGroup;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;
@@ -236,7 +236,7 @@ public enum EBorderCode implements IMinecraftCode {
 	}
 
 	@Override
-	public String value() {
+	public String getCode() {
 		return name();
 	}
 
@@ -252,6 +252,6 @@ public enum EBorderCode implements IMinecraftCode {
 
 	@Override
 	public String toString() {
-		return String.format("value=%s,group=%s", value(), getGroup());
+		return String.format("value=%s,group=%s", getCode(), getGroup());
 	}
 }

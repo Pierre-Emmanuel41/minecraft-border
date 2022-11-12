@@ -4,7 +4,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import fr.pederobien.minecraft.border.impl.EBorderCode;
+import fr.pederobien.minecraft.border.commands.border.EBorderCode;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;
 import fr.pederobien.minecraft.managers.WorldManager;
 import fr.pederobien.minecraft.platform.entries.simple.OrientationEntry;
