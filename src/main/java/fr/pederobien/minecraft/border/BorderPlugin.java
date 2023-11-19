@@ -45,11 +45,11 @@ public class BorderPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		registerDictionaries();
-		registerTabExecutors();
 
 		instance = this;
 		persistence = new BorderPersistence().getPersistence();
 		borderTree = new BorderCommandTree(getPersistence());
+		registerTabExecutors();
 	}
 
 	private void registerDictionaries() {
